@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* PROVISIONAL tokens. Green values are EXAMPLE until the client provides HEX. */
+@theme {
+  --color-ec-bg: #050a07;
+  --color-ec-surface: #0d1a12;
+  --color-ec-primary: #1f9d55; /* EXAMPLE */
+  --color-ec-text: #e8f5ec;
+  --color-ec-muted: #8fb09b;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-ec-bg);
+  color: var(--color-ec-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
