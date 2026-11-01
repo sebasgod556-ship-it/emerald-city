@@ -1,0 +1,11404 @@
+[
+  {
+    "id": 1,
+    "nombre_es": "Bulbasaur",
+    "nombre_en": "Bulbasaur",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 2,
+    "nombre_es": "Ivysaur",
+    "nombre_en": "Ivysaur",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 3,
+    "nombre_es": "Venusaur",
+    "nombre_en": "Venusaur",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 4,
+    "nombre_es": "Charmander",
+    "nombre_en": "Charmander",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 5,
+    "nombre_es": "Charmeleon",
+    "nombre_en": "Charmeleon",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 6,
+    "nombre_es": "Charizard",
+    "nombre_en": "Charizard",
+    "tipos_es": [
+      "Fuego",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 7,
+    "nombre_es": "Squirtle",
+    "nombre_en": "Squirtle",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 8,
+    "nombre_es": "Wartortle",
+    "nombre_en": "Wartortle",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 9,
+    "nombre_es": "Blastoise",
+    "nombre_en": "Blastoise",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 10,
+    "nombre_es": "Caterpie",
+    "nombre_en": "Caterpie",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 11,
+    "nombre_es": "Metapod",
+    "nombre_en": "Metapod",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 12,
+    "nombre_es": "Butterfree",
+    "nombre_en": "Butterfree",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 13,
+    "nombre_es": "Weedle",
+    "nombre_en": "Weedle",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 14,
+    "nombre_es": "Kakuna",
+    "nombre_en": "Kakuna",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 15,
+    "nombre_es": "Beedrill",
+    "nombre_en": "Beedrill",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 16,
+    "nombre_es": "Pidgey",
+    "nombre_en": "Pidgey",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 17,
+    "nombre_es": "Pidgeotto",
+    "nombre_en": "Pidgeotto",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 18,
+    "nombre_es": "Pidgeot",
+    "nombre_en": "Pidgeot",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 19,
+    "nombre_es": "Rattata",
+    "nombre_en": "Rattata",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 19,
+    "nombre_es": "Rattata de Alola",
+    "nombre_en": "rattata-alola",
+    "tipos_es": [
+      "Siniestro",
+      "Normal"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 20,
+    "nombre_es": "Raticate",
+    "nombre_en": "Raticate",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 20,
+    "nombre_es": "Raticate de Alola",
+    "nombre_en": "raticate-alola",
+    "tipos_es": [
+      "Siniestro",
+      "Normal"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 21,
+    "nombre_es": "Spearow",
+    "nombre_en": "Spearow",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 22,
+    "nombre_es": "Fearow",
+    "nombre_en": "Fearow",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 23,
+    "nombre_es": "Ekans",
+    "nombre_en": "Ekans",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 24,
+    "nombre_es": "Arbok",
+    "nombre_en": "Arbok",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 25,
+    "nombre_es": "Pikachu",
+    "nombre_en": "Pikachu",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 26,
+    "nombre_es": "Raichu",
+    "nombre_en": "Raichu",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 26,
+    "nombre_es": "Raichu de Alola",
+    "nombre_en": "raichu-alola",
+    "tipos_es": [
+      "Eléctrico",
+      "Psíquico"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 27,
+    "nombre_es": "Sandshrew",
+    "nombre_en": "Sandshrew",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 27,
+    "nombre_es": "Sandshrew de Alola",
+    "nombre_en": "sandshrew-alola",
+    "tipos_es": [
+      "Hielo",
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 28,
+    "nombre_es": "Sandslash",
+    "nombre_en": "Sandslash",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 28,
+    "nombre_es": "Sandslash de Alola",
+    "nombre_en": "sandslash-alola",
+    "tipos_es": [
+      "Hielo",
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 29,
+    "nombre_es": "Nidoran♀",
+    "nombre_en": "Nidoran♀",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 30,
+    "nombre_es": "Nidorina",
+    "nombre_en": "Nidorina",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 31,
+    "nombre_es": "Nidoqueen",
+    "nombre_en": "Nidoqueen",
+    "tipos_es": [
+      "Veneno",
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 32,
+    "nombre_es": "Nidoran♂",
+    "nombre_en": "Nidoran♂",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 33,
+    "nombre_es": "Nidorino",
+    "nombre_en": "Nidorino",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 34,
+    "nombre_es": "Nidoking",
+    "nombre_en": "Nidoking",
+    "tipos_es": [
+      "Veneno",
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 35,
+    "nombre_es": "Clefairy",
+    "nombre_en": "Clefairy",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 36,
+    "nombre_es": "Clefable",
+    "nombre_en": "Clefable",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 37,
+    "nombre_es": "Vulpix",
+    "nombre_en": "Vulpix",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 37,
+    "nombre_es": "Vulpix de Alola",
+    "nombre_en": "vulpix-alola",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 38,
+    "nombre_es": "Ninetales",
+    "nombre_en": "Ninetales",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 38,
+    "nombre_es": "Ninetales de Alola",
+    "nombre_en": "ninetales-alola",
+    "tipos_es": [
+      "Hielo",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 39,
+    "nombre_es": "Jigglypuff",
+    "nombre_en": "Jigglypuff",
+    "tipos_es": [
+      "Normal",
+      "Hada"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 40,
+    "nombre_es": "Wigglytuff",
+    "nombre_en": "Wigglytuff",
+    "tipos_es": [
+      "Normal",
+      "Hada"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 41,
+    "nombre_es": "Zubat",
+    "nombre_en": "Zubat",
+    "tipos_es": [
+      "Veneno",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 42,
+    "nombre_es": "Golbat",
+    "nombre_en": "Golbat",
+    "tipos_es": [
+      "Veneno",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 43,
+    "nombre_es": "Oddish",
+    "nombre_en": "Oddish",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 44,
+    "nombre_es": "Gloom",
+    "nombre_en": "Gloom",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 45,
+    "nombre_es": "Vileplume",
+    "nombre_en": "Vileplume",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 46,
+    "nombre_es": "Paras",
+    "nombre_en": "Paras",
+    "tipos_es": [
+      "Bicho",
+      "Planta"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 47,
+    "nombre_es": "Parasect",
+    "nombre_en": "Parasect",
+    "tipos_es": [
+      "Bicho",
+      "Planta"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 48,
+    "nombre_es": "Venonat",
+    "nombre_en": "Venonat",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 49,
+    "nombre_es": "Venomoth",
+    "nombre_en": "Venomoth",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 50,
+    "nombre_es": "Diglett",
+    "nombre_en": "Diglett",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 50,
+    "nombre_es": "Diglett de Alola",
+    "nombre_en": "diglett-alola",
+    "tipos_es": [
+      "Tierra",
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 51,
+    "nombre_es": "Dugtrio",
+    "nombre_en": "Dugtrio",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 51,
+    "nombre_es": "Dugtrio de Alola",
+    "nombre_en": "dugtrio-alola",
+    "tipos_es": [
+      "Tierra",
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 52,
+    "nombre_es": "Meowth",
+    "nombre_en": "Meowth",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 52,
+    "nombre_es": "Meowth de Alola",
+    "nombre_en": "meowth-alola",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 52,
+    "nombre_es": "Meowth de Galar",
+    "nombre_en": "meowth-galar",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 53,
+    "nombre_es": "Persian",
+    "nombre_en": "Persian",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 53,
+    "nombre_es": "Persian de Alola",
+    "nombre_en": "persian-alola",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 54,
+    "nombre_es": "Psyduck",
+    "nombre_en": "Psyduck",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 55,
+    "nombre_es": "Golduck",
+    "nombre_en": "Golduck",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 56,
+    "nombre_es": "Mankey",
+    "nombre_en": "Mankey",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 57,
+    "nombre_es": "Primeape",
+    "nombre_en": "Primeape",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 58,
+    "nombre_es": "Growlithe",
+    "nombre_en": "Growlithe",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 58,
+    "nombre_es": "Growlithe de Hisui",
+    "nombre_en": "growlithe-hisui",
+    "tipos_es": [
+      "Fuego",
+      "Roca"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 59,
+    "nombre_es": "Arcanine",
+    "nombre_en": "Arcanine",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 59,
+    "nombre_es": "Arcanine de Hisui",
+    "nombre_en": "arcanine-hisui",
+    "tipos_es": [
+      "Fuego",
+      "Roca"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 60,
+    "nombre_es": "Poliwag",
+    "nombre_en": "Poliwag",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 61,
+    "nombre_es": "Poliwhirl",
+    "nombre_en": "Poliwhirl",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 62,
+    "nombre_es": "Poliwrath",
+    "nombre_en": "Poliwrath",
+    "tipos_es": [
+      "Agua",
+      "Lucha"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 63,
+    "nombre_es": "Abra",
+    "nombre_en": "Abra",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 64,
+    "nombre_es": "Kadabra",
+    "nombre_en": "Kadabra",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 65,
+    "nombre_es": "Alakazam",
+    "nombre_en": "Alakazam",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 66,
+    "nombre_es": "Machop",
+    "nombre_en": "Machop",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 67,
+    "nombre_es": "Machoke",
+    "nombre_en": "Machoke",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 68,
+    "nombre_es": "Machamp",
+    "nombre_en": "Machamp",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 69,
+    "nombre_es": "Bellsprout",
+    "nombre_en": "Bellsprout",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 70,
+    "nombre_es": "Weepinbell",
+    "nombre_en": "Weepinbell",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 71,
+    "nombre_es": "Victreebel",
+    "nombre_en": "Victreebel",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 72,
+    "nombre_es": "Tentacool",
+    "nombre_en": "Tentacool",
+    "tipos_es": [
+      "Agua",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 73,
+    "nombre_es": "Tentacruel",
+    "nombre_en": "Tentacruel",
+    "tipos_es": [
+      "Agua",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 74,
+    "nombre_es": "Geodude",
+    "nombre_en": "Geodude",
+    "tipos_es": [
+      "Roca",
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 74,
+    "nombre_es": "Geodude de Alola",
+    "nombre_en": "geodude-alola",
+    "tipos_es": [
+      "Roca",
+      "Eléctrico"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 75,
+    "nombre_es": "Graveler",
+    "nombre_en": "Graveler",
+    "tipos_es": [
+      "Roca",
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 75,
+    "nombre_es": "Graveler de Alola",
+    "nombre_en": "graveler-alola",
+    "tipos_es": [
+      "Roca",
+      "Eléctrico"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 76,
+    "nombre_es": "Golem",
+    "nombre_en": "Golem",
+    "tipos_es": [
+      "Roca",
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 76,
+    "nombre_es": "Golem de Alola",
+    "nombre_en": "golem-alola",
+    "tipos_es": [
+      "Roca",
+      "Eléctrico"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 77,
+    "nombre_es": "Ponyta",
+    "nombre_en": "Ponyta",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 77,
+    "nombre_es": "Ponyta de Galar",
+    "nombre_en": "ponyta-galar",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 78,
+    "nombre_es": "Rapidash",
+    "nombre_en": "Rapidash",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 78,
+    "nombre_es": "Rapidash de Galar",
+    "nombre_en": "rapidash-galar",
+    "tipos_es": [
+      "Psíquico",
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 79,
+    "nombre_es": "Slowpoke",
+    "nombre_en": "Slowpoke",
+    "tipos_es": [
+      "Agua",
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 79,
+    "nombre_es": "Slowpoke de Galar",
+    "nombre_en": "slowpoke-galar",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 80,
+    "nombre_es": "Slowbro",
+    "nombre_en": "Slowbro",
+    "tipos_es": [
+      "Agua",
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 80,
+    "nombre_es": "Slowbro de Galar",
+    "nombre_en": "slowbro-galar",
+    "tipos_es": [
+      "Veneno",
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 81,
+    "nombre_es": "Magnemite",
+    "nombre_en": "Magnemite",
+    "tipos_es": [
+      "Eléctrico",
+      "Acero"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 82,
+    "nombre_es": "Magneton",
+    "nombre_en": "Magneton",
+    "tipos_es": [
+      "Eléctrico",
+      "Acero"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 83,
+    "nombre_es": "Farfetch’d",
+    "nombre_en": "Farfetch’d",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 83,
+    "nombre_es": "Farfetch’d de Galar",
+    "nombre_en": "farfetchd-galar",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 84,
+    "nombre_es": "Doduo",
+    "nombre_en": "Doduo",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 85,
+    "nombre_es": "Dodrio",
+    "nombre_en": "Dodrio",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 86,
+    "nombre_es": "Seel",
+    "nombre_en": "Seel",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 87,
+    "nombre_es": "Dewgong",
+    "nombre_en": "Dewgong",
+    "tipos_es": [
+      "Agua",
+      "Hielo"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 88,
+    "nombre_es": "Grimer",
+    "nombre_en": "Grimer",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 88,
+    "nombre_es": "Grimer de Alola",
+    "nombre_en": "grimer-alola",
+    "tipos_es": [
+      "Veneno",
+      "Siniestro"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 89,
+    "nombre_es": "Muk",
+    "nombre_en": "Muk",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 89,
+    "nombre_es": "Muk de Alola",
+    "nombre_en": "muk-alola",
+    "tipos_es": [
+      "Veneno",
+      "Siniestro"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 90,
+    "nombre_es": "Shellder",
+    "nombre_en": "Shellder",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 91,
+    "nombre_es": "Cloyster",
+    "nombre_en": "Cloyster",
+    "tipos_es": [
+      "Agua",
+      "Hielo"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 92,
+    "nombre_es": "Gastly",
+    "nombre_en": "Gastly",
+    "tipos_es": [
+      "Fantasma",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 93,
+    "nombre_es": "Haunter",
+    "nombre_en": "Haunter",
+    "tipos_es": [
+      "Fantasma",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 94,
+    "nombre_es": "Gengar",
+    "nombre_en": "Gengar",
+    "tipos_es": [
+      "Fantasma",
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 95,
+    "nombre_es": "Onix",
+    "nombre_en": "Onix",
+    "tipos_es": [
+      "Roca",
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 96,
+    "nombre_es": "Drowzee",
+    "nombre_en": "Drowzee",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 97,
+    "nombre_es": "Hypno",
+    "nombre_en": "Hypno",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 98,
+    "nombre_es": "Krabby",
+    "nombre_en": "Krabby",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 99,
+    "nombre_es": "Kingler",
+    "nombre_en": "Kingler",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 100,
+    "nombre_es": "Voltorb",
+    "nombre_en": "Voltorb",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 100,
+    "nombre_es": "Voltorb de Hisui",
+    "nombre_en": "voltorb-hisui",
+    "tipos_es": [
+      "Eléctrico",
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 101,
+    "nombre_es": "Electrode",
+    "nombre_en": "Electrode",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 101,
+    "nombre_es": "Electrode de Hisui",
+    "nombre_en": "electrode-hisui",
+    "tipos_es": [
+      "Eléctrico",
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 102,
+    "nombre_es": "Exeggcute",
+    "nombre_en": "Exeggcute",
+    "tipos_es": [
+      "Planta",
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 103,
+    "nombre_es": "Exeggutor",
+    "nombre_en": "Exeggutor",
+    "tipos_es": [
+      "Planta",
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 103,
+    "nombre_es": "Exeggutor de Alola",
+    "nombre_en": "exeggutor-alola",
+    "tipos_es": [
+      "Planta",
+      "Dragón"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 104,
+    "nombre_es": "Cubone",
+    "nombre_en": "Cubone",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 105,
+    "nombre_es": "Marowak",
+    "nombre_en": "Marowak",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 105,
+    "nombre_es": "Marowak de Alola",
+    "nombre_en": "marowak-alola",
+    "tipos_es": [
+      "Fuego",
+      "Fantasma"
+    ],
+    "generacion": 7,
+    "regional": true
+  },
+  {
+    "id": 106,
+    "nombre_es": "Hitmonlee",
+    "nombre_en": "Hitmonlee",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 107,
+    "nombre_es": "Hitmonchan",
+    "nombre_en": "Hitmonchan",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 108,
+    "nombre_es": "Lickitung",
+    "nombre_en": "Lickitung",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 109,
+    "nombre_es": "Koffing",
+    "nombre_en": "Koffing",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 110,
+    "nombre_es": "Weezing",
+    "nombre_en": "Weezing",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 110,
+    "nombre_es": "Weezing de Galar",
+    "nombre_en": "weezing-galar",
+    "tipos_es": [
+      "Veneno",
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 111,
+    "nombre_es": "Rhyhorn",
+    "nombre_en": "Rhyhorn",
+    "tipos_es": [
+      "Tierra",
+      "Roca"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 112,
+    "nombre_es": "Rhydon",
+    "nombre_en": "Rhydon",
+    "tipos_es": [
+      "Tierra",
+      "Roca"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 113,
+    "nombre_es": "Chansey",
+    "nombre_en": "Chansey",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 114,
+    "nombre_es": "Tangela",
+    "nombre_en": "Tangela",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 115,
+    "nombre_es": "Kangaskhan",
+    "nombre_en": "Kangaskhan",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 116,
+    "nombre_es": "Horsea",
+    "nombre_en": "Horsea",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 117,
+    "nombre_es": "Seadra",
+    "nombre_en": "Seadra",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 118,
+    "nombre_es": "Goldeen",
+    "nombre_en": "Goldeen",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 119,
+    "nombre_es": "Seaking",
+    "nombre_en": "Seaking",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 120,
+    "nombre_es": "Staryu",
+    "nombre_en": "Staryu",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 121,
+    "nombre_es": "Starmie",
+    "nombre_en": "Starmie",
+    "tipos_es": [
+      "Agua",
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 122,
+    "nombre_es": "Mr. Mime",
+    "nombre_en": "Mr. Mime",
+    "tipos_es": [
+      "Psíquico",
+      "Hada"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 122,
+    "nombre_es": "Mr. Mime de Galar",
+    "nombre_en": "mr-mime-galar",
+    "tipos_es": [
+      "Hielo",
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 123,
+    "nombre_es": "Scyther",
+    "nombre_en": "Scyther",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 124,
+    "nombre_es": "Jynx",
+    "nombre_en": "Jynx",
+    "tipos_es": [
+      "Hielo",
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 125,
+    "nombre_es": "Electabuzz",
+    "nombre_en": "Electabuzz",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 126,
+    "nombre_es": "Magmar",
+    "nombre_en": "Magmar",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 127,
+    "nombre_es": "Pinsir",
+    "nombre_en": "Pinsir",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 128,
+    "nombre_es": "Tauros",
+    "nombre_en": "Tauros",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 128,
+    "nombre_es": "Tauros de Paldea (Combatiente)",
+    "nombre_en": "tauros-paldea-combat-breed",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": true
+  },
+  {
+    "id": 128,
+    "nombre_es": "Tauros de Paldea (Ígnea)",
+    "nombre_en": "tauros-paldea-blaze-breed",
+    "tipos_es": [
+      "Lucha",
+      "Fuego"
+    ],
+    "generacion": 9,
+    "regional": true
+  },
+  {
+    "id": 128,
+    "nombre_es": "Tauros de Paldea (Acuática)",
+    "nombre_en": "tauros-paldea-aqua-breed",
+    "tipos_es": [
+      "Lucha",
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": true
+  },
+  {
+    "id": 129,
+    "nombre_es": "Magikarp",
+    "nombre_en": "Magikarp",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 130,
+    "nombre_es": "Gyarados",
+    "nombre_en": "Gyarados",
+    "tipos_es": [
+      "Agua",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 131,
+    "nombre_es": "Lapras",
+    "nombre_en": "Lapras",
+    "tipos_es": [
+      "Agua",
+      "Hielo"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 132,
+    "nombre_es": "Ditto",
+    "nombre_en": "Ditto",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 133,
+    "nombre_es": "Eevee",
+    "nombre_en": "Eevee",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 134,
+    "nombre_es": "Vaporeon",
+    "nombre_en": "Vaporeon",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 135,
+    "nombre_es": "Jolteon",
+    "nombre_en": "Jolteon",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 136,
+    "nombre_es": "Flareon",
+    "nombre_en": "Flareon",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 137,
+    "nombre_es": "Porygon",
+    "nombre_en": "Porygon",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 138,
+    "nombre_es": "Omanyte",
+    "nombre_en": "Omanyte",
+    "tipos_es": [
+      "Roca",
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 139,
+    "nombre_es": "Omastar",
+    "nombre_en": "Omastar",
+    "tipos_es": [
+      "Roca",
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 140,
+    "nombre_es": "Kabuto",
+    "nombre_en": "Kabuto",
+    "tipos_es": [
+      "Roca",
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 141,
+    "nombre_es": "Kabutops",
+    "nombre_en": "Kabutops",
+    "tipos_es": [
+      "Roca",
+      "Agua"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 142,
+    "nombre_es": "Aerodactyl",
+    "nombre_en": "Aerodactyl",
+    "tipos_es": [
+      "Roca",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 143,
+    "nombre_es": "Snorlax",
+    "nombre_en": "Snorlax",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 144,
+    "nombre_es": "Articuno",
+    "nombre_en": "Articuno",
+    "tipos_es": [
+      "Hielo",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 144,
+    "nombre_es": "Articuno de Galar",
+    "nombre_en": "articuno-galar",
+    "tipos_es": [
+      "Psíquico",
+      "Volador"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 145,
+    "nombre_es": "Zapdos",
+    "nombre_en": "Zapdos",
+    "tipos_es": [
+      "Eléctrico",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 145,
+    "nombre_es": "Zapdos de Galar",
+    "nombre_en": "zapdos-galar",
+    "tipos_es": [
+      "Lucha",
+      "Volador"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 146,
+    "nombre_es": "Moltres",
+    "nombre_en": "Moltres",
+    "tipos_es": [
+      "Fuego",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 146,
+    "nombre_es": "Moltres de Galar",
+    "nombre_en": "moltres-galar",
+    "tipos_es": [
+      "Siniestro",
+      "Volador"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 147,
+    "nombre_es": "Dratini",
+    "nombre_en": "Dratini",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 148,
+    "nombre_es": "Dragonair",
+    "nombre_en": "Dragonair",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 149,
+    "nombre_es": "Dragonite",
+    "nombre_en": "Dragonite",
+    "tipos_es": [
+      "Dragón",
+      "Volador"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 150,
+    "nombre_es": "Mewtwo",
+    "nombre_en": "Mewtwo",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 151,
+    "nombre_es": "Mew",
+    "nombre_en": "Mew",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 1,
+    "regional": false
+  },
+  {
+    "id": 152,
+    "nombre_es": "Chikorita",
+    "nombre_en": "Chikorita",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 153,
+    "nombre_es": "Bayleef",
+    "nombre_en": "Bayleef",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 154,
+    "nombre_es": "Meganium",
+    "nombre_en": "Meganium",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 155,
+    "nombre_es": "Cyndaquil",
+    "nombre_en": "Cyndaquil",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 156,
+    "nombre_es": "Quilava",
+    "nombre_en": "Quilava",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 157,
+    "nombre_es": "Typhlosion",
+    "nombre_en": "Typhlosion",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 157,
+    "nombre_es": "Typhlosion de Hisui",
+    "nombre_en": "typhlosion-hisui",
+    "tipos_es": [
+      "Fuego",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 158,
+    "nombre_es": "Totodile",
+    "nombre_en": "Totodile",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 159,
+    "nombre_es": "Croconaw",
+    "nombre_en": "Croconaw",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 160,
+    "nombre_es": "Feraligatr",
+    "nombre_en": "Feraligatr",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 161,
+    "nombre_es": "Sentret",
+    "nombre_en": "Sentret",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 162,
+    "nombre_es": "Furret",
+    "nombre_en": "Furret",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 163,
+    "nombre_es": "Hoothoot",
+    "nombre_en": "Hoothoot",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 164,
+    "nombre_es": "Noctowl",
+    "nombre_en": "Noctowl",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 165,
+    "nombre_es": "Ledyba",
+    "nombre_en": "Ledyba",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 166,
+    "nombre_es": "Ledian",
+    "nombre_en": "Ledian",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 167,
+    "nombre_es": "Spinarak",
+    "nombre_en": "Spinarak",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 168,
+    "nombre_es": "Ariados",
+    "nombre_en": "Ariados",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 169,
+    "nombre_es": "Crobat",
+    "nombre_en": "Crobat",
+    "tipos_es": [
+      "Veneno",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 170,
+    "nombre_es": "Chinchou",
+    "nombre_en": "Chinchou",
+    "tipos_es": [
+      "Agua",
+      "Eléctrico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 171,
+    "nombre_es": "Lanturn",
+    "nombre_en": "Lanturn",
+    "tipos_es": [
+      "Agua",
+      "Eléctrico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 172,
+    "nombre_es": "Pichu",
+    "nombre_en": "Pichu",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 173,
+    "nombre_es": "Cleffa",
+    "nombre_en": "Cleffa",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 174,
+    "nombre_es": "Igglybuff",
+    "nombre_en": "Igglybuff",
+    "tipos_es": [
+      "Normal",
+      "Hada"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 175,
+    "nombre_es": "Togepi",
+    "nombre_en": "Togepi",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 176,
+    "nombre_es": "Togetic",
+    "nombre_en": "Togetic",
+    "tipos_es": [
+      "Hada",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 177,
+    "nombre_es": "Natu",
+    "nombre_en": "Natu",
+    "tipos_es": [
+      "Psíquico",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 178,
+    "nombre_es": "Xatu",
+    "nombre_en": "Xatu",
+    "tipos_es": [
+      "Psíquico",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 179,
+    "nombre_es": "Mareep",
+    "nombre_en": "Mareep",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 180,
+    "nombre_es": "Flaaffy",
+    "nombre_en": "Flaaffy",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 181,
+    "nombre_es": "Ampharos",
+    "nombre_en": "Ampharos",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 182,
+    "nombre_es": "Bellossom",
+    "nombre_en": "Bellossom",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 183,
+    "nombre_es": "Marill",
+    "nombre_en": "Marill",
+    "tipos_es": [
+      "Agua",
+      "Hada"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 184,
+    "nombre_es": "Azumarill",
+    "nombre_en": "Azumarill",
+    "tipos_es": [
+      "Agua",
+      "Hada"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 185,
+    "nombre_es": "Sudowoodo",
+    "nombre_en": "Sudowoodo",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 186,
+    "nombre_es": "Politoed",
+    "nombre_en": "Politoed",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 187,
+    "nombre_es": "Hoppip",
+    "nombre_en": "Hoppip",
+    "tipos_es": [
+      "Planta",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 188,
+    "nombre_es": "Skiploom",
+    "nombre_en": "Skiploom",
+    "tipos_es": [
+      "Planta",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 189,
+    "nombre_es": "Jumpluff",
+    "nombre_en": "Jumpluff",
+    "tipos_es": [
+      "Planta",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 190,
+    "nombre_es": "Aipom",
+    "nombre_en": "Aipom",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 191,
+    "nombre_es": "Sunkern",
+    "nombre_en": "Sunkern",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 192,
+    "nombre_es": "Sunflora",
+    "nombre_en": "Sunflora",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 193,
+    "nombre_es": "Yanma",
+    "nombre_en": "Yanma",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 194,
+    "nombre_es": "Wooper",
+    "nombre_en": "Wooper",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 194,
+    "nombre_es": "Wooper de Paldea",
+    "nombre_en": "wooper-paldea",
+    "tipos_es": [
+      "Veneno",
+      "Tierra"
+    ],
+    "generacion": 9,
+    "regional": true
+  },
+  {
+    "id": 195,
+    "nombre_es": "Quagsire",
+    "nombre_en": "Quagsire",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 196,
+    "nombre_es": "Espeon",
+    "nombre_en": "Espeon",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 197,
+    "nombre_es": "Umbreon",
+    "nombre_en": "Umbreon",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 198,
+    "nombre_es": "Murkrow",
+    "nombre_en": "Murkrow",
+    "tipos_es": [
+      "Siniestro",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 199,
+    "nombre_es": "Slowking",
+    "nombre_en": "Slowking",
+    "tipos_es": [
+      "Agua",
+      "Psíquico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 199,
+    "nombre_es": "Slowking de Galar",
+    "nombre_en": "slowking-galar",
+    "tipos_es": [
+      "Veneno",
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 200,
+    "nombre_es": "Misdreavus",
+    "nombre_en": "Misdreavus",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 201,
+    "nombre_es": "Unown",
+    "nombre_en": "Unown",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 202,
+    "nombre_es": "Wobbuffet",
+    "nombre_en": "Wobbuffet",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 203,
+    "nombre_es": "Girafarig",
+    "nombre_en": "Girafarig",
+    "tipos_es": [
+      "Normal",
+      "Psíquico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 204,
+    "nombre_es": "Pineco",
+    "nombre_en": "Pineco",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 205,
+    "nombre_es": "Forretress",
+    "nombre_en": "Forretress",
+    "tipos_es": [
+      "Bicho",
+      "Acero"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 206,
+    "nombre_es": "Dunsparce",
+    "nombre_en": "Dunsparce",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 207,
+    "nombre_es": "Gligar",
+    "nombre_en": "Gligar",
+    "tipos_es": [
+      "Tierra",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 208,
+    "nombre_es": "Steelix",
+    "nombre_en": "Steelix",
+    "tipos_es": [
+      "Acero",
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 209,
+    "nombre_es": "Snubbull",
+    "nombre_en": "Snubbull",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 210,
+    "nombre_es": "Granbull",
+    "nombre_en": "Granbull",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 211,
+    "nombre_es": "Qwilfish",
+    "nombre_en": "Qwilfish",
+    "tipos_es": [
+      "Agua",
+      "Veneno"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 211,
+    "nombre_es": "Qwilfish de Hisui",
+    "nombre_en": "qwilfish-hisui",
+    "tipos_es": [
+      "Siniestro",
+      "Veneno"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 212,
+    "nombre_es": "Scizor",
+    "nombre_en": "Scizor",
+    "tipos_es": [
+      "Bicho",
+      "Acero"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 213,
+    "nombre_es": "Shuckle",
+    "nombre_en": "Shuckle",
+    "tipos_es": [
+      "Bicho",
+      "Roca"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 214,
+    "nombre_es": "Heracross",
+    "nombre_en": "Heracross",
+    "tipos_es": [
+      "Bicho",
+      "Lucha"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 215,
+    "nombre_es": "Sneasel",
+    "nombre_en": "Sneasel",
+    "tipos_es": [
+      "Siniestro",
+      "Hielo"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 215,
+    "nombre_es": "Sneasel de Hisui",
+    "nombre_en": "sneasel-hisui",
+    "tipos_es": [
+      "Lucha",
+      "Veneno"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 216,
+    "nombre_es": "Teddiursa",
+    "nombre_en": "Teddiursa",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 217,
+    "nombre_es": "Ursaring",
+    "nombre_en": "Ursaring",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 218,
+    "nombre_es": "Slugma",
+    "nombre_en": "Slugma",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 219,
+    "nombre_es": "Magcargo",
+    "nombre_en": "Magcargo",
+    "tipos_es": [
+      "Fuego",
+      "Roca"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 220,
+    "nombre_es": "Swinub",
+    "nombre_en": "Swinub",
+    "tipos_es": [
+      "Hielo",
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 221,
+    "nombre_es": "Piloswine",
+    "nombre_en": "Piloswine",
+    "tipos_es": [
+      "Hielo",
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 222,
+    "nombre_es": "Corsola",
+    "nombre_en": "Corsola",
+    "tipos_es": [
+      "Agua",
+      "Roca"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 222,
+    "nombre_es": "Corsola de Galar",
+    "nombre_en": "corsola-galar",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 223,
+    "nombre_es": "Remoraid",
+    "nombre_en": "Remoraid",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 224,
+    "nombre_es": "Octillery",
+    "nombre_en": "Octillery",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 225,
+    "nombre_es": "Delibird",
+    "nombre_en": "Delibird",
+    "tipos_es": [
+      "Hielo",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 226,
+    "nombre_es": "Mantine",
+    "nombre_en": "Mantine",
+    "tipos_es": [
+      "Agua",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 227,
+    "nombre_es": "Skarmory",
+    "nombre_en": "Skarmory",
+    "tipos_es": [
+      "Acero",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 228,
+    "nombre_es": "Houndour",
+    "nombre_en": "Houndour",
+    "tipos_es": [
+      "Siniestro",
+      "Fuego"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 229,
+    "nombre_es": "Houndoom",
+    "nombre_en": "Houndoom",
+    "tipos_es": [
+      "Siniestro",
+      "Fuego"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 230,
+    "nombre_es": "Kingdra",
+    "nombre_en": "Kingdra",
+    "tipos_es": [
+      "Agua",
+      "Dragón"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 231,
+    "nombre_es": "Phanpy",
+    "nombre_en": "Phanpy",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 232,
+    "nombre_es": "Donphan",
+    "nombre_en": "Donphan",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 233,
+    "nombre_es": "Porygon2",
+    "nombre_en": "Porygon2",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 234,
+    "nombre_es": "Stantler",
+    "nombre_en": "Stantler",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 235,
+    "nombre_es": "Smeargle",
+    "nombre_en": "Smeargle",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 236,
+    "nombre_es": "Tyrogue",
+    "nombre_en": "Tyrogue",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 237,
+    "nombre_es": "Hitmontop",
+    "nombre_en": "Hitmontop",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 238,
+    "nombre_es": "Smoochum",
+    "nombre_en": "Smoochum",
+    "tipos_es": [
+      "Hielo",
+      "Psíquico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 239,
+    "nombre_es": "Elekid",
+    "nombre_en": "Elekid",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 240,
+    "nombre_es": "Magby",
+    "nombre_en": "Magby",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 241,
+    "nombre_es": "Miltank",
+    "nombre_en": "Miltank",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 242,
+    "nombre_es": "Blissey",
+    "nombre_en": "Blissey",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 243,
+    "nombre_es": "Raikou",
+    "nombre_en": "Raikou",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 244,
+    "nombre_es": "Entei",
+    "nombre_en": "Entei",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 245,
+    "nombre_es": "Suicune",
+    "nombre_en": "Suicune",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 246,
+    "nombre_es": "Larvitar",
+    "nombre_en": "Larvitar",
+    "tipos_es": [
+      "Roca",
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 247,
+    "nombre_es": "Pupitar",
+    "nombre_en": "Pupitar",
+    "tipos_es": [
+      "Roca",
+      "Tierra"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 248,
+    "nombre_es": "Tyranitar",
+    "nombre_en": "Tyranitar",
+    "tipos_es": [
+      "Roca",
+      "Siniestro"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 249,
+    "nombre_es": "Lugia",
+    "nombre_en": "Lugia",
+    "tipos_es": [
+      "Psíquico",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 250,
+    "nombre_es": "Ho-Oh",
+    "nombre_en": "Ho-Oh",
+    "tipos_es": [
+      "Fuego",
+      "Volador"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 251,
+    "nombre_es": "Celebi",
+    "nombre_en": "Celebi",
+    "tipos_es": [
+      "Psíquico",
+      "Planta"
+    ],
+    "generacion": 2,
+    "regional": false
+  },
+  {
+    "id": 252,
+    "nombre_es": "Treecko",
+    "nombre_en": "Treecko",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 253,
+    "nombre_es": "Grovyle",
+    "nombre_en": "Grovyle",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 254,
+    "nombre_es": "Sceptile",
+    "nombre_en": "Sceptile",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 255,
+    "nombre_es": "Torchic",
+    "nombre_en": "Torchic",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 256,
+    "nombre_es": "Combusken",
+    "nombre_en": "Combusken",
+    "tipos_es": [
+      "Fuego",
+      "Lucha"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 257,
+    "nombre_es": "Blaziken",
+    "nombre_en": "Blaziken",
+    "tipos_es": [
+      "Fuego",
+      "Lucha"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 258,
+    "nombre_es": "Mudkip",
+    "nombre_en": "Mudkip",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 259,
+    "nombre_es": "Marshtomp",
+    "nombre_en": "Marshtomp",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 260,
+    "nombre_es": "Swampert",
+    "nombre_en": "Swampert",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 261,
+    "nombre_es": "Poochyena",
+    "nombre_en": "Poochyena",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 262,
+    "nombre_es": "Mightyena",
+    "nombre_en": "Mightyena",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 263,
+    "nombre_es": "Zigzagoon",
+    "nombre_en": "Zigzagoon",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 263,
+    "nombre_es": "Zigzagoon de Galar",
+    "nombre_en": "zigzagoon-galar",
+    "tipos_es": [
+      "Siniestro",
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 264,
+    "nombre_es": "Linoone",
+    "nombre_en": "Linoone",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 264,
+    "nombre_es": "Linoone de Galar",
+    "nombre_en": "linoone-galar",
+    "tipos_es": [
+      "Siniestro",
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 265,
+    "nombre_es": "Wurmple",
+    "nombre_en": "Wurmple",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 266,
+    "nombre_es": "Silcoon",
+    "nombre_en": "Silcoon",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 267,
+    "nombre_es": "Beautifly",
+    "nombre_en": "Beautifly",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 268,
+    "nombre_es": "Cascoon",
+    "nombre_en": "Cascoon",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 269,
+    "nombre_es": "Dustox",
+    "nombre_en": "Dustox",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 270,
+    "nombre_es": "Lotad",
+    "nombre_en": "Lotad",
+    "tipos_es": [
+      "Agua",
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 271,
+    "nombre_es": "Lombre",
+    "nombre_en": "Lombre",
+    "tipos_es": [
+      "Agua",
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 272,
+    "nombre_es": "Ludicolo",
+    "nombre_en": "Ludicolo",
+    "tipos_es": [
+      "Agua",
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 273,
+    "nombre_es": "Seedot",
+    "nombre_en": "Seedot",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 274,
+    "nombre_es": "Nuzleaf",
+    "nombre_en": "Nuzleaf",
+    "tipos_es": [
+      "Planta",
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 275,
+    "nombre_es": "Shiftry",
+    "nombre_en": "Shiftry",
+    "tipos_es": [
+      "Planta",
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 276,
+    "nombre_es": "Taillow",
+    "nombre_en": "Taillow",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 277,
+    "nombre_es": "Swellow",
+    "nombre_en": "Swellow",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 278,
+    "nombre_es": "Wingull",
+    "nombre_en": "Wingull",
+    "tipos_es": [
+      "Agua",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 279,
+    "nombre_es": "Pelipper",
+    "nombre_en": "Pelipper",
+    "tipos_es": [
+      "Agua",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 280,
+    "nombre_es": "Ralts",
+    "nombre_en": "Ralts",
+    "tipos_es": [
+      "Psíquico",
+      "Hada"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 281,
+    "nombre_es": "Kirlia",
+    "nombre_en": "Kirlia",
+    "tipos_es": [
+      "Psíquico",
+      "Hada"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 282,
+    "nombre_es": "Gardevoir",
+    "nombre_en": "Gardevoir",
+    "tipos_es": [
+      "Psíquico",
+      "Hada"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 283,
+    "nombre_es": "Surskit",
+    "nombre_en": "Surskit",
+    "tipos_es": [
+      "Bicho",
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 284,
+    "nombre_es": "Masquerain",
+    "nombre_en": "Masquerain",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 285,
+    "nombre_es": "Shroomish",
+    "nombre_en": "Shroomish",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 286,
+    "nombre_es": "Breloom",
+    "nombre_en": "Breloom",
+    "tipos_es": [
+      "Planta",
+      "Lucha"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 287,
+    "nombre_es": "Slakoth",
+    "nombre_en": "Slakoth",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 288,
+    "nombre_es": "Vigoroth",
+    "nombre_en": "Vigoroth",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 289,
+    "nombre_es": "Slaking",
+    "nombre_en": "Slaking",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 290,
+    "nombre_es": "Nincada",
+    "nombre_en": "Nincada",
+    "tipos_es": [
+      "Bicho",
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 291,
+    "nombre_es": "Ninjask",
+    "nombre_en": "Ninjask",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 292,
+    "nombre_es": "Shedinja",
+    "nombre_en": "Shedinja",
+    "tipos_es": [
+      "Bicho",
+      "Fantasma"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 293,
+    "nombre_es": "Whismur",
+    "nombre_en": "Whismur",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 294,
+    "nombre_es": "Loudred",
+    "nombre_en": "Loudred",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 295,
+    "nombre_es": "Exploud",
+    "nombre_en": "Exploud",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 296,
+    "nombre_es": "Makuhita",
+    "nombre_en": "Makuhita",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 297,
+    "nombre_es": "Hariyama",
+    "nombre_en": "Hariyama",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 298,
+    "nombre_es": "Azurill",
+    "nombre_en": "Azurill",
+    "tipos_es": [
+      "Normal",
+      "Hada"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 299,
+    "nombre_es": "Nosepass",
+    "nombre_en": "Nosepass",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 300,
+    "nombre_es": "Skitty",
+    "nombre_en": "Skitty",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 301,
+    "nombre_es": "Delcatty",
+    "nombre_en": "Delcatty",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 302,
+    "nombre_es": "Sableye",
+    "nombre_en": "Sableye",
+    "tipos_es": [
+      "Siniestro",
+      "Fantasma"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 303,
+    "nombre_es": "Mawile",
+    "nombre_en": "Mawile",
+    "tipos_es": [
+      "Acero",
+      "Hada"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 304,
+    "nombre_es": "Aron",
+    "nombre_en": "Aron",
+    "tipos_es": [
+      "Acero",
+      "Roca"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 305,
+    "nombre_es": "Lairon",
+    "nombre_en": "Lairon",
+    "tipos_es": [
+      "Acero",
+      "Roca"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 306,
+    "nombre_es": "Aggron",
+    "nombre_en": "Aggron",
+    "tipos_es": [
+      "Acero",
+      "Roca"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 307,
+    "nombre_es": "Meditite",
+    "nombre_en": "Meditite",
+    "tipos_es": [
+      "Lucha",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 308,
+    "nombre_es": "Medicham",
+    "nombre_en": "Medicham",
+    "tipos_es": [
+      "Lucha",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 309,
+    "nombre_es": "Electrike",
+    "nombre_en": "Electrike",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 310,
+    "nombre_es": "Manectric",
+    "nombre_en": "Manectric",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 311,
+    "nombre_es": "Plusle",
+    "nombre_en": "Plusle",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 312,
+    "nombre_es": "Minun",
+    "nombre_en": "Minun",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 313,
+    "nombre_es": "Volbeat",
+    "nombre_en": "Volbeat",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 314,
+    "nombre_es": "Illumise",
+    "nombre_en": "Illumise",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 315,
+    "nombre_es": "Roselia",
+    "nombre_en": "Roselia",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 316,
+    "nombre_es": "Gulpin",
+    "nombre_en": "Gulpin",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 317,
+    "nombre_es": "Swalot",
+    "nombre_en": "Swalot",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 318,
+    "nombre_es": "Carvanha",
+    "nombre_en": "Carvanha",
+    "tipos_es": [
+      "Agua",
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 319,
+    "nombre_es": "Sharpedo",
+    "nombre_en": "Sharpedo",
+    "tipos_es": [
+      "Agua",
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 320,
+    "nombre_es": "Wailmer",
+    "nombre_en": "Wailmer",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 321,
+    "nombre_es": "Wailord",
+    "nombre_en": "Wailord",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 322,
+    "nombre_es": "Numel",
+    "nombre_en": "Numel",
+    "tipos_es": [
+      "Fuego",
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 323,
+    "nombre_es": "Camerupt",
+    "nombre_en": "Camerupt",
+    "tipos_es": [
+      "Fuego",
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 324,
+    "nombre_es": "Torkoal",
+    "nombre_en": "Torkoal",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 325,
+    "nombre_es": "Spoink",
+    "nombre_en": "Spoink",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 326,
+    "nombre_es": "Grumpig",
+    "nombre_en": "Grumpig",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 327,
+    "nombre_es": "Spinda",
+    "nombre_en": "Spinda",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 328,
+    "nombre_es": "Trapinch",
+    "nombre_en": "Trapinch",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 329,
+    "nombre_es": "Vibrava",
+    "nombre_en": "Vibrava",
+    "tipos_es": [
+      "Tierra",
+      "Dragón"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 330,
+    "nombre_es": "Flygon",
+    "nombre_en": "Flygon",
+    "tipos_es": [
+      "Tierra",
+      "Dragón"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 331,
+    "nombre_es": "Cacnea",
+    "nombre_en": "Cacnea",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 332,
+    "nombre_es": "Cacturne",
+    "nombre_en": "Cacturne",
+    "tipos_es": [
+      "Planta",
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 333,
+    "nombre_es": "Swablu",
+    "nombre_en": "Swablu",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 334,
+    "nombre_es": "Altaria",
+    "nombre_en": "Altaria",
+    "tipos_es": [
+      "Dragón",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 335,
+    "nombre_es": "Zangoose",
+    "nombre_en": "Zangoose",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 336,
+    "nombre_es": "Seviper",
+    "nombre_en": "Seviper",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 337,
+    "nombre_es": "Lunatone",
+    "nombre_en": "Lunatone",
+    "tipos_es": [
+      "Roca",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 338,
+    "nombre_es": "Solrock",
+    "nombre_en": "Solrock",
+    "tipos_es": [
+      "Roca",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 339,
+    "nombre_es": "Barboach",
+    "nombre_en": "Barboach",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 340,
+    "nombre_es": "Whiscash",
+    "nombre_en": "Whiscash",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 341,
+    "nombre_es": "Corphish",
+    "nombre_en": "Corphish",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 342,
+    "nombre_es": "Crawdaunt",
+    "nombre_en": "Crawdaunt",
+    "tipos_es": [
+      "Agua",
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 343,
+    "nombre_es": "Baltoy",
+    "nombre_en": "Baltoy",
+    "tipos_es": [
+      "Tierra",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 344,
+    "nombre_es": "Claydol",
+    "nombre_en": "Claydol",
+    "tipos_es": [
+      "Tierra",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 345,
+    "nombre_es": "Lileep",
+    "nombre_en": "Lileep",
+    "tipos_es": [
+      "Roca",
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 346,
+    "nombre_es": "Cradily",
+    "nombre_en": "Cradily",
+    "tipos_es": [
+      "Roca",
+      "Planta"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 347,
+    "nombre_es": "Anorith",
+    "nombre_en": "Anorith",
+    "tipos_es": [
+      "Roca",
+      "Bicho"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 348,
+    "nombre_es": "Armaldo",
+    "nombre_en": "Armaldo",
+    "tipos_es": [
+      "Roca",
+      "Bicho"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 349,
+    "nombre_es": "Feebas",
+    "nombre_en": "Feebas",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 350,
+    "nombre_es": "Milotic",
+    "nombre_en": "Milotic",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 351,
+    "nombre_es": "Castform",
+    "nombre_en": "Castform",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 352,
+    "nombre_es": "Kecleon",
+    "nombre_en": "Kecleon",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 353,
+    "nombre_es": "Shuppet",
+    "nombre_en": "Shuppet",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 354,
+    "nombre_es": "Banette",
+    "nombre_en": "Banette",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 355,
+    "nombre_es": "Duskull",
+    "nombre_en": "Duskull",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 356,
+    "nombre_es": "Dusclops",
+    "nombre_en": "Dusclops",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 357,
+    "nombre_es": "Tropius",
+    "nombre_en": "Tropius",
+    "tipos_es": [
+      "Planta",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 358,
+    "nombre_es": "Chimecho",
+    "nombre_en": "Chimecho",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 359,
+    "nombre_es": "Absol",
+    "nombre_en": "Absol",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 360,
+    "nombre_es": "Wynaut",
+    "nombre_en": "Wynaut",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 361,
+    "nombre_es": "Snorunt",
+    "nombre_en": "Snorunt",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 362,
+    "nombre_es": "Glalie",
+    "nombre_en": "Glalie",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 363,
+    "nombre_es": "Spheal",
+    "nombre_en": "Spheal",
+    "tipos_es": [
+      "Hielo",
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 364,
+    "nombre_es": "Sealeo",
+    "nombre_en": "Sealeo",
+    "tipos_es": [
+      "Hielo",
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 365,
+    "nombre_es": "Walrein",
+    "nombre_en": "Walrein",
+    "tipos_es": [
+      "Hielo",
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 366,
+    "nombre_es": "Clamperl",
+    "nombre_en": "Clamperl",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 367,
+    "nombre_es": "Huntail",
+    "nombre_en": "Huntail",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 368,
+    "nombre_es": "Gorebyss",
+    "nombre_en": "Gorebyss",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 369,
+    "nombre_es": "Relicanth",
+    "nombre_en": "Relicanth",
+    "tipos_es": [
+      "Agua",
+      "Roca"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 370,
+    "nombre_es": "Luvdisc",
+    "nombre_en": "Luvdisc",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 371,
+    "nombre_es": "Bagon",
+    "nombre_en": "Bagon",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 372,
+    "nombre_es": "Shelgon",
+    "nombre_en": "Shelgon",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 373,
+    "nombre_es": "Salamence",
+    "nombre_en": "Salamence",
+    "tipos_es": [
+      "Dragón",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 374,
+    "nombre_es": "Beldum",
+    "nombre_en": "Beldum",
+    "tipos_es": [
+      "Acero",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 375,
+    "nombre_es": "Metang",
+    "nombre_en": "Metang",
+    "tipos_es": [
+      "Acero",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 376,
+    "nombre_es": "Metagross",
+    "nombre_en": "Metagross",
+    "tipos_es": [
+      "Acero",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 377,
+    "nombre_es": "Regirock",
+    "nombre_en": "Regirock",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 378,
+    "nombre_es": "Regice",
+    "nombre_en": "Regice",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 379,
+    "nombre_es": "Registeel",
+    "nombre_en": "Registeel",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 380,
+    "nombre_es": "Latias",
+    "nombre_en": "Latias",
+    "tipos_es": [
+      "Dragón",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 381,
+    "nombre_es": "Latios",
+    "nombre_en": "Latios",
+    "tipos_es": [
+      "Dragón",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 382,
+    "nombre_es": "Kyogre",
+    "nombre_en": "Kyogre",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 383,
+    "nombre_es": "Groudon",
+    "nombre_en": "Groudon",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 384,
+    "nombre_es": "Rayquaza",
+    "nombre_en": "Rayquaza",
+    "tipos_es": [
+      "Dragón",
+      "Volador"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 385,
+    "nombre_es": "Jirachi",
+    "nombre_en": "Jirachi",
+    "tipos_es": [
+      "Acero",
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 386,
+    "nombre_es": "Deoxys",
+    "nombre_en": "Deoxys",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 3,
+    "regional": false
+  },
+  {
+    "id": 387,
+    "nombre_es": "Turtwig",
+    "nombre_en": "Turtwig",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 388,
+    "nombre_es": "Grotle",
+    "nombre_en": "Grotle",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 389,
+    "nombre_es": "Torterra",
+    "nombre_en": "Torterra",
+    "tipos_es": [
+      "Planta",
+      "Tierra"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 390,
+    "nombre_es": "Chimchar",
+    "nombre_en": "Chimchar",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 391,
+    "nombre_es": "Monferno",
+    "nombre_en": "Monferno",
+    "tipos_es": [
+      "Fuego",
+      "Lucha"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 392,
+    "nombre_es": "Infernape",
+    "nombre_en": "Infernape",
+    "tipos_es": [
+      "Fuego",
+      "Lucha"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 393,
+    "nombre_es": "Piplup",
+    "nombre_en": "Piplup",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 394,
+    "nombre_es": "Prinplup",
+    "nombre_en": "Prinplup",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 395,
+    "nombre_es": "Empoleon",
+    "nombre_en": "Empoleon",
+    "tipos_es": [
+      "Agua",
+      "Acero"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 396,
+    "nombre_es": "Starly",
+    "nombre_en": "Starly",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 397,
+    "nombre_es": "Staravia",
+    "nombre_en": "Staravia",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 398,
+    "nombre_es": "Staraptor",
+    "nombre_en": "Staraptor",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 399,
+    "nombre_es": "Bidoof",
+    "nombre_en": "Bidoof",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 400,
+    "nombre_es": "Bibarel",
+    "nombre_en": "Bibarel",
+    "tipos_es": [
+      "Normal",
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 401,
+    "nombre_es": "Kricketot",
+    "nombre_en": "Kricketot",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 402,
+    "nombre_es": "Kricketune",
+    "nombre_en": "Kricketune",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 403,
+    "nombre_es": "Shinx",
+    "nombre_en": "Shinx",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 404,
+    "nombre_es": "Luxio",
+    "nombre_en": "Luxio",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 405,
+    "nombre_es": "Luxray",
+    "nombre_en": "Luxray",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 406,
+    "nombre_es": "Budew",
+    "nombre_en": "Budew",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 407,
+    "nombre_es": "Roserade",
+    "nombre_en": "Roserade",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 408,
+    "nombre_es": "Cranidos",
+    "nombre_en": "Cranidos",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 409,
+    "nombre_es": "Rampardos",
+    "nombre_en": "Rampardos",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 410,
+    "nombre_es": "Shieldon",
+    "nombre_en": "Shieldon",
+    "tipos_es": [
+      "Roca",
+      "Acero"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 411,
+    "nombre_es": "Bastiodon",
+    "nombre_en": "Bastiodon",
+    "tipos_es": [
+      "Roca",
+      "Acero"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 412,
+    "nombre_es": "Burmy",
+    "nombre_en": "Burmy",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 413,
+    "nombre_es": "Wormadam",
+    "nombre_en": "Wormadam",
+    "tipos_es": [
+      "Bicho",
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 414,
+    "nombre_es": "Mothim",
+    "nombre_en": "Mothim",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 415,
+    "nombre_es": "Combee",
+    "nombre_en": "Combee",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 416,
+    "nombre_es": "Vespiquen",
+    "nombre_en": "Vespiquen",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 417,
+    "nombre_es": "Pachirisu",
+    "nombre_en": "Pachirisu",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 418,
+    "nombre_es": "Buizel",
+    "nombre_en": "Buizel",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 419,
+    "nombre_es": "Floatzel",
+    "nombre_en": "Floatzel",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 420,
+    "nombre_es": "Cherubi",
+    "nombre_en": "Cherubi",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 421,
+    "nombre_es": "Cherrim",
+    "nombre_en": "Cherrim",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 422,
+    "nombre_es": "Shellos",
+    "nombre_en": "Shellos",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 423,
+    "nombre_es": "Gastrodon",
+    "nombre_en": "Gastrodon",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 424,
+    "nombre_es": "Ambipom",
+    "nombre_en": "Ambipom",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 425,
+    "nombre_es": "Drifloon",
+    "nombre_en": "Drifloon",
+    "tipos_es": [
+      "Fantasma",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 426,
+    "nombre_es": "Drifblim",
+    "nombre_en": "Drifblim",
+    "tipos_es": [
+      "Fantasma",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 427,
+    "nombre_es": "Buneary",
+    "nombre_en": "Buneary",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 428,
+    "nombre_es": "Lopunny",
+    "nombre_en": "Lopunny",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 429,
+    "nombre_es": "Mismagius",
+    "nombre_en": "Mismagius",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 430,
+    "nombre_es": "Honchkrow",
+    "nombre_en": "Honchkrow",
+    "tipos_es": [
+      "Siniestro",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 431,
+    "nombre_es": "Glameow",
+    "nombre_en": "Glameow",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 432,
+    "nombre_es": "Purugly",
+    "nombre_en": "Purugly",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 433,
+    "nombre_es": "Chingling",
+    "nombre_en": "Chingling",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 434,
+    "nombre_es": "Stunky",
+    "nombre_en": "Stunky",
+    "tipos_es": [
+      "Veneno",
+      "Siniestro"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 435,
+    "nombre_es": "Skuntank",
+    "nombre_en": "Skuntank",
+    "tipos_es": [
+      "Veneno",
+      "Siniestro"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 436,
+    "nombre_es": "Bronzor",
+    "nombre_en": "Bronzor",
+    "tipos_es": [
+      "Acero",
+      "Psíquico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 437,
+    "nombre_es": "Bronzong",
+    "nombre_en": "Bronzong",
+    "tipos_es": [
+      "Acero",
+      "Psíquico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 438,
+    "nombre_es": "Bonsly",
+    "nombre_en": "Bonsly",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 439,
+    "nombre_es": "Mime Jr.",
+    "nombre_en": "Mime Jr.",
+    "tipos_es": [
+      "Psíquico",
+      "Hada"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 440,
+    "nombre_es": "Happiny",
+    "nombre_en": "Happiny",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 441,
+    "nombre_es": "Chatot",
+    "nombre_en": "Chatot",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 442,
+    "nombre_es": "Spiritomb",
+    "nombre_en": "Spiritomb",
+    "tipos_es": [
+      "Fantasma",
+      "Siniestro"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 443,
+    "nombre_es": "Gible",
+    "nombre_en": "Gible",
+    "tipos_es": [
+      "Dragón",
+      "Tierra"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 444,
+    "nombre_es": "Gabite",
+    "nombre_en": "Gabite",
+    "tipos_es": [
+      "Dragón",
+      "Tierra"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 445,
+    "nombre_es": "Garchomp",
+    "nombre_en": "Garchomp",
+    "tipos_es": [
+      "Dragón",
+      "Tierra"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 446,
+    "nombre_es": "Munchlax",
+    "nombre_en": "Munchlax",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 447,
+    "nombre_es": "Riolu",
+    "nombre_en": "Riolu",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 448,
+    "nombre_es": "Lucario",
+    "nombre_en": "Lucario",
+    "tipos_es": [
+      "Lucha",
+      "Acero"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 449,
+    "nombre_es": "Hippopotas",
+    "nombre_en": "Hippopotas",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 450,
+    "nombre_es": "Hippowdon",
+    "nombre_en": "Hippowdon",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 451,
+    "nombre_es": "Skorupi",
+    "nombre_en": "Skorupi",
+    "tipos_es": [
+      "Veneno",
+      "Bicho"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 452,
+    "nombre_es": "Drapion",
+    "nombre_en": "Drapion",
+    "tipos_es": [
+      "Veneno",
+      "Siniestro"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 453,
+    "nombre_es": "Croagunk",
+    "nombre_en": "Croagunk",
+    "tipos_es": [
+      "Veneno",
+      "Lucha"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 454,
+    "nombre_es": "Toxicroak",
+    "nombre_en": "Toxicroak",
+    "tipos_es": [
+      "Veneno",
+      "Lucha"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 455,
+    "nombre_es": "Carnivine",
+    "nombre_en": "Carnivine",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 456,
+    "nombre_es": "Finneon",
+    "nombre_en": "Finneon",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 457,
+    "nombre_es": "Lumineon",
+    "nombre_en": "Lumineon",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 458,
+    "nombre_es": "Mantyke",
+    "nombre_en": "Mantyke",
+    "tipos_es": [
+      "Agua",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 459,
+    "nombre_es": "Snover",
+    "nombre_en": "Snover",
+    "tipos_es": [
+      "Planta",
+      "Hielo"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 460,
+    "nombre_es": "Abomasnow",
+    "nombre_en": "Abomasnow",
+    "tipos_es": [
+      "Planta",
+      "Hielo"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 461,
+    "nombre_es": "Weavile",
+    "nombre_en": "Weavile",
+    "tipos_es": [
+      "Siniestro",
+      "Hielo"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 462,
+    "nombre_es": "Magnezone",
+    "nombre_en": "Magnezone",
+    "tipos_es": [
+      "Eléctrico",
+      "Acero"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 463,
+    "nombre_es": "Lickilicky",
+    "nombre_en": "Lickilicky",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 464,
+    "nombre_es": "Rhyperior",
+    "nombre_en": "Rhyperior",
+    "tipos_es": [
+      "Tierra",
+      "Roca"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 465,
+    "nombre_es": "Tangrowth",
+    "nombre_en": "Tangrowth",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 466,
+    "nombre_es": "Electivire",
+    "nombre_en": "Electivire",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 467,
+    "nombre_es": "Magmortar",
+    "nombre_en": "Magmortar",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 468,
+    "nombre_es": "Togekiss",
+    "nombre_en": "Togekiss",
+    "tipos_es": [
+      "Hada",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 469,
+    "nombre_es": "Yanmega",
+    "nombre_en": "Yanmega",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 470,
+    "nombre_es": "Leafeon",
+    "nombre_en": "Leafeon",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 471,
+    "nombre_es": "Glaceon",
+    "nombre_en": "Glaceon",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 472,
+    "nombre_es": "Gliscor",
+    "nombre_en": "Gliscor",
+    "tipos_es": [
+      "Tierra",
+      "Volador"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 473,
+    "nombre_es": "Mamoswine",
+    "nombre_en": "Mamoswine",
+    "tipos_es": [
+      "Hielo",
+      "Tierra"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 474,
+    "nombre_es": "Porygon-Z",
+    "nombre_en": "Porygon-Z",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 475,
+    "nombre_es": "Gallade",
+    "nombre_en": "Gallade",
+    "tipos_es": [
+      "Psíquico",
+      "Lucha"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 476,
+    "nombre_es": "Probopass",
+    "nombre_en": "Probopass",
+    "tipos_es": [
+      "Roca",
+      "Acero"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 477,
+    "nombre_es": "Dusknoir",
+    "nombre_en": "Dusknoir",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 478,
+    "nombre_es": "Froslass",
+    "nombre_en": "Froslass",
+    "tipos_es": [
+      "Hielo",
+      "Fantasma"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 479,
+    "nombre_es": "Rotom",
+    "nombre_en": "Rotom",
+    "tipos_es": [
+      "Eléctrico",
+      "Fantasma"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 480,
+    "nombre_es": "Uxie",
+    "nombre_en": "Uxie",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 481,
+    "nombre_es": "Mesprit",
+    "nombre_en": "Mesprit",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 482,
+    "nombre_es": "Azelf",
+    "nombre_en": "Azelf",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 483,
+    "nombre_es": "Dialga",
+    "nombre_en": "Dialga",
+    "tipos_es": [
+      "Acero",
+      "Dragón"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 484,
+    "nombre_es": "Palkia",
+    "nombre_en": "Palkia",
+    "tipos_es": [
+      "Agua",
+      "Dragón"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 485,
+    "nombre_es": "Heatran",
+    "nombre_en": "Heatran",
+    "tipos_es": [
+      "Fuego",
+      "Acero"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 486,
+    "nombre_es": "Regigigas",
+    "nombre_en": "Regigigas",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 487,
+    "nombre_es": "Giratina",
+    "nombre_en": "Giratina",
+    "tipos_es": [
+      "Fantasma",
+      "Dragón"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 488,
+    "nombre_es": "Cresselia",
+    "nombre_en": "Cresselia",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 489,
+    "nombre_es": "Phione",
+    "nombre_en": "Phione",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 490,
+    "nombre_es": "Manaphy",
+    "nombre_en": "Manaphy",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 491,
+    "nombre_es": "Darkrai",
+    "nombre_en": "Darkrai",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 492,
+    "nombre_es": "Shaymin",
+    "nombre_en": "Shaymin",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 493,
+    "nombre_es": "Arceus",
+    "nombre_en": "Arceus",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 4,
+    "regional": false
+  },
+  {
+    "id": 494,
+    "nombre_es": "Victini",
+    "nombre_en": "Victini",
+    "tipos_es": [
+      "Psíquico",
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 495,
+    "nombre_es": "Snivy",
+    "nombre_en": "Snivy",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 496,
+    "nombre_es": "Servine",
+    "nombre_en": "Servine",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 497,
+    "nombre_es": "Serperior",
+    "nombre_en": "Serperior",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 498,
+    "nombre_es": "Tepig",
+    "nombre_en": "Tepig",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 499,
+    "nombre_es": "Pignite",
+    "nombre_en": "Pignite",
+    "tipos_es": [
+      "Fuego",
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 500,
+    "nombre_es": "Emboar",
+    "nombre_en": "Emboar",
+    "tipos_es": [
+      "Fuego",
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 501,
+    "nombre_es": "Oshawott",
+    "nombre_en": "Oshawott",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 502,
+    "nombre_es": "Dewott",
+    "nombre_en": "Dewott",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 503,
+    "nombre_es": "Samurott",
+    "nombre_en": "Samurott",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 503,
+    "nombre_es": "Samurott de Hisui",
+    "nombre_en": "samurott-hisui",
+    "tipos_es": [
+      "Agua",
+      "Siniestro"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 504,
+    "nombre_es": "Patrat",
+    "nombre_en": "Patrat",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 505,
+    "nombre_es": "Watchog",
+    "nombre_en": "Watchog",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 506,
+    "nombre_es": "Lillipup",
+    "nombre_en": "Lillipup",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 507,
+    "nombre_es": "Herdier",
+    "nombre_en": "Herdier",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 508,
+    "nombre_es": "Stoutland",
+    "nombre_en": "Stoutland",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 509,
+    "nombre_es": "Purrloin",
+    "nombre_en": "Purrloin",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 510,
+    "nombre_es": "Liepard",
+    "nombre_en": "Liepard",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 511,
+    "nombre_es": "Pansage",
+    "nombre_en": "Pansage",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 512,
+    "nombre_es": "Simisage",
+    "nombre_en": "Simisage",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 513,
+    "nombre_es": "Pansear",
+    "nombre_en": "Pansear",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 514,
+    "nombre_es": "Simisear",
+    "nombre_en": "Simisear",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 515,
+    "nombre_es": "Panpour",
+    "nombre_en": "Panpour",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 516,
+    "nombre_es": "Simipour",
+    "nombre_en": "Simipour",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 517,
+    "nombre_es": "Munna",
+    "nombre_en": "Munna",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 518,
+    "nombre_es": "Musharna",
+    "nombre_en": "Musharna",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 519,
+    "nombre_es": "Pidove",
+    "nombre_en": "Pidove",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 520,
+    "nombre_es": "Tranquill",
+    "nombre_en": "Tranquill",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 521,
+    "nombre_es": "Unfezant",
+    "nombre_en": "Unfezant",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 522,
+    "nombre_es": "Blitzle",
+    "nombre_en": "Blitzle",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 523,
+    "nombre_es": "Zebstrika",
+    "nombre_en": "Zebstrika",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 524,
+    "nombre_es": "Roggenrola",
+    "nombre_en": "Roggenrola",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 525,
+    "nombre_es": "Boldore",
+    "nombre_en": "Boldore",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 526,
+    "nombre_es": "Gigalith",
+    "nombre_en": "Gigalith",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 527,
+    "nombre_es": "Woobat",
+    "nombre_en": "Woobat",
+    "tipos_es": [
+      "Psíquico",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 528,
+    "nombre_es": "Swoobat",
+    "nombre_en": "Swoobat",
+    "tipos_es": [
+      "Psíquico",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 529,
+    "nombre_es": "Drilbur",
+    "nombre_en": "Drilbur",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 530,
+    "nombre_es": "Excadrill",
+    "nombre_en": "Excadrill",
+    "tipos_es": [
+      "Tierra",
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 531,
+    "nombre_es": "Audino",
+    "nombre_en": "Audino",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 532,
+    "nombre_es": "Timburr",
+    "nombre_en": "Timburr",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 533,
+    "nombre_es": "Gurdurr",
+    "nombre_en": "Gurdurr",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 534,
+    "nombre_es": "Conkeldurr",
+    "nombre_en": "Conkeldurr",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 535,
+    "nombre_es": "Tympole",
+    "nombre_en": "Tympole",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 536,
+    "nombre_es": "Palpitoad",
+    "nombre_en": "Palpitoad",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 537,
+    "nombre_es": "Seismitoad",
+    "nombre_en": "Seismitoad",
+    "tipos_es": [
+      "Agua",
+      "Tierra"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 538,
+    "nombre_es": "Throh",
+    "nombre_en": "Throh",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 539,
+    "nombre_es": "Sawk",
+    "nombre_en": "Sawk",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 540,
+    "nombre_es": "Sewaddle",
+    "nombre_en": "Sewaddle",
+    "tipos_es": [
+      "Bicho",
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 541,
+    "nombre_es": "Swadloon",
+    "nombre_en": "Swadloon",
+    "tipos_es": [
+      "Bicho",
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 542,
+    "nombre_es": "Leavanny",
+    "nombre_en": "Leavanny",
+    "tipos_es": [
+      "Bicho",
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 543,
+    "nombre_es": "Venipede",
+    "nombre_en": "Venipede",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 544,
+    "nombre_es": "Whirlipede",
+    "nombre_en": "Whirlipede",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 545,
+    "nombre_es": "Scolipede",
+    "nombre_en": "Scolipede",
+    "tipos_es": [
+      "Bicho",
+      "Veneno"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 546,
+    "nombre_es": "Cottonee",
+    "nombre_en": "Cottonee",
+    "tipos_es": [
+      "Planta",
+      "Hada"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 547,
+    "nombre_es": "Whimsicott",
+    "nombre_en": "Whimsicott",
+    "tipos_es": [
+      "Planta",
+      "Hada"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 548,
+    "nombre_es": "Petilil",
+    "nombre_en": "Petilil",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 549,
+    "nombre_es": "Lilligant",
+    "nombre_en": "Lilligant",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 549,
+    "nombre_es": "Lilligant de Hisui",
+    "nombre_en": "lilligant-hisui",
+    "tipos_es": [
+      "Planta",
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 550,
+    "nombre_es": "Basculin",
+    "nombre_en": "Basculin",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 550,
+    "nombre_es": "Basculin de Hisui",
+    "nombre_en": "basculin-white-striped",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 551,
+    "nombre_es": "Sandile",
+    "nombre_en": "Sandile",
+    "tipos_es": [
+      "Tierra",
+      "Siniestro"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 552,
+    "nombre_es": "Krokorok",
+    "nombre_en": "Krokorok",
+    "tipos_es": [
+      "Tierra",
+      "Siniestro"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 553,
+    "nombre_es": "Krookodile",
+    "nombre_en": "Krookodile",
+    "tipos_es": [
+      "Tierra",
+      "Siniestro"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 554,
+    "nombre_es": "Darumaka",
+    "nombre_en": "Darumaka",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 554,
+    "nombre_es": "Darumaka de Galar",
+    "nombre_en": "darumaka-galar",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 555,
+    "nombre_es": "Darmanitan",
+    "nombre_en": "Darmanitan",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 555,
+    "nombre_es": "Darmanitan de Galar",
+    "nombre_en": "darmanitan-galar-standard",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 556,
+    "nombre_es": "Maractus",
+    "nombre_en": "Maractus",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 557,
+    "nombre_es": "Dwebble",
+    "nombre_en": "Dwebble",
+    "tipos_es": [
+      "Bicho",
+      "Roca"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 558,
+    "nombre_es": "Crustle",
+    "nombre_en": "Crustle",
+    "tipos_es": [
+      "Bicho",
+      "Roca"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 559,
+    "nombre_es": "Scraggy",
+    "nombre_en": "Scraggy",
+    "tipos_es": [
+      "Siniestro",
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 560,
+    "nombre_es": "Scrafty",
+    "nombre_en": "Scrafty",
+    "tipos_es": [
+      "Siniestro",
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 561,
+    "nombre_es": "Sigilyph",
+    "nombre_en": "Sigilyph",
+    "tipos_es": [
+      "Psíquico",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 562,
+    "nombre_es": "Yamask",
+    "nombre_en": "Yamask",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 562,
+    "nombre_es": "Yamask de Galar",
+    "nombre_en": "yamask-galar",
+    "tipos_es": [
+      "Tierra",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 563,
+    "nombre_es": "Cofagrigus",
+    "nombre_en": "Cofagrigus",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 564,
+    "nombre_es": "Tirtouga",
+    "nombre_en": "Tirtouga",
+    "tipos_es": [
+      "Agua",
+      "Roca"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 565,
+    "nombre_es": "Carracosta",
+    "nombre_en": "Carracosta",
+    "tipos_es": [
+      "Agua",
+      "Roca"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 566,
+    "nombre_es": "Archen",
+    "nombre_en": "Archen",
+    "tipos_es": [
+      "Roca",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 567,
+    "nombre_es": "Archeops",
+    "nombre_en": "Archeops",
+    "tipos_es": [
+      "Roca",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 568,
+    "nombre_es": "Trubbish",
+    "nombre_en": "Trubbish",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 569,
+    "nombre_es": "Garbodor",
+    "nombre_en": "Garbodor",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 570,
+    "nombre_es": "Zorua",
+    "nombre_en": "Zorua",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 570,
+    "nombre_es": "Zorua de Hisui",
+    "nombre_en": "zorua-hisui",
+    "tipos_es": [
+      "Normal",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 571,
+    "nombre_es": "Zoroark",
+    "nombre_en": "Zoroark",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 571,
+    "nombre_es": "Zoroark de Hisui",
+    "nombre_en": "zoroark-hisui",
+    "tipos_es": [
+      "Normal",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 572,
+    "nombre_es": "Minccino",
+    "nombre_en": "Minccino",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 573,
+    "nombre_es": "Cinccino",
+    "nombre_en": "Cinccino",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 574,
+    "nombre_es": "Gothita",
+    "nombre_en": "Gothita",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 575,
+    "nombre_es": "Gothorita",
+    "nombre_en": "Gothorita",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 576,
+    "nombre_es": "Gothitelle",
+    "nombre_en": "Gothitelle",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 577,
+    "nombre_es": "Solosis",
+    "nombre_en": "Solosis",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 578,
+    "nombre_es": "Duosion",
+    "nombre_en": "Duosion",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 579,
+    "nombre_es": "Reuniclus",
+    "nombre_en": "Reuniclus",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 580,
+    "nombre_es": "Ducklett",
+    "nombre_en": "Ducklett",
+    "tipos_es": [
+      "Agua",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 581,
+    "nombre_es": "Swanna",
+    "nombre_en": "Swanna",
+    "tipos_es": [
+      "Agua",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 582,
+    "nombre_es": "Vanillite",
+    "nombre_en": "Vanillite",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 583,
+    "nombre_es": "Vanillish",
+    "nombre_en": "Vanillish",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 584,
+    "nombre_es": "Vanilluxe",
+    "nombre_en": "Vanilluxe",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 585,
+    "nombre_es": "Deerling",
+    "nombre_en": "Deerling",
+    "tipos_es": [
+      "Normal",
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 586,
+    "nombre_es": "Sawsbuck",
+    "nombre_en": "Sawsbuck",
+    "tipos_es": [
+      "Normal",
+      "Planta"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 587,
+    "nombre_es": "Emolga",
+    "nombre_en": "Emolga",
+    "tipos_es": [
+      "Eléctrico",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 588,
+    "nombre_es": "Karrablast",
+    "nombre_en": "Karrablast",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 589,
+    "nombre_es": "Escavalier",
+    "nombre_en": "Escavalier",
+    "tipos_es": [
+      "Bicho",
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 590,
+    "nombre_es": "Foongus",
+    "nombre_en": "Foongus",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 591,
+    "nombre_es": "Amoonguss",
+    "nombre_en": "Amoonguss",
+    "tipos_es": [
+      "Planta",
+      "Veneno"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 592,
+    "nombre_es": "Frillish",
+    "nombre_en": "Frillish",
+    "tipos_es": [
+      "Agua",
+      "Fantasma"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 593,
+    "nombre_es": "Jellicent",
+    "nombre_en": "Jellicent",
+    "tipos_es": [
+      "Agua",
+      "Fantasma"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 594,
+    "nombre_es": "Alomomola",
+    "nombre_en": "Alomomola",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 595,
+    "nombre_es": "Joltik",
+    "nombre_en": "Joltik",
+    "tipos_es": [
+      "Bicho",
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 596,
+    "nombre_es": "Galvantula",
+    "nombre_en": "Galvantula",
+    "tipos_es": [
+      "Bicho",
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 597,
+    "nombre_es": "Ferroseed",
+    "nombre_en": "Ferroseed",
+    "tipos_es": [
+      "Planta",
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 598,
+    "nombre_es": "Ferrothorn",
+    "nombre_en": "Ferrothorn",
+    "tipos_es": [
+      "Planta",
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 599,
+    "nombre_es": "Klink",
+    "nombre_en": "Klink",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 600,
+    "nombre_es": "Klang",
+    "nombre_en": "Klang",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 601,
+    "nombre_es": "Klinklang",
+    "nombre_en": "Klinklang",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 602,
+    "nombre_es": "Tynamo",
+    "nombre_en": "Tynamo",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 603,
+    "nombre_es": "Eelektrik",
+    "nombre_en": "Eelektrik",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 604,
+    "nombre_es": "Eelektross",
+    "nombre_en": "Eelektross",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 605,
+    "nombre_es": "Elgyem",
+    "nombre_en": "Elgyem",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 606,
+    "nombre_es": "Beheeyem",
+    "nombre_en": "Beheeyem",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 607,
+    "nombre_es": "Litwick",
+    "nombre_en": "Litwick",
+    "tipos_es": [
+      "Fantasma",
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 608,
+    "nombre_es": "Lampent",
+    "nombre_en": "Lampent",
+    "tipos_es": [
+      "Fantasma",
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 609,
+    "nombre_es": "Chandelure",
+    "nombre_en": "Chandelure",
+    "tipos_es": [
+      "Fantasma",
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 610,
+    "nombre_es": "Axew",
+    "nombre_en": "Axew",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 611,
+    "nombre_es": "Fraxure",
+    "nombre_en": "Fraxure",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 612,
+    "nombre_es": "Haxorus",
+    "nombre_en": "Haxorus",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 613,
+    "nombre_es": "Cubchoo",
+    "nombre_en": "Cubchoo",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 614,
+    "nombre_es": "Beartic",
+    "nombre_en": "Beartic",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 615,
+    "nombre_es": "Cryogonal",
+    "nombre_en": "Cryogonal",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 616,
+    "nombre_es": "Shelmet",
+    "nombre_en": "Shelmet",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 617,
+    "nombre_es": "Accelgor",
+    "nombre_en": "Accelgor",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 618,
+    "nombre_es": "Stunfisk",
+    "nombre_en": "Stunfisk",
+    "tipos_es": [
+      "Tierra",
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 618,
+    "nombre_es": "Stunfisk de Galar",
+    "nombre_en": "stunfisk-galar",
+    "tipos_es": [
+      "Tierra",
+      "Acero"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 619,
+    "nombre_es": "Mienfoo",
+    "nombre_en": "Mienfoo",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 620,
+    "nombre_es": "Mienshao",
+    "nombre_en": "Mienshao",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 621,
+    "nombre_es": "Druddigon",
+    "nombre_en": "Druddigon",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 622,
+    "nombre_es": "Golett",
+    "nombre_en": "Golett",
+    "tipos_es": [
+      "Tierra",
+      "Fantasma"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 623,
+    "nombre_es": "Golurk",
+    "nombre_en": "Golurk",
+    "tipos_es": [
+      "Tierra",
+      "Fantasma"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 624,
+    "nombre_es": "Pawniard",
+    "nombre_en": "Pawniard",
+    "tipos_es": [
+      "Siniestro",
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 625,
+    "nombre_es": "Bisharp",
+    "nombre_en": "Bisharp",
+    "tipos_es": [
+      "Siniestro",
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 626,
+    "nombre_es": "Bouffalant",
+    "nombre_en": "Bouffalant",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 627,
+    "nombre_es": "Rufflet",
+    "nombre_en": "Rufflet",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 628,
+    "nombre_es": "Braviary",
+    "nombre_en": "Braviary",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 628,
+    "nombre_es": "Braviary de Hisui",
+    "nombre_en": "braviary-hisui",
+    "tipos_es": [
+      "Psíquico",
+      "Volador"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 629,
+    "nombre_es": "Vullaby",
+    "nombre_en": "Vullaby",
+    "tipos_es": [
+      "Siniestro",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 630,
+    "nombre_es": "Mandibuzz",
+    "nombre_en": "Mandibuzz",
+    "tipos_es": [
+      "Siniestro",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 631,
+    "nombre_es": "Heatmor",
+    "nombre_en": "Heatmor",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 632,
+    "nombre_es": "Durant",
+    "nombre_en": "Durant",
+    "tipos_es": [
+      "Bicho",
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 633,
+    "nombre_es": "Deino",
+    "nombre_en": "Deino",
+    "tipos_es": [
+      "Siniestro",
+      "Dragón"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 634,
+    "nombre_es": "Zweilous",
+    "nombre_en": "Zweilous",
+    "tipos_es": [
+      "Siniestro",
+      "Dragón"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 635,
+    "nombre_es": "Hydreigon",
+    "nombre_en": "Hydreigon",
+    "tipos_es": [
+      "Siniestro",
+      "Dragón"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 636,
+    "nombre_es": "Larvesta",
+    "nombre_en": "Larvesta",
+    "tipos_es": [
+      "Bicho",
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 637,
+    "nombre_es": "Volcarona",
+    "nombre_en": "Volcarona",
+    "tipos_es": [
+      "Bicho",
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 638,
+    "nombre_es": "Cobalion",
+    "nombre_en": "Cobalion",
+    "tipos_es": [
+      "Acero",
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 639,
+    "nombre_es": "Terrakion",
+    "nombre_en": "Terrakion",
+    "tipos_es": [
+      "Roca",
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 640,
+    "nombre_es": "Virizion",
+    "nombre_en": "Virizion",
+    "tipos_es": [
+      "Planta",
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 641,
+    "nombre_es": "Tornadus",
+    "nombre_en": "Tornadus",
+    "tipos_es": [
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 642,
+    "nombre_es": "Thundurus",
+    "nombre_en": "Thundurus",
+    "tipos_es": [
+      "Eléctrico",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 643,
+    "nombre_es": "Reshiram",
+    "nombre_en": "Reshiram",
+    "tipos_es": [
+      "Dragón",
+      "Fuego"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 644,
+    "nombre_es": "Zekrom",
+    "nombre_en": "Zekrom",
+    "tipos_es": [
+      "Dragón",
+      "Eléctrico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 645,
+    "nombre_es": "Landorus",
+    "nombre_en": "Landorus",
+    "tipos_es": [
+      "Tierra",
+      "Volador"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 646,
+    "nombre_es": "Kyurem",
+    "nombre_en": "Kyurem",
+    "tipos_es": [
+      "Dragón",
+      "Hielo"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 647,
+    "nombre_es": "Keldeo",
+    "nombre_en": "Keldeo",
+    "tipos_es": [
+      "Agua",
+      "Lucha"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 648,
+    "nombre_es": "Meloetta",
+    "nombre_en": "Meloetta",
+    "tipos_es": [
+      "Normal",
+      "Psíquico"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 649,
+    "nombre_es": "Genesect",
+    "nombre_en": "Genesect",
+    "tipos_es": [
+      "Bicho",
+      "Acero"
+    ],
+    "generacion": 5,
+    "regional": false
+  },
+  {
+    "id": 650,
+    "nombre_es": "Chespin",
+    "nombre_en": "Chespin",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 651,
+    "nombre_es": "Quilladin",
+    "nombre_en": "Quilladin",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 652,
+    "nombre_es": "Chesnaught",
+    "nombre_en": "Chesnaught",
+    "tipos_es": [
+      "Planta",
+      "Lucha"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 653,
+    "nombre_es": "Fennekin",
+    "nombre_en": "Fennekin",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 654,
+    "nombre_es": "Braixen",
+    "nombre_en": "Braixen",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 655,
+    "nombre_es": "Delphox",
+    "nombre_en": "Delphox",
+    "tipos_es": [
+      "Fuego",
+      "Psíquico"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 656,
+    "nombre_es": "Froakie",
+    "nombre_en": "Froakie",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 657,
+    "nombre_es": "Frogadier",
+    "nombre_en": "Frogadier",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 658,
+    "nombre_es": "Greninja",
+    "nombre_en": "Greninja",
+    "tipos_es": [
+      "Agua",
+      "Siniestro"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 659,
+    "nombre_es": "Bunnelby",
+    "nombre_en": "Bunnelby",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 660,
+    "nombre_es": "Diggersby",
+    "nombre_en": "Diggersby",
+    "tipos_es": [
+      "Normal",
+      "Tierra"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 661,
+    "nombre_es": "Fletchling",
+    "nombre_en": "Fletchling",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 662,
+    "nombre_es": "Fletchinder",
+    "nombre_en": "Fletchinder",
+    "tipos_es": [
+      "Fuego",
+      "Volador"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 663,
+    "nombre_es": "Talonflame",
+    "nombre_en": "Talonflame",
+    "tipos_es": [
+      "Fuego",
+      "Volador"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 664,
+    "nombre_es": "Scatterbug",
+    "nombre_en": "Scatterbug",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 665,
+    "nombre_es": "Spewpa",
+    "nombre_en": "Spewpa",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 666,
+    "nombre_es": "Vivillon",
+    "nombre_en": "Vivillon",
+    "tipos_es": [
+      "Bicho",
+      "Volador"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 667,
+    "nombre_es": "Litleo",
+    "nombre_en": "Litleo",
+    "tipos_es": [
+      "Fuego",
+      "Normal"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 668,
+    "nombre_es": "Pyroar",
+    "nombre_en": "Pyroar",
+    "tipos_es": [
+      "Fuego",
+      "Normal"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 669,
+    "nombre_es": "Flabébé",
+    "nombre_en": "Flabébé",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 670,
+    "nombre_es": "Floette",
+    "nombre_en": "Floette",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 671,
+    "nombre_es": "Florges",
+    "nombre_en": "Florges",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 672,
+    "nombre_es": "Skiddo",
+    "nombre_en": "Skiddo",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 673,
+    "nombre_es": "Gogoat",
+    "nombre_en": "Gogoat",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 674,
+    "nombre_es": "Pancham",
+    "nombre_en": "Pancham",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 675,
+    "nombre_es": "Pangoro",
+    "nombre_en": "Pangoro",
+    "tipos_es": [
+      "Lucha",
+      "Siniestro"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 676,
+    "nombre_es": "Furfrou",
+    "nombre_en": "Furfrou",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 677,
+    "nombre_es": "Espurr",
+    "nombre_en": "Espurr",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 678,
+    "nombre_es": "Meowstic",
+    "nombre_en": "Meowstic",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 679,
+    "nombre_es": "Honedge",
+    "nombre_en": "Honedge",
+    "tipos_es": [
+      "Acero",
+      "Fantasma"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 680,
+    "nombre_es": "Doublade",
+    "nombre_en": "Doublade",
+    "tipos_es": [
+      "Acero",
+      "Fantasma"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 681,
+    "nombre_es": "Aegislash",
+    "nombre_en": "Aegislash",
+    "tipos_es": [
+      "Acero",
+      "Fantasma"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 682,
+    "nombre_es": "Spritzee",
+    "nombre_en": "Spritzee",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 683,
+    "nombre_es": "Aromatisse",
+    "nombre_en": "Aromatisse",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 684,
+    "nombre_es": "Swirlix",
+    "nombre_en": "Swirlix",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 685,
+    "nombre_es": "Slurpuff",
+    "nombre_en": "Slurpuff",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 686,
+    "nombre_es": "Inkay",
+    "nombre_en": "Inkay",
+    "tipos_es": [
+      "Siniestro",
+      "Psíquico"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 687,
+    "nombre_es": "Malamar",
+    "nombre_en": "Malamar",
+    "tipos_es": [
+      "Siniestro",
+      "Psíquico"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 688,
+    "nombre_es": "Binacle",
+    "nombre_en": "Binacle",
+    "tipos_es": [
+      "Roca",
+      "Agua"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 689,
+    "nombre_es": "Barbaracle",
+    "nombre_en": "Barbaracle",
+    "tipos_es": [
+      "Roca",
+      "Agua"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 690,
+    "nombre_es": "Skrelp",
+    "nombre_en": "Skrelp",
+    "tipos_es": [
+      "Veneno",
+      "Agua"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 691,
+    "nombre_es": "Dragalge",
+    "nombre_en": "Dragalge",
+    "tipos_es": [
+      "Veneno",
+      "Dragón"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 692,
+    "nombre_es": "Clauncher",
+    "nombre_en": "Clauncher",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 693,
+    "nombre_es": "Clawitzer",
+    "nombre_en": "Clawitzer",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 694,
+    "nombre_es": "Helioptile",
+    "nombre_en": "Helioptile",
+    "tipos_es": [
+      "Eléctrico",
+      "Normal"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 695,
+    "nombre_es": "Heliolisk",
+    "nombre_en": "Heliolisk",
+    "tipos_es": [
+      "Eléctrico",
+      "Normal"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 696,
+    "nombre_es": "Tyrunt",
+    "nombre_en": "Tyrunt",
+    "tipos_es": [
+      "Roca",
+      "Dragón"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 697,
+    "nombre_es": "Tyrantrum",
+    "nombre_en": "Tyrantrum",
+    "tipos_es": [
+      "Roca",
+      "Dragón"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 698,
+    "nombre_es": "Amaura",
+    "nombre_en": "Amaura",
+    "tipos_es": [
+      "Roca",
+      "Hielo"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 699,
+    "nombre_es": "Aurorus",
+    "nombre_en": "Aurorus",
+    "tipos_es": [
+      "Roca",
+      "Hielo"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 700,
+    "nombre_es": "Sylveon",
+    "nombre_en": "Sylveon",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 701,
+    "nombre_es": "Hawlucha",
+    "nombre_en": "Hawlucha",
+    "tipos_es": [
+      "Lucha",
+      "Volador"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 702,
+    "nombre_es": "Dedenne",
+    "nombre_en": "Dedenne",
+    "tipos_es": [
+      "Eléctrico",
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 703,
+    "nombre_es": "Carbink",
+    "nombre_en": "Carbink",
+    "tipos_es": [
+      "Roca",
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 704,
+    "nombre_es": "Goomy",
+    "nombre_en": "Goomy",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 705,
+    "nombre_es": "Sliggoo",
+    "nombre_en": "Sliggoo",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 705,
+    "nombre_es": "Sliggoo de Hisui",
+    "nombre_en": "sliggoo-hisui",
+    "tipos_es": [
+      "Acero",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 706,
+    "nombre_es": "Goodra",
+    "nombre_en": "Goodra",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 706,
+    "nombre_es": "Goodra de Hisui",
+    "nombre_en": "goodra-hisui",
+    "tipos_es": [
+      "Acero",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 707,
+    "nombre_es": "Klefki",
+    "nombre_en": "Klefki",
+    "tipos_es": [
+      "Acero",
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 708,
+    "nombre_es": "Phantump",
+    "nombre_en": "Phantump",
+    "tipos_es": [
+      "Fantasma",
+      "Planta"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 709,
+    "nombre_es": "Trevenant",
+    "nombre_en": "Trevenant",
+    "tipos_es": [
+      "Fantasma",
+      "Planta"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 710,
+    "nombre_es": "Pumpkaboo",
+    "nombre_en": "Pumpkaboo",
+    "tipos_es": [
+      "Fantasma",
+      "Planta"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 711,
+    "nombre_es": "Gourgeist",
+    "nombre_en": "Gourgeist",
+    "tipos_es": [
+      "Fantasma",
+      "Planta"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 712,
+    "nombre_es": "Bergmite",
+    "nombre_en": "Bergmite",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 713,
+    "nombre_es": "Avalugg",
+    "nombre_en": "Avalugg",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 713,
+    "nombre_es": "Avalugg de Hisui",
+    "nombre_en": "avalugg-hisui",
+    "tipos_es": [
+      "Hielo",
+      "Roca"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 714,
+    "nombre_es": "Noibat",
+    "nombre_en": "Noibat",
+    "tipos_es": [
+      "Volador",
+      "Dragón"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 715,
+    "nombre_es": "Noivern",
+    "nombre_en": "Noivern",
+    "tipos_es": [
+      "Volador",
+      "Dragón"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 716,
+    "nombre_es": "Xerneas",
+    "nombre_en": "Xerneas",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 717,
+    "nombre_es": "Yveltal",
+    "nombre_en": "Yveltal",
+    "tipos_es": [
+      "Siniestro",
+      "Volador"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 718,
+    "nombre_es": "Zygarde",
+    "nombre_en": "Zygarde",
+    "tipos_es": [
+      "Dragón",
+      "Tierra"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 719,
+    "nombre_es": "Diancie",
+    "nombre_en": "Diancie",
+    "tipos_es": [
+      "Roca",
+      "Hada"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 720,
+    "nombre_es": "Hoopa",
+    "nombre_en": "Hoopa",
+    "tipos_es": [
+      "Psíquico",
+      "Fantasma"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 721,
+    "nombre_es": "Volcanion",
+    "nombre_en": "Volcanion",
+    "tipos_es": [
+      "Fuego",
+      "Agua"
+    ],
+    "generacion": 6,
+    "regional": false
+  },
+  {
+    "id": 722,
+    "nombre_es": "Rowlet",
+    "nombre_en": "Rowlet",
+    "tipos_es": [
+      "Planta",
+      "Volador"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 723,
+    "nombre_es": "Dartrix",
+    "nombre_en": "Dartrix",
+    "tipos_es": [
+      "Planta",
+      "Volador"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 724,
+    "nombre_es": "Decidueye",
+    "nombre_en": "Decidueye",
+    "tipos_es": [
+      "Planta",
+      "Fantasma"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 724,
+    "nombre_es": "Decidueye de Hisui",
+    "nombre_en": "decidueye-hisui",
+    "tipos_es": [
+      "Planta",
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": true
+  },
+  {
+    "id": 725,
+    "nombre_es": "Litten",
+    "nombre_en": "Litten",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 726,
+    "nombre_es": "Torracat",
+    "nombre_en": "Torracat",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 727,
+    "nombre_es": "Incineroar",
+    "nombre_en": "Incineroar",
+    "tipos_es": [
+      "Fuego",
+      "Siniestro"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 728,
+    "nombre_es": "Popplio",
+    "nombre_en": "Popplio",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 729,
+    "nombre_es": "Brionne",
+    "nombre_en": "Brionne",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 730,
+    "nombre_es": "Primarina",
+    "nombre_en": "Primarina",
+    "tipos_es": [
+      "Agua",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 731,
+    "nombre_es": "Pikipek",
+    "nombre_en": "Pikipek",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 732,
+    "nombre_es": "Trumbeak",
+    "nombre_en": "Trumbeak",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 733,
+    "nombre_es": "Toucannon",
+    "nombre_en": "Toucannon",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 734,
+    "nombre_es": "Yungoos",
+    "nombre_en": "Yungoos",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 735,
+    "nombre_es": "Gumshoos",
+    "nombre_en": "Gumshoos",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 736,
+    "nombre_es": "Grubbin",
+    "nombre_en": "Grubbin",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 737,
+    "nombre_es": "Charjabug",
+    "nombre_en": "Charjabug",
+    "tipos_es": [
+      "Bicho",
+      "Eléctrico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 738,
+    "nombre_es": "Vikavolt",
+    "nombre_en": "Vikavolt",
+    "tipos_es": [
+      "Bicho",
+      "Eléctrico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 739,
+    "nombre_es": "Crabrawler",
+    "nombre_en": "Crabrawler",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 740,
+    "nombre_es": "Crabominable",
+    "nombre_en": "Crabominable",
+    "tipos_es": [
+      "Lucha",
+      "Hielo"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 741,
+    "nombre_es": "Oricorio",
+    "nombre_en": "Oricorio",
+    "tipos_es": [
+      "Fuego",
+      "Volador"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 742,
+    "nombre_es": "Cutiefly",
+    "nombre_en": "Cutiefly",
+    "tipos_es": [
+      "Bicho",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 743,
+    "nombre_es": "Ribombee",
+    "nombre_en": "Ribombee",
+    "tipos_es": [
+      "Bicho",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 744,
+    "nombre_es": "Rockruff",
+    "nombre_en": "Rockruff",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 745,
+    "nombre_es": "Lycanroc",
+    "nombre_en": "Lycanroc",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 746,
+    "nombre_es": "Wishiwashi",
+    "nombre_en": "Wishiwashi",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 747,
+    "nombre_es": "Mareanie",
+    "nombre_en": "Mareanie",
+    "tipos_es": [
+      "Veneno",
+      "Agua"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 748,
+    "nombre_es": "Toxapex",
+    "nombre_en": "Toxapex",
+    "tipos_es": [
+      "Veneno",
+      "Agua"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 749,
+    "nombre_es": "Mudbray",
+    "nombre_en": "Mudbray",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 750,
+    "nombre_es": "Mudsdale",
+    "nombre_en": "Mudsdale",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 751,
+    "nombre_es": "Dewpider",
+    "nombre_en": "Dewpider",
+    "tipos_es": [
+      "Agua",
+      "Bicho"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 752,
+    "nombre_es": "Araquanid",
+    "nombre_en": "Araquanid",
+    "tipos_es": [
+      "Agua",
+      "Bicho"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 753,
+    "nombre_es": "Fomantis",
+    "nombre_en": "Fomantis",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 754,
+    "nombre_es": "Lurantis",
+    "nombre_en": "Lurantis",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 755,
+    "nombre_es": "Morelull",
+    "nombre_en": "Morelull",
+    "tipos_es": [
+      "Planta",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 756,
+    "nombre_es": "Shiinotic",
+    "nombre_en": "Shiinotic",
+    "tipos_es": [
+      "Planta",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 757,
+    "nombre_es": "Salandit",
+    "nombre_en": "Salandit",
+    "tipos_es": [
+      "Veneno",
+      "Fuego"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 758,
+    "nombre_es": "Salazzle",
+    "nombre_en": "Salazzle",
+    "tipos_es": [
+      "Veneno",
+      "Fuego"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 759,
+    "nombre_es": "Stufful",
+    "nombre_en": "Stufful",
+    "tipos_es": [
+      "Normal",
+      "Lucha"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 760,
+    "nombre_es": "Bewear",
+    "nombre_en": "Bewear",
+    "tipos_es": [
+      "Normal",
+      "Lucha"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 761,
+    "nombre_es": "Bounsweet",
+    "nombre_en": "Bounsweet",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 762,
+    "nombre_es": "Steenee",
+    "nombre_en": "Steenee",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 763,
+    "nombre_es": "Tsareena",
+    "nombre_en": "Tsareena",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 764,
+    "nombre_es": "Comfey",
+    "nombre_en": "Comfey",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 765,
+    "nombre_es": "Oranguru",
+    "nombre_en": "Oranguru",
+    "tipos_es": [
+      "Normal",
+      "Psíquico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 766,
+    "nombre_es": "Passimian",
+    "nombre_en": "Passimian",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 767,
+    "nombre_es": "Wimpod",
+    "nombre_en": "Wimpod",
+    "tipos_es": [
+      "Bicho",
+      "Agua"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 768,
+    "nombre_es": "Golisopod",
+    "nombre_en": "Golisopod",
+    "tipos_es": [
+      "Bicho",
+      "Agua"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 769,
+    "nombre_es": "Sandygast",
+    "nombre_en": "Sandygast",
+    "tipos_es": [
+      "Fantasma",
+      "Tierra"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 770,
+    "nombre_es": "Palossand",
+    "nombre_en": "Palossand",
+    "tipos_es": [
+      "Fantasma",
+      "Tierra"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 771,
+    "nombre_es": "Pyukumuku",
+    "nombre_en": "Pyukumuku",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 772,
+    "nombre_es": "Código Cero",
+    "nombre_en": "Type: Null",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 773,
+    "nombre_es": "Silvally",
+    "nombre_en": "Silvally",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 774,
+    "nombre_es": "Minior",
+    "nombre_en": "Minior",
+    "tipos_es": [
+      "Roca",
+      "Volador"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 775,
+    "nombre_es": "Komala",
+    "nombre_en": "Komala",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 776,
+    "nombre_es": "Turtonator",
+    "nombre_en": "Turtonator",
+    "tipos_es": [
+      "Fuego",
+      "Dragón"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 777,
+    "nombre_es": "Togedemaru",
+    "nombre_en": "Togedemaru",
+    "tipos_es": [
+      "Eléctrico",
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 778,
+    "nombre_es": "Mimikyu",
+    "nombre_en": "Mimikyu",
+    "tipos_es": [
+      "Fantasma",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 779,
+    "nombre_es": "Bruxish",
+    "nombre_en": "Bruxish",
+    "tipos_es": [
+      "Agua",
+      "Psíquico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 780,
+    "nombre_es": "Drampa",
+    "nombre_en": "Drampa",
+    "tipos_es": [
+      "Normal",
+      "Dragón"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 781,
+    "nombre_es": "Dhelmise",
+    "nombre_en": "Dhelmise",
+    "tipos_es": [
+      "Fantasma",
+      "Planta"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 782,
+    "nombre_es": "Jangmo-o",
+    "nombre_en": "Jangmo-o",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 783,
+    "nombre_es": "Hakamo-o",
+    "nombre_en": "Hakamo-o",
+    "tipos_es": [
+      "Dragón",
+      "Lucha"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 784,
+    "nombre_es": "Kommo-o",
+    "nombre_en": "Kommo-o",
+    "tipos_es": [
+      "Dragón",
+      "Lucha"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 785,
+    "nombre_es": "Tapu Koko",
+    "nombre_en": "Tapu Koko",
+    "tipos_es": [
+      "Eléctrico",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 786,
+    "nombre_es": "Tapu Lele",
+    "nombre_en": "Tapu Lele",
+    "tipos_es": [
+      "Psíquico",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 787,
+    "nombre_es": "Tapu Bulu",
+    "nombre_en": "Tapu Bulu",
+    "tipos_es": [
+      "Planta",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 788,
+    "nombre_es": "Tapu Fini",
+    "nombre_en": "Tapu Fini",
+    "tipos_es": [
+      "Agua",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 789,
+    "nombre_es": "Cosmog",
+    "nombre_en": "Cosmog",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 790,
+    "nombre_es": "Cosmoem",
+    "nombre_en": "Cosmoem",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 791,
+    "nombre_es": "Solgaleo",
+    "nombre_en": "Solgaleo",
+    "tipos_es": [
+      "Psíquico",
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 792,
+    "nombre_es": "Lunala",
+    "nombre_en": "Lunala",
+    "tipos_es": [
+      "Psíquico",
+      "Fantasma"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 793,
+    "nombre_es": "Nihilego",
+    "nombre_en": "Nihilego",
+    "tipos_es": [
+      "Roca",
+      "Veneno"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 794,
+    "nombre_es": "Buzzwole",
+    "nombre_en": "Buzzwole",
+    "tipos_es": [
+      "Bicho",
+      "Lucha"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 795,
+    "nombre_es": "Pheromosa",
+    "nombre_en": "Pheromosa",
+    "tipos_es": [
+      "Bicho",
+      "Lucha"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 796,
+    "nombre_es": "Xurkitree",
+    "nombre_en": "Xurkitree",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 797,
+    "nombre_es": "Celesteela",
+    "nombre_en": "Celesteela",
+    "tipos_es": [
+      "Acero",
+      "Volador"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 798,
+    "nombre_es": "Kartana",
+    "nombre_en": "Kartana",
+    "tipos_es": [
+      "Planta",
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 799,
+    "nombre_es": "Guzzlord",
+    "nombre_en": "Guzzlord",
+    "tipos_es": [
+      "Siniestro",
+      "Dragón"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 800,
+    "nombre_es": "Necrozma",
+    "nombre_en": "Necrozma",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 801,
+    "nombre_es": "Magearna",
+    "nombre_en": "Magearna",
+    "tipos_es": [
+      "Acero",
+      "Hada"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 802,
+    "nombre_es": "Marshadow",
+    "nombre_en": "Marshadow",
+    "tipos_es": [
+      "Lucha",
+      "Fantasma"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 803,
+    "nombre_es": "Poipole",
+    "nombre_en": "Poipole",
+    "tipos_es": [
+      "Veneno"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 804,
+    "nombre_es": "Naganadel",
+    "nombre_en": "Naganadel",
+    "tipos_es": [
+      "Veneno",
+      "Dragón"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 805,
+    "nombre_es": "Stakataka",
+    "nombre_en": "Stakataka",
+    "tipos_es": [
+      "Roca",
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 806,
+    "nombre_es": "Blacephalon",
+    "nombre_en": "Blacephalon",
+    "tipos_es": [
+      "Fuego",
+      "Fantasma"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 807,
+    "nombre_es": "Zeraora",
+    "nombre_en": "Zeraora",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 808,
+    "nombre_es": "Meltan",
+    "nombre_en": "Meltan",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 809,
+    "nombre_es": "Melmetal",
+    "nombre_en": "Melmetal",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 7,
+    "regional": false
+  },
+  {
+    "id": 810,
+    "nombre_es": "Grookey",
+    "nombre_en": "Grookey",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 811,
+    "nombre_es": "Thwackey",
+    "nombre_en": "Thwackey",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 812,
+    "nombre_es": "Rillaboom",
+    "nombre_en": "Rillaboom",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 813,
+    "nombre_es": "Scorbunny",
+    "nombre_en": "Scorbunny",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 814,
+    "nombre_es": "Raboot",
+    "nombre_en": "Raboot",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 815,
+    "nombre_es": "Cinderace",
+    "nombre_en": "Cinderace",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 816,
+    "nombre_es": "Sobble",
+    "nombre_en": "Sobble",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 817,
+    "nombre_es": "Drizzile",
+    "nombre_en": "Drizzile",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 818,
+    "nombre_es": "Inteleon",
+    "nombre_en": "Inteleon",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 819,
+    "nombre_es": "Skwovet",
+    "nombre_en": "Skwovet",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 820,
+    "nombre_es": "Greedent",
+    "nombre_en": "Greedent",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 821,
+    "nombre_es": "Rookidee",
+    "nombre_en": "Rookidee",
+    "tipos_es": [
+      "Volador"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 822,
+    "nombre_es": "Corvisquire",
+    "nombre_en": "Corvisquire",
+    "tipos_es": [
+      "Volador"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 823,
+    "nombre_es": "Corviknight",
+    "nombre_en": "Corviknight",
+    "tipos_es": [
+      "Volador",
+      "Acero"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 824,
+    "nombre_es": "Blipbug",
+    "nombre_en": "Blipbug",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 825,
+    "nombre_es": "Dottler",
+    "nombre_en": "Dottler",
+    "tipos_es": [
+      "Bicho",
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 826,
+    "nombre_es": "Orbeetle",
+    "nombre_en": "Orbeetle",
+    "tipos_es": [
+      "Bicho",
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 827,
+    "nombre_es": "Nickit",
+    "nombre_en": "Nickit",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 828,
+    "nombre_es": "Thievul",
+    "nombre_en": "Thievul",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 829,
+    "nombre_es": "Gossifleur",
+    "nombre_en": "Gossifleur",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 830,
+    "nombre_es": "Eldegoss",
+    "nombre_en": "Eldegoss",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 831,
+    "nombre_es": "Wooloo",
+    "nombre_en": "Wooloo",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 832,
+    "nombre_es": "Dubwool",
+    "nombre_en": "Dubwool",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 833,
+    "nombre_es": "Chewtle",
+    "nombre_en": "Chewtle",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 834,
+    "nombre_es": "Drednaw",
+    "nombre_en": "Drednaw",
+    "tipos_es": [
+      "Agua",
+      "Roca"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 835,
+    "nombre_es": "Yamper",
+    "nombre_en": "Yamper",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 836,
+    "nombre_es": "Boltund",
+    "nombre_en": "Boltund",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 837,
+    "nombre_es": "Rolycoly",
+    "nombre_en": "Rolycoly",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 838,
+    "nombre_es": "Carkol",
+    "nombre_en": "Carkol",
+    "tipos_es": [
+      "Roca",
+      "Fuego"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 839,
+    "nombre_es": "Coalossal",
+    "nombre_en": "Coalossal",
+    "tipos_es": [
+      "Roca",
+      "Fuego"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 840,
+    "nombre_es": "Applin",
+    "nombre_en": "Applin",
+    "tipos_es": [
+      "Planta",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 841,
+    "nombre_es": "Flapple",
+    "nombre_en": "Flapple",
+    "tipos_es": [
+      "Planta",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 842,
+    "nombre_es": "Appletun",
+    "nombre_en": "Appletun",
+    "tipos_es": [
+      "Planta",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 843,
+    "nombre_es": "Silicobra",
+    "nombre_en": "Silicobra",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 844,
+    "nombre_es": "Sandaconda",
+    "nombre_en": "Sandaconda",
+    "tipos_es": [
+      "Tierra"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 845,
+    "nombre_es": "Cramorant",
+    "nombre_en": "Cramorant",
+    "tipos_es": [
+      "Volador",
+      "Agua"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 846,
+    "nombre_es": "Arrokuda",
+    "nombre_en": "Arrokuda",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 847,
+    "nombre_es": "Barraskewda",
+    "nombre_en": "Barraskewda",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 848,
+    "nombre_es": "Toxel",
+    "nombre_en": "Toxel",
+    "tipos_es": [
+      "Eléctrico",
+      "Veneno"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 849,
+    "nombre_es": "Toxtricity",
+    "nombre_en": "Toxtricity",
+    "tipos_es": [
+      "Eléctrico",
+      "Veneno"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 850,
+    "nombre_es": "Sizzlipede",
+    "nombre_en": "Sizzlipede",
+    "tipos_es": [
+      "Fuego",
+      "Bicho"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 851,
+    "nombre_es": "Centiskorch",
+    "nombre_en": "Centiskorch",
+    "tipos_es": [
+      "Fuego",
+      "Bicho"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 852,
+    "nombre_es": "Clobbopus",
+    "nombre_en": "Clobbopus",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 853,
+    "nombre_es": "Grapploct",
+    "nombre_en": "Grapploct",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 854,
+    "nombre_es": "Sinistea",
+    "nombre_en": "Sinistea",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 855,
+    "nombre_es": "Polteageist",
+    "nombre_en": "Polteageist",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 856,
+    "nombre_es": "Hatenna",
+    "nombre_en": "Hatenna",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 857,
+    "nombre_es": "Hattrem",
+    "nombre_en": "Hattrem",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 858,
+    "nombre_es": "Hatterene",
+    "nombre_en": "Hatterene",
+    "tipos_es": [
+      "Psíquico",
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 859,
+    "nombre_es": "Impidimp",
+    "nombre_en": "Impidimp",
+    "tipos_es": [
+      "Siniestro",
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 860,
+    "nombre_es": "Morgrem",
+    "nombre_en": "Morgrem",
+    "tipos_es": [
+      "Siniestro",
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 861,
+    "nombre_es": "Grimmsnarl",
+    "nombre_en": "Grimmsnarl",
+    "tipos_es": [
+      "Siniestro",
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 862,
+    "nombre_es": "Obstagoon",
+    "nombre_en": "Obstagoon",
+    "tipos_es": [
+      "Siniestro",
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 863,
+    "nombre_es": "Perrserker",
+    "nombre_en": "Perrserker",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 864,
+    "nombre_es": "Cursola",
+    "nombre_en": "Cursola",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 865,
+    "nombre_es": "Sirfetch’d",
+    "nombre_en": "Sirfetch’d",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 866,
+    "nombre_es": "Mr. Rime",
+    "nombre_en": "Mr. Rime",
+    "tipos_es": [
+      "Hielo",
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 867,
+    "nombre_es": "Runerigus",
+    "nombre_en": "Runerigus",
+    "tipos_es": [
+      "Tierra",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 868,
+    "nombre_es": "Milcery",
+    "nombre_en": "Milcery",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 869,
+    "nombre_es": "Alcremie",
+    "nombre_en": "Alcremie",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 870,
+    "nombre_es": "Falinks",
+    "nombre_en": "Falinks",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 871,
+    "nombre_es": "Pincurchin",
+    "nombre_en": "Pincurchin",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 872,
+    "nombre_es": "Snom",
+    "nombre_en": "Snom",
+    "tipos_es": [
+      "Hielo",
+      "Bicho"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 873,
+    "nombre_es": "Frosmoth",
+    "nombre_en": "Frosmoth",
+    "tipos_es": [
+      "Hielo",
+      "Bicho"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 874,
+    "nombre_es": "Stonjourner",
+    "nombre_en": "Stonjourner",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 875,
+    "nombre_es": "Eiscue",
+    "nombre_en": "Eiscue",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 876,
+    "nombre_es": "Indeedee",
+    "nombre_en": "Indeedee",
+    "tipos_es": [
+      "Psíquico",
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 877,
+    "nombre_es": "Morpeko",
+    "nombre_en": "Morpeko",
+    "tipos_es": [
+      "Eléctrico",
+      "Siniestro"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 878,
+    "nombre_es": "Cufant",
+    "nombre_en": "Cufant",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 879,
+    "nombre_es": "Copperajah",
+    "nombre_en": "Copperajah",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 880,
+    "nombre_es": "Dracozolt",
+    "nombre_en": "Dracozolt",
+    "tipos_es": [
+      "Eléctrico",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 881,
+    "nombre_es": "Arctozolt",
+    "nombre_en": "Arctozolt",
+    "tipos_es": [
+      "Eléctrico",
+      "Hielo"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 882,
+    "nombre_es": "Dracovish",
+    "nombre_en": "Dracovish",
+    "tipos_es": [
+      "Agua",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 883,
+    "nombre_es": "Arctovish",
+    "nombre_en": "Arctovish",
+    "tipos_es": [
+      "Agua",
+      "Hielo"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 884,
+    "nombre_es": "Duraludon",
+    "nombre_en": "Duraludon",
+    "tipos_es": [
+      "Acero",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 885,
+    "nombre_es": "Dreepy",
+    "nombre_en": "Dreepy",
+    "tipos_es": [
+      "Dragón",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 886,
+    "nombre_es": "Drakloak",
+    "nombre_en": "Drakloak",
+    "tipos_es": [
+      "Dragón",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 887,
+    "nombre_es": "Dragapult",
+    "nombre_en": "Dragapult",
+    "tipos_es": [
+      "Dragón",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 888,
+    "nombre_es": "Zacian",
+    "nombre_en": "Zacian",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 889,
+    "nombre_es": "Zamazenta",
+    "nombre_en": "Zamazenta",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 890,
+    "nombre_es": "Eternatus",
+    "nombre_en": "Eternatus",
+    "tipos_es": [
+      "Veneno",
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 891,
+    "nombre_es": "Kubfu",
+    "nombre_en": "Kubfu",
+    "tipos_es": [
+      "Lucha"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 892,
+    "nombre_es": "Urshifu",
+    "nombre_en": "Urshifu",
+    "tipos_es": [
+      "Lucha",
+      "Siniestro"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 893,
+    "nombre_es": "Zarude",
+    "nombre_en": "Zarude",
+    "tipos_es": [
+      "Siniestro",
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 894,
+    "nombre_es": "Regieleki",
+    "nombre_en": "Regieleki",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 895,
+    "nombre_es": "Regidrago",
+    "nombre_en": "Regidrago",
+    "tipos_es": [
+      "Dragón"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 896,
+    "nombre_es": "Glastrier",
+    "nombre_en": "Glastrier",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 897,
+    "nombre_es": "Spectrier",
+    "nombre_en": "Spectrier",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 898,
+    "nombre_es": "Calyrex",
+    "nombre_en": "Calyrex",
+    "tipos_es": [
+      "Psíquico",
+      "Planta"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 899,
+    "nombre_es": "Wyrdeer",
+    "nombre_en": "Wyrdeer",
+    "tipos_es": [
+      "Normal",
+      "Psíquico"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 900,
+    "nombre_es": "Kleavor",
+    "nombre_en": "Kleavor",
+    "tipos_es": [
+      "Bicho",
+      "Roca"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 901,
+    "nombre_es": "Ursaluna",
+    "nombre_en": "Ursaluna",
+    "tipos_es": [
+      "Tierra",
+      "Normal"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 902,
+    "nombre_es": "Basculegion",
+    "nombre_en": "Basculegion",
+    "tipos_es": [
+      "Agua",
+      "Fantasma"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 903,
+    "nombre_es": "Sneasler",
+    "nombre_en": "Sneasler",
+    "tipos_es": [
+      "Lucha",
+      "Veneno"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 904,
+    "nombre_es": "Overqwil",
+    "nombre_en": "Overqwil",
+    "tipos_es": [
+      "Siniestro",
+      "Veneno"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 905,
+    "nombre_es": "Enamorus",
+    "nombre_en": "Enamorus",
+    "tipos_es": [
+      "Hada",
+      "Volador"
+    ],
+    "generacion": 8,
+    "regional": false
+  },
+  {
+    "id": 906,
+    "nombre_es": "Sprigatito",
+    "nombre_en": "Sprigatito",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 907,
+    "nombre_es": "Floragato",
+    "nombre_en": "Floragato",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 908,
+    "nombre_es": "Meowscarada",
+    "nombre_en": "Meowscarada",
+    "tipos_es": [
+      "Planta",
+      "Siniestro"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 909,
+    "nombre_es": "Fuecoco",
+    "nombre_en": "Fuecoco",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 910,
+    "nombre_es": "Crocalor",
+    "nombre_en": "Crocalor",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 911,
+    "nombre_es": "Skeledirge",
+    "nombre_en": "Skeledirge",
+    "tipos_es": [
+      "Fuego",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 912,
+    "nombre_es": "Quaxly",
+    "nombre_en": "Quaxly",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 913,
+    "nombre_es": "Quaxwell",
+    "nombre_en": "Quaxwell",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 914,
+    "nombre_es": "Quaquaval",
+    "nombre_en": "Quaquaval",
+    "tipos_es": [
+      "Agua",
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 915,
+    "nombre_es": "Lechonk",
+    "nombre_en": "Lechonk",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 916,
+    "nombre_es": "Oinkologne",
+    "nombre_en": "Oinkologne",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 917,
+    "nombre_es": "Tarountula",
+    "nombre_en": "Tarountula",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 918,
+    "nombre_es": "Spidops",
+    "nombre_en": "Spidops",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 919,
+    "nombre_es": "Nymble",
+    "nombre_en": "Nymble",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 920,
+    "nombre_es": "Lokix",
+    "nombre_en": "Lokix",
+    "tipos_es": [
+      "Bicho",
+      "Siniestro"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 921,
+    "nombre_es": "Pawmi",
+    "nombre_en": "Pawmi",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 922,
+    "nombre_es": "Pawmo",
+    "nombre_en": "Pawmo",
+    "tipos_es": [
+      "Eléctrico",
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 923,
+    "nombre_es": "Pawmot",
+    "nombre_en": "Pawmot",
+    "tipos_es": [
+      "Eléctrico",
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 924,
+    "nombre_es": "Tandemaus",
+    "nombre_en": "Tandemaus",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 925,
+    "nombre_es": "Maushold",
+    "nombre_en": "Maushold",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 926,
+    "nombre_es": "Fidough",
+    "nombre_en": "Fidough",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 927,
+    "nombre_es": "Dachsbun",
+    "nombre_en": "Dachsbun",
+    "tipos_es": [
+      "Hada"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 928,
+    "nombre_es": "Smoliv",
+    "nombre_en": "Smoliv",
+    "tipos_es": [
+      "Planta",
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 929,
+    "nombre_es": "Dolliv",
+    "nombre_en": "Dolliv",
+    "tipos_es": [
+      "Planta",
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 930,
+    "nombre_es": "Arboliva",
+    "nombre_en": "Arboliva",
+    "tipos_es": [
+      "Planta",
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 931,
+    "nombre_es": "Squawkabilly",
+    "nombre_en": "Squawkabilly",
+    "tipos_es": [
+      "Normal",
+      "Volador"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 932,
+    "nombre_es": "Nacli",
+    "nombre_en": "Nacli",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 933,
+    "nombre_es": "Naclstack",
+    "nombre_en": "Naclstack",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 934,
+    "nombre_es": "Garganacl",
+    "nombre_en": "Garganacl",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 935,
+    "nombre_es": "Charcadet",
+    "nombre_en": "Charcadet",
+    "tipos_es": [
+      "Fuego"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 936,
+    "nombre_es": "Armarouge",
+    "nombre_en": "Armarouge",
+    "tipos_es": [
+      "Fuego",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 937,
+    "nombre_es": "Ceruledge",
+    "nombre_en": "Ceruledge",
+    "tipos_es": [
+      "Fuego",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 938,
+    "nombre_es": "Tadbulb",
+    "nombre_en": "Tadbulb",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 939,
+    "nombre_es": "Bellibolt",
+    "nombre_en": "Bellibolt",
+    "tipos_es": [
+      "Eléctrico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 940,
+    "nombre_es": "Wattrel",
+    "nombre_en": "Wattrel",
+    "tipos_es": [
+      "Eléctrico",
+      "Volador"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 941,
+    "nombre_es": "Kilowattrel",
+    "nombre_en": "Kilowattrel",
+    "tipos_es": [
+      "Eléctrico",
+      "Volador"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 942,
+    "nombre_es": "Maschiff",
+    "nombre_en": "Maschiff",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 943,
+    "nombre_es": "Mabosstiff",
+    "nombre_en": "Mabosstiff",
+    "tipos_es": [
+      "Siniestro"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 944,
+    "nombre_es": "Shroodle",
+    "nombre_en": "Shroodle",
+    "tipos_es": [
+      "Veneno",
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 945,
+    "nombre_es": "Grafaiai",
+    "nombre_en": "Grafaiai",
+    "tipos_es": [
+      "Veneno",
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 946,
+    "nombre_es": "Bramblin",
+    "nombre_en": "Bramblin",
+    "tipos_es": [
+      "Planta",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 947,
+    "nombre_es": "Brambleghast",
+    "nombre_en": "Brambleghast",
+    "tipos_es": [
+      "Planta",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 948,
+    "nombre_es": "Toedscool",
+    "nombre_en": "Toedscool",
+    "tipos_es": [
+      "Tierra",
+      "Planta"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 949,
+    "nombre_es": "Toedscruel",
+    "nombre_en": "Toedscruel",
+    "tipos_es": [
+      "Tierra",
+      "Planta"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 950,
+    "nombre_es": "Klawf",
+    "nombre_en": "Klawf",
+    "tipos_es": [
+      "Roca"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 951,
+    "nombre_es": "Capsakid",
+    "nombre_en": "Capsakid",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 952,
+    "nombre_es": "Scovillain",
+    "nombre_en": "Scovillain",
+    "tipos_es": [
+      "Planta",
+      "Fuego"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 953,
+    "nombre_es": "Rellor",
+    "nombre_en": "Rellor",
+    "tipos_es": [
+      "Bicho"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 954,
+    "nombre_es": "Rabsca",
+    "nombre_en": "Rabsca",
+    "tipos_es": [
+      "Bicho",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 955,
+    "nombre_es": "Flittle",
+    "nombre_en": "Flittle",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 956,
+    "nombre_es": "Espathra",
+    "nombre_en": "Espathra",
+    "tipos_es": [
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 957,
+    "nombre_es": "Tinkatink",
+    "nombre_en": "Tinkatink",
+    "tipos_es": [
+      "Hada",
+      "Acero"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 958,
+    "nombre_es": "Tinkatuff",
+    "nombre_en": "Tinkatuff",
+    "tipos_es": [
+      "Hada",
+      "Acero"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 959,
+    "nombre_es": "Tinkaton",
+    "nombre_en": "Tinkaton",
+    "tipos_es": [
+      "Hada",
+      "Acero"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 960,
+    "nombre_es": "Wiglett",
+    "nombre_en": "Wiglett",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 961,
+    "nombre_es": "Wugtrio",
+    "nombre_en": "Wugtrio",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 962,
+    "nombre_es": "Bombirdier",
+    "nombre_en": "Bombirdier",
+    "tipos_es": [
+      "Volador",
+      "Siniestro"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 963,
+    "nombre_es": "Finizen",
+    "nombre_en": "Finizen",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 964,
+    "nombre_es": "Palafin",
+    "nombre_en": "Palafin",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 965,
+    "nombre_es": "Varoom",
+    "nombre_en": "Varoom",
+    "tipos_es": [
+      "Acero",
+      "Veneno"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 966,
+    "nombre_es": "Revavroom",
+    "nombre_en": "Revavroom",
+    "tipos_es": [
+      "Acero",
+      "Veneno"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 967,
+    "nombre_es": "Cyclizar",
+    "nombre_en": "Cyclizar",
+    "tipos_es": [
+      "Dragón",
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 968,
+    "nombre_es": "Orthworm",
+    "nombre_en": "Orthworm",
+    "tipos_es": [
+      "Acero"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 969,
+    "nombre_es": "Glimmet",
+    "nombre_en": "Glimmet",
+    "tipos_es": [
+      "Roca",
+      "Veneno"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 970,
+    "nombre_es": "Glimmora",
+    "nombre_en": "Glimmora",
+    "tipos_es": [
+      "Roca",
+      "Veneno"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 971,
+    "nombre_es": "Greavard",
+    "nombre_en": "Greavard",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 972,
+    "nombre_es": "Houndstone",
+    "nombre_en": "Houndstone",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 973,
+    "nombre_es": "Flamigo",
+    "nombre_en": "Flamigo",
+    "tipos_es": [
+      "Volador",
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 974,
+    "nombre_es": "Cetoddle",
+    "nombre_en": "Cetoddle",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 975,
+    "nombre_es": "Cetitan",
+    "nombre_en": "Cetitan",
+    "tipos_es": [
+      "Hielo"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 976,
+    "nombre_es": "Veluza",
+    "nombre_en": "Veluza",
+    "tipos_es": [
+      "Agua",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 977,
+    "nombre_es": "Dondozo",
+    "nombre_en": "Dondozo",
+    "tipos_es": [
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 978,
+    "nombre_es": "Tatsugiri",
+    "nombre_en": "Tatsugiri",
+    "tipos_es": [
+      "Dragón",
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 979,
+    "nombre_es": "Annihilape",
+    "nombre_en": "Annihilape",
+    "tipos_es": [
+      "Lucha",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 980,
+    "nombre_es": "Clodsire",
+    "nombre_en": "Clodsire",
+    "tipos_es": [
+      "Veneno",
+      "Tierra"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 981,
+    "nombre_es": "Farigiraf",
+    "nombre_en": "Farigiraf",
+    "tipos_es": [
+      "Normal",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 982,
+    "nombre_es": "Dudunsparce",
+    "nombre_en": "Dudunsparce",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 983,
+    "nombre_es": "Kingambit",
+    "nombre_en": "Kingambit",
+    "tipos_es": [
+      "Siniestro",
+      "Acero"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 984,
+    "nombre_es": "Colmilargo",
+    "nombre_en": "Great Tusk",
+    "tipos_es": [
+      "Tierra",
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 985,
+    "nombre_es": "Colagrito",
+    "nombre_en": "Scream Tail",
+    "tipos_es": [
+      "Hada",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 986,
+    "nombre_es": "Furioseta",
+    "nombre_en": "Brute Bonnet",
+    "tipos_es": [
+      "Planta",
+      "Siniestro"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 987,
+    "nombre_es": "Melenaleteo",
+    "nombre_en": "Flutter Mane",
+    "tipos_es": [
+      "Fantasma",
+      "Hada"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 988,
+    "nombre_es": "Reptalada",
+    "nombre_en": "Slither Wing",
+    "tipos_es": [
+      "Bicho",
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 989,
+    "nombre_es": "Pelarena",
+    "nombre_en": "Sandy Shocks",
+    "tipos_es": [
+      "Eléctrico",
+      "Tierra"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 990,
+    "nombre_es": "Ferrodada",
+    "nombre_en": "Iron Treads",
+    "tipos_es": [
+      "Tierra",
+      "Acero"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 991,
+    "nombre_es": "Ferrosaco",
+    "nombre_en": "Iron Bundle",
+    "tipos_es": [
+      "Hielo",
+      "Agua"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 992,
+    "nombre_es": "Ferropalmas",
+    "nombre_en": "Iron Hands",
+    "tipos_es": [
+      "Lucha",
+      "Eléctrico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 993,
+    "nombre_es": "Ferrocuello",
+    "nombre_en": "Iron Jugulis",
+    "tipos_es": [
+      "Siniestro",
+      "Volador"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 994,
+    "nombre_es": "Ferropolilla",
+    "nombre_en": "Iron Moth",
+    "tipos_es": [
+      "Fuego",
+      "Veneno"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 995,
+    "nombre_es": "Ferropúas",
+    "nombre_en": "Iron Thorns",
+    "tipos_es": [
+      "Roca",
+      "Eléctrico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 996,
+    "nombre_es": "Frigibax",
+    "nombre_en": "Frigibax",
+    "tipos_es": [
+      "Dragón",
+      "Hielo"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 997,
+    "nombre_es": "Arctibax",
+    "nombre_en": "Arctibax",
+    "tipos_es": [
+      "Dragón",
+      "Hielo"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 998,
+    "nombre_es": "Baxcalibur",
+    "nombre_en": "Baxcalibur",
+    "tipos_es": [
+      "Dragón",
+      "Hielo"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 999,
+    "nombre_es": "Gimmighoul",
+    "nombre_en": "Gimmighoul",
+    "tipos_es": [
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1000,
+    "nombre_es": "Gholdengo",
+    "nombre_en": "Gholdengo",
+    "tipos_es": [
+      "Acero",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1001,
+    "nombre_es": "Wo-Chien",
+    "nombre_en": "Wo-Chien",
+    "tipos_es": [
+      "Siniestro",
+      "Planta"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1002,
+    "nombre_es": "Chien-Pao",
+    "nombre_en": "Chien-Pao",
+    "tipos_es": [
+      "Siniestro",
+      "Hielo"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1003,
+    "nombre_es": "Ting-Lu",
+    "nombre_en": "Ting-Lu",
+    "tipos_es": [
+      "Siniestro",
+      "Tierra"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1004,
+    "nombre_es": "Chi-Yu",
+    "nombre_en": "Chi-Yu",
+    "tipos_es": [
+      "Siniestro",
+      "Fuego"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1005,
+    "nombre_es": "Bramaluna",
+    "nombre_en": "Roaring Moon",
+    "tipos_es": [
+      "Dragón",
+      "Siniestro"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1006,
+    "nombre_es": "Ferropaladín",
+    "nombre_en": "Iron Valiant",
+    "tipos_es": [
+      "Hada",
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1007,
+    "nombre_es": "Koraidon",
+    "nombre_en": "Koraidon",
+    "tipos_es": [
+      "Lucha",
+      "Dragón"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1008,
+    "nombre_es": "Miraidon",
+    "nombre_en": "Miraidon",
+    "tipos_es": [
+      "Eléctrico",
+      "Dragón"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1009,
+    "nombre_es": "Ondulagua",
+    "nombre_en": "Walking Wake",
+    "tipos_es": [
+      "Agua",
+      "Dragón"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1010,
+    "nombre_es": "Ferroverdor",
+    "nombre_en": "Iron Leaves",
+    "tipos_es": [
+      "Planta",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1011,
+    "nombre_es": "Dipplin",
+    "nombre_en": "Dipplin",
+    "tipos_es": [
+      "Planta",
+      "Dragón"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1012,
+    "nombre_es": "Poltchageist",
+    "nombre_en": "Poltchageist",
+    "tipos_es": [
+      "Planta",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1013,
+    "nombre_es": "Sinistcha",
+    "nombre_en": "Sinistcha",
+    "tipos_es": [
+      "Planta",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1014,
+    "nombre_es": "Okidogi",
+    "nombre_en": "Okidogi",
+    "tipos_es": [
+      "Veneno",
+      "Lucha"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1015,
+    "nombre_es": "Munkidori",
+    "nombre_en": "Munkidori",
+    "tipos_es": [
+      "Veneno",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1016,
+    "nombre_es": "Fezandipiti",
+    "nombre_en": "Fezandipiti",
+    "tipos_es": [
+      "Veneno",
+      "Hada"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1017,
+    "nombre_es": "Ogerpon",
+    "nombre_en": "Ogerpon",
+    "tipos_es": [
+      "Planta"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1018,
+    "nombre_es": "Archaludon",
+    "nombre_en": "Archaludon",
+    "tipos_es": [
+      "Acero",
+      "Dragón"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1019,
+    "nombre_es": "Hydrapple",
+    "nombre_en": "Hydrapple",
+    "tipos_es": [
+      "Planta",
+      "Dragón"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1020,
+    "nombre_es": "Flamariete",
+    "nombre_en": "Gouging Fire",
+    "tipos_es": [
+      "Fuego",
+      "Dragón"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1021,
+    "nombre_es": "Electrofuria",
+    "nombre_en": "Raging Bolt",
+    "tipos_es": [
+      "Eléctrico",
+      "Dragón"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1022,
+    "nombre_es": "Ferromole",
+    "nombre_en": "Iron Boulder",
+    "tipos_es": [
+      "Roca",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1023,
+    "nombre_es": "Ferrotesta",
+    "nombre_en": "Iron Crown",
+    "tipos_es": [
+      "Acero",
+      "Psíquico"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1024,
+    "nombre_es": "Terapagos",
+    "nombre_en": "Terapagos",
+    "tipos_es": [
+      "Normal"
+    ],
+    "generacion": 9,
+    "regional": false
+  },
+  {
+    "id": 1025,
+    "nombre_es": "Pecharunt",
+    "nombre_en": "Pecharunt",
+    "tipos_es": [
+      "Veneno",
+      "Fantasma"
+    ],
+    "generacion": 9,
+    "regional": false
+  }
+]
