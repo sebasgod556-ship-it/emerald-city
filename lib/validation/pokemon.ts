@@ -1,4 +1,7 @@
 import { z } from "zod";
+import { normalizeName } from "../normalize-name";
+
+export { normalizeName };
 
 /** The 18 types, exactly as spelled in data/pokemon.json (Spanish). */
 export const POKEMON_TYPES = [
@@ -43,19 +46,14 @@ export const pokemonEntrySchema = z
 
 export type PokemonEntry = z.infer<typeof pokemonEntrySchema>;
 
-/**
- * Search key used by the player search box and stored in pokemon.search_key.
- * Lowercase, accents removed, everything except a-z and 0-9 dropped.
- * Must stay equal to public.normalize_name() in the database.
- * "Nidoran♀" -> "nidoran", "Farfetch’d" -> "farfetchd", "Mr. Mime" -> "mrmime", "Ho-Oh" -> "hooh".
- */
-export function normalizeName(input: string): string {
-  return input
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9]/g, "");
-}
+/** Row of the public view pokemon_names (no types, no generation). */
+export const pokemonNameSchema = z.object({
+  id: z.number().int().min(1),
+  nombre_es: z.string().min(1),
+  search_key: z.string().min(1),
+});
+
+export type PokemonName = z.infer<typeof pokemonNameSchema>;
 
 /**
  * Validates the raw JSON, drops the excluded entries and enforces the BRIEF counts.
