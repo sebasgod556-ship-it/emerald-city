@@ -35,3 +35,20 @@ export function verifyAdminCode(roomCode: string, adminCode: string, storedHash:
 export function hashIdentifier(namespace: string, value: string): string {
   return createHash("sha256").update(`${namespace}:${value}`).digest("hex");
 }
+
+/** Random player token kept in the httpOnly cookie: 32 bytes as 43 base64url characters. */
+export function generatePlayerToken(): string {
+  return randomBytes(32).toString("base64url");
+}
+
+const PLAYER_TOKEN_PATTERN = /^[A-Za-z0-9_-]{43}$/;
+
+/** Cheap shape check so arbitrary cookie values are never hashed or looked up. */
+export function isPlayerToken(value: string): boolean {
+  return PLAYER_TOKEN_PATTERN.test(value);
+}
+
+/** sha256("player:<roomCode>:<token>") as 64 hex characters. Only this hash is stored. */
+export function hashPlayerToken(roomCode: string, token: string): string {
+  return createHash("sha256").update(`player:${roomCode}:${token}`).digest("hex");
+}

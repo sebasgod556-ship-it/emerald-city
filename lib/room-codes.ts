@@ -21,3 +21,7 @@ export function formatAdminCode(code: string): string {
 export function adminCookieName(roomCode: string): string {
   return `ec_admin_${roomCode}`;
 }
+
+export function playerCookieName(roomCode: string): string {
+  return `ec_player_${roomCode}`;
+}
