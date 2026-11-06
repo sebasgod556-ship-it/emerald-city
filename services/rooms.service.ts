@@ -90,3 +90,17 @@ export async function verifyAdmin(db: SupabaseClient, roomCode: string, adminCod
   if (!room || room.status !== "open") return false;
   return verifyAdminCode(roomCode, adminCode, room.adminCodeHash);
 }
+
+/**
+ * Closes an open room through the database function close_room(): attempts and players (nicknames) are erased,
+ * the room row stays so the link answers "not available". Returns false when the room was already closed.
+ */
+export async function closeRoom(db: SupabaseClient, roomId: string): Promise<boolean> {
+  const { data, error } = await db.rpc("close_room", { p_room_id: roomId });
+  if (error || typeof data !== "boolean") {
+    throw new AppError("EXTERNAL_SERVICE_UNAVAILABLE", "No se pudo cerrar la sala. Intenta de nuevo.", {
+      internal: error ? `${error.code}: ${error.message}` : "unexpected close_room response",
+    });
+  }
+  return data;
+}

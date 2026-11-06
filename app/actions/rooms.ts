@@ -3,10 +3,11 @@
 import { cookies, headers } from "next/headers";
 import { clientIdentifier, enforceRateLimit } from "../../lib/rate-limit";
 import { fail, ok, toFailure, type Result } from "../../lib/result";
-import { adminCookieName } from "../../lib/room-codes";
+import { adminCookieName, normalizeCode } from "../../lib/room-codes";
+import { verifyAdminCode } from "../../lib/room-secrets";
 import { createServiceClient } from "../../lib/supabase/server";
-import { createRoomInputSchema, loginAdminInputSchema } from "../../lib/validation/rooms";
-import { createRoom, verifyAdmin } from "../../services/rooms.service";
+import { closeRoomInputSchema, createRoomInputSchema, loginAdminInputSchema } from "../../lib/validation/rooms";
+import { closeRoom, createRoom, findRoom, verifyAdmin } from "../../services/rooms.service";
 
 // Rate limits (documented in docs/CONTRACTS.md). Counted per caller, hashed.
 const CREATE_ROOM_LIMIT = 10; // per hour
@@ -61,6 +62,37 @@ export async function loginAdminAction(input: unknown): Promise<Result<{ roomCod
     }
     (await cookies()).set(adminCookieName(roomCode), adminCode, adminCookieOptions());
     return ok({ roomCode });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/**
+ * The admin closes the room: the link stops working and attempts and nicknames are erased.
+ * Re-checks the admin cookie on the server. No rate limit of its own: it needs the secret admin cookie
+ * and closing twice is harmless (the second call answers ROOM_CLOSED).
+ */
+export async function closeRoomAction(input: unknown): Promise<Result<{ closed: true }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = closeRoomInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Código de sala inválido.");
+    const { roomCode } = parsed.data;
+
+    const adminCookie = (await cookies()).get(adminCookieName(roomCode))?.value;
+    if (adminCookie === undefined) return fail("FORBIDDEN", "Solo el administrador puede cerrar la sala.");
+
+    const db = createServiceClient();
+    const room = await findRoom(db, roomCode);
+    if (!room) return fail("NOT_FOUND", "Esta sala no existe.");
+    if (!verifyAdminCode(roomCode, normalizeCode(adminCookie), room.adminCodeHash)) {
+      return fail("FORBIDDEN", "Solo el administrador puede cerrar la sala.");
+    }
+    if (room.status !== "open") return fail("ROOM_CLOSED", "Esta sala ya cerró.");
+
+    if (!(await closeRoom(db, room.id))) return fail("ROOM_CLOSED", "Esta sala ya cerró.");
+    (await cookies()).delete(adminCookieName(roomCode));
+    return ok({ closed: true });
   } catch (err) {
     return toFailure(err, requestId);
   }

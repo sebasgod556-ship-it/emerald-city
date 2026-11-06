@@ -10,5 +10,7 @@ export const adminCodeSchema = z.string().max(100).transform(normalizeCode).pipe
 export const createRoomInputSchema = z.object({ pokemonId: z.number().int().positive() });
 export const loginAdminInputSchema = z.object({ roomCode: roomCodeSchema, adminCode: adminCodeSchema });
 
+export const closeRoomInputSchema = z.object({ roomCode: roomCodeSchema });
+
 export type CreateRoomInput = z.infer<typeof createRoomInputSchema>;
 export type LoginAdminInput = z.infer<typeof loginAdminInputSchema>;

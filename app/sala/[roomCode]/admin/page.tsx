@@ -1,6 +1,7 @@
 import { cookies, headers } from "next/headers";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { CloseRoomButton } from "../../../../components/AdminControls";
 import { GameRoom } from "../../../../components/GameRoom";
 import { AdminLoginForm, CopyButton } from "../../../../components/RoomForms";
 import type { FeedSnapshot } from "../../../../lib/feed-types";
@@ -80,7 +81,7 @@ export default async function AdminPage({ params }: Props) {
         <CopyButton value={link} label="Copiar enlace" />
       </section>
       {feed ? <GameRoom roomCode={roomCode} nickname={null} initial={feed} maxPlayers={MAX_PLAYERS_PER_ROOM} /> : null}
-      <p className="text-sm text-ec-muted">Cerrar la sala llega en el siguiente paso.</p>
+      <CloseRoomButton roomCode={roomCode} />
     </Shell>
   );
 }

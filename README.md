@@ -1,6 +1,6 @@
 # Emerald City
 
-Juego web multijugador para la comunidad Emerald City. Estado: backend-v0.5 (Fase 1, Paso 5: jugar en modo libre).
+Juego web multijugador para la comunidad Emerald City. Estado: backend-v0.6 (Fase 1, Paso 6: cerrar sala).
 
 ## Correr en tu computadora (menos de 10 minutos)
 

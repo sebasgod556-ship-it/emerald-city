@@ -1,9 +1,9 @@
 # CONTRACTS — Emerald City
 
-**contract-v0.5** · **backend-v0.5** · diseño: ninguna entrega todavía (interfaz provisional) · **Pasos 1 a 4 cerrados y confirmados por el cliente; Paso 5 entregado, pendiente de confirmación**
+**contract-v0.6** · **backend-v0.6** · diseño: ninguna entrega todavía (interfaz provisional) · **Pasos 1 a 5 cerrados (el cliente probó el Paso 5 en Producción); Paso 6 entregado, pendiente de aplicar la migración y de confirmación**
 
 > Contrato compartido entre Programador, Diseñador e Integrador. Lo mantiene el Programador. El Diseñador aporta la tabla de nombres; el Integrador solo lee y audita.
-> Fusiona el contract-v0.4 con los cambios del Paso 5. No inventar nada que no esté aquí; lo no verificado está marcado como tal.
+> Fusiona el contract-v0.5 con los cambios del Paso 6. No inventar nada que no esté aquí; lo no verificado está marcado como tal.
 
 ## 1. Respuestas del proyecto
 
@@ -69,13 +69,15 @@ Interfaz **provisional**: el Diseñador entra al final y reconcilia con esta tab
 | Entrada con apodo | `components/PlayerForms.tsx` (JoinNicknameForm) | provisional |
 | Sala de juego (intentos, buscador, ganador, lista de jugadores) — **nuevo Paso 5, reemplaza a PlayerLobby** | `components/GameRoom.tsx` (GameRoom, AttemptItem) | provisional |
 | Buscador de Pokémon y botón Enviar — **nuevo** | `components/PokemonPicker.tsx` | provisional |
-| Panel de admin y entrada con código (ahora con la partida en vivo, solo lectura) | `app/sala/[roomCode]/admin/page.tsx` + AdminLoginForm | provisional |
+| Botón Cerrar sala con confirmación — **nuevo Paso 6** | `components/AdminControls.tsx` (CloseRoomButton) | provisional |
+| Panel de admin y entrada con código (con la partida en vivo, solo lectura, y Cerrar sala) | `app/sala/[roomCode]/admin/page.tsx` + AdminLoginForm | provisional |
 | Estilos de botones y campos | `lib/ui.ts` | provisional |
 | Tokens | `app/globals.css` (ec-bg, ec-surface, ec-primary EXAMPLE, ec-text, ec-muted) | provisional |
 | Iconos de pista ❄️ 🌡️ 🔥 y sus etiquetas — **nuevo** | `lib/feed-types.ts` (HINT_META) | provisional |
 | Acciones de sala | `app/actions/rooms.ts` | definitivo |
 | Acción de entrada de jugador | `app/actions/players.ts` (joinRoomAction) | definitivo |
-| Acción de enviar intento — **nuevo** | `app/actions/attempts.ts` (submitAttemptAction) | definitivo |
+| Acción de enviar intento | `app/actions/attempts.ts` (submitAttemptAction) | definitivo |
+| Acción de cerrar sala — **nuevo Paso 6** | `app/actions/rooms.ts` (closeRoomAction) | definitivo |
 | Servicio de salas | `services/rooms.service.ts` | definitivo |
 | Servicio de jugadores | `services/players.service.ts` | definitivo |
 | Servicio de intentos y feed — **nuevo** | `services/attempts.service.ts` | definitivo |
@@ -110,10 +112,10 @@ Nadie inicia sesión en Supabase. Jugador y admin llegan como `anon`; el servido
 | service_role | `pokemon` | ✓ | ✗ | ✗ | ✗ | n/a (privilegio SELECT) |
 | anon, authenticated, service_role | `pokemon_names` (vista) | ✓ | ✗ | ✗ | ✗ | n/a (vista) |
 | anon, authenticated | `rooms` | ✗ | ✗ | ✗ | ✗ | ninguna |
-| service_role | `rooms` | ✓ | ✓ | ✗ (Paso 6) | ✗ | n/a. `rooms.finished_at` lo escribe solo `submit_attempt()` |
+| service_role | `rooms` | ✓ | ✓ | ✗ | ✗ | n/a. `rooms.finished_at` lo escribe solo `submit_attempt()`; el cierre (`status`, `closed_at`) lo escribe solo `close_room()` |
 | todos | `rate_limits` | ✗ | ✗ | ✗ | ✗ | ninguna. Solo vía `rate_limit_hit` |
 | anon, authenticated | `players` | ✗ | ✗ | ✗ | ✗ | ninguna |
-| service_role | `players` | ✓ | ✓ | ✗ (Fases 2 y 3) | ✗ (Fases 2 y 3) | n/a |
+| service_role | `players` | ✓ | ✓ | ✗ (Fases 2 y 3) | ✗ (expulsar: Fases 2 y 3). `close_room()` los borra al cerrar la sala | n/a |
 | anon, authenticated, **service_role** | `attempts` | ✗ | ✗ | ✗ | ✗ | ninguna. **Nadie** tiene privilegios directos: solo `submit_attempt()` y `list_attempts()` (SECURITY DEFINER, solo `service_role`). El Paso 6 borrará los intentos con una función de cierre |
 
 Justificaciones:
@@ -151,6 +153,7 @@ Almacén de límites: Supabase, ventana fija, **falla cerrado**. Clave: hash de 
 | createRoomAction | Server Action | 10 por hora | hash de IP |
 | loginAdminAction | Server Action | 10 por 10 minutos | hash de IP |
 | joinRoomAction | Server Action | 60 por 10 minutos | hash de IP + sala |
+| **closeRoomAction** | Server Action | sin límite propio: exige la cookie secreta de admin y cerrar dos veces es inofensivo (la segunda responde `ROOM_CLOSED`) | cookie de admin |
 | **submitAttemptAction** | Server Action | **1 intento por segundo por jugador**, aplicado en la base (`submit_attempt`). Sin límite por IP | jugador (id) |
 | **GET /api/rooms/[roomCode]/feed** | Route Handler | sin límite propio | exige cookie secreta de jugador o de admin; sin cookie responde 401 sin tocar la base |
 | **GET /api/pokemon/names** | Route Handler | ninguno; respuesta cacheada por la CDN 24 h | público (solo nombres) |
@@ -164,6 +167,8 @@ Respuestas de los Route Handlers:
 - `GET /api/rooms/[roomCode]/feed?after=<id>&players=1`: `{ data: { status: "playing"|"finished", attempts: [{ id, nickname, pokemon, result: "fire"|"warm"|"cold", isWinner }], cursor, hasMore, players: string[]|null }, error: null }`. Sin `after` devuelve los últimos 50; con `after`, hasta 100 más nuevos (`hasMore` avisa si hay más). `players` solo con `players=1` (el navegador lo pide cada ~10 s). Estados 200, 400, 401, 404, 409 (sala cerrada), 500, 503. Nunca devuelve tipos, generación, ni hash de sesión.
 - `GET /api/pokemon/names`: `{ data: { names: [{ id, nombre_es, search_key }] }, error: null }`. Cache-Control `public, max-age=3600, s-maxage=86400`.
 - `GET /api/health`: 200 `{ data: { status: "ok" } }`; 500 si el entorno es inválido; 503 si la base no responde o la clave de servidor no es `service_role`. Sin detalles internos. Consulta Supabase, lo que también evita la pausa de Supabase Free.
+
+Respuesta de `closeRoomAction`: `{ data: { closed: true }, error: null }`; errores `VALIDATION_ERROR`, `FORBIDDEN` (sin cookie de admin o cookie incorrecta), `NOT_FOUND`, `ROOM_CLOSED`, `EXTERNAL_SERVICE_UNAVAILABLE`. Borra la cookie de admin al cerrar.
 
 Respuesta de `submitAttemptAction`: `{ data: { result: "fire"|"warm"|"cold", isWinner }, error: null }`.
 
@@ -185,6 +190,7 @@ Respuesta de `submitAttemptAction`: `{ data: { result: "fire"|"warm"|"cold", isW
 - **Gana** quien envía exactamente el Pokémon secreto (mismo `pokemon.id`); un 🔥 que no es el secreto no gana. Un ganador por sala, garantizado por la base (bloqueo de la sala + índice único parcial).
 - Con ganador, la sala queda **terminada** (`rooms.finished_at`): sigue abierta, no acepta más intentos (`ROUND_FINISHED`) hasta que el admin la cierre (Paso 6). Reiniciar con otro secreto es de la Fase 3 (decisión del cliente: "a menos que el administrador la reinicie y ponga otro Pokémon").
 - Se permite repetir un intento (el aviso antes de repetir es de la Fase 2). Freno: 1 intento por segundo por jugador; la espera definida por el admin llega en la Fase 2.
+- **Cerrar sala (Paso 6):** solo el admin. Al cerrar se **borran los intentos y los jugadores (apodos)** de la sala (BRIEF: "nada al cerrar la sala"); la fila de la sala se queda (código, hash, estado cerrado, sin datos personales), así que el enlace responde "Sala no disponible". Los jugadores que siguen abiertos lo notan en su siguiente lectura del feed (hasta 5 s) y ven esa pantalla. Cerrar libera un cupo de las 10 salas.
 - Los intentos se **guardan en la base hasta cerrar la sala** (decisión del cliente en el Paso 5): apodo, Pokémon e icono. El chat de conversación de la Fase 2 seguirá sin guardarse.
 - Los jugadores no ven tipos ni generación, solo nombres. El admin ve el nombre del secreto en su panel.
 - Formas regionales usan su propia generación y tipos. Sin Mega ni Gigamax.
@@ -213,6 +219,7 @@ Respuesta de `submitAttemptAction`: `{ data: { result: "fire"|"warm"|"cold", isW
 - `public.players` + `players_enforce_room_rules()` (sala abierta `P0001`, menos de 100 jugadores `53400`).
 - **`public.attempts` (Paso 5)**: id (identity), room_id (FK cascade), player_id (FK cascade), pokemon_id (FK), result (`fire|warm|cold`), is_winner, created_at. Restricciones: un ganador debe ser `fire`; **índice único parcial: un ganador por sala**. Índices: (room_id, id), (player_id, created_at desc), pokemon_id. RLS activo, 0 políticas, **0 privilegios para todos los roles**.
 - **`submit_attempt(room_id, session_hash, pokemon_id)`** (SECURITY DEFINER, `search_path` vacío, solo `service_role`): bloquea la sala, valida (sala abierta y no terminada, jugador de esa sala, Pokémon existente, 1 intento/s), calcula la pista, guarda, decide el ganador y marca la sala. Devuelve `o_outcome` (`ok`, `unknown_room`, `room_closed`, `round_finished`, `not_player`, `unknown_pokemon`, `cooldown`), `o_result`, `o_is_winner`.
+- **`close_room(room_id)`** (Paso 6; SECURITY DEFINER, `search_path` vacío, solo `service_role`): toma el mismo bloqueo por sala que el trigger de jugadores y la fila de la sala, borra `attempts` y `players` de la sala y marca `status = closed`, `closed_at`. Devuelve `true` si cerró, `false` si la sala no existe o ya estaba cerrada.
 - **`list_attempts(room_id, after, limit)`** (SECURITY DEFINER, solo `service_role`): intentos con apodo y nombre del Pokémon, del más viejo al más nuevo; sin `after` devuelve los últimos N. Nunca devuelve tipos ni generación.
 
 Migraciones (cada una con rollback documentado):
@@ -220,7 +227,8 @@ Migraciones (cada una con rollback documentado):
 - `20261102222755_create_rooms`
 - `20261102225304_limit_open_rooms`
 - `20261105002410_create_players`
-- `20261106004125_create_attempts` (Paso 5, **ya aplicada** en la base de pruebas; solo expande, no cambia nada existente)
+- `20261106004125_create_attempts` (Paso 5, aplicada)
+- `20261106200000_close_room` (Paso 6, **NO aplicada todavía** en la base de pruebas: la herramienta de Supabase del Programador pidió confirmación por contener `delete` y el cliente de ese chat la canceló; el cliente la aplica pegando el archivo en el SQL Editor. El nombre del archivo es provisional)
 
 ## 11. Verificación
 
@@ -233,7 +241,10 @@ Migraciones (cada una con rollback documentado):
 | Vitest | 37 pruebas nuevas del Paso 5 pasan con un sustituto local y `zod/v4`; todas las demás pruebas existentes pasan salvo un `toThrow` que el sustituto no implementa (`lib/validation/pokemon.test.ts`). **No es Vitest real ni el Zod 4 exacto del proyecto** |
 | `tsc` estricto | pasa en lib/ y services/ con declaraciones de reemplazo. **app/ y components/ NO se pudieron comprobar** (faltan Next y React en el entorno): lo hace el build de Vercel |
 | `next build`, lint | **No ejecutados** por el Programador. El cliente debe confirmar el despliegue **Ready** en Vercel |
-| Paso 5 de punta a punta en Producción | **Sin probar** (pendiente: guion de prueba del Paso 5) |
+| Paso 5 de punta a punta en Producción | **El cliente hizo dos pruebas y reportó que funcionaron.** No se confirmó cuáles casos cubrieron (doble tipo, forma regional, panel de admin, rechazo tras el ganador) |
+| pgTAP Paso 6 (`close_room_rls.test.sql`, 17 pruebas) | escritas, **NO ejecutadas** (la migración aún no está aplicada) |
+| Vitest Paso 6 (6 pruebas: `closeRoom` y su validación) | pasan con el sustituto local; tipos de lib/ y services/ pasan. `closeRoomAction`, `AdminControls.tsx` y la pantalla: solo los comprueba el build de Vercel |
+| Cerrar sala en la base | **Sin probar**: la función no está aplicada |
 | Trigger de 100 jugadores | Sin probar |
 
 ## 12. Excepciones de accesibilidad aceptadas
@@ -276,7 +287,9 @@ Ninguna.
 - Correr `supabase test db` (20 pruebas del Paso 4 + 44 del Paso 5 + las anteriores); idealmente en GitHub Actions (Integrador).
 - Fijar la versión de Node.
 - Confirmar el dominio oficial de producción.
-- **Paso 6:** dar UPDATE a `rooms` y una función de cierre que también borre los `attempts` de la sala; UPDATE/DELETE a `players` (expulsar) en la Fase 2.
+- Aplicar la migración `close_room` y correr sus pruebas.
+- UPDATE/DELETE a `players` (expulsar) en la Fase 2.
+- Cierre automático de sala vacía (5 min) y de salas abandonadas (Fase 3): reutilizará `close_room()`.
 - CSP probada con Realtime.
 - Generar los tipos de Supabase (`supabase gen types typescript`).
 - Cierre automático de salas abandonadas (Fase 3).
@@ -294,9 +307,10 @@ El 4-nov-2026, "Crear sala" en Producción respondía "El servicio no está disp
 | Entrega | Versión |
 |---|---|
 | Diseño | ninguna (interfaz provisional) |
-| Backend | backend-v0.5 |
-| Contrato | contract-v0.5 |
+| Backend | backend-v0.6 |
+| Contrato | contract-v0.6 |
 
+- **backend-v0.6 / contract-v0.6**: Paso 6. Función `close_room`, `closeRoomAction`, botón Cerrar sala con confirmación en el panel de admin. Borra intentos y apodos al cerrar. Sin cambios de privilegios.
 - **backend-v0.5 / contract-v0.5**: Paso 5. Tabla `attempts`, `rooms.finished_at`, `submit_attempt` y `list_attempts`, `submitAttemptAction`, feed por sondeo con cursor, buscador, pantalla de juego y vista del admin, código `ROUND_FINISHED`. Elimina `GET /api/rooms/[roomCode]/players` y `PlayerLobby`. Agrega `.env.example` y `.gitignore`.
 - **v0.4**: Paso 4. Tabla `players`, entrada de jugador, lista por sondeo, `/api/health` con consulta a la base.
 - **v0.3**: Paso 3. `rooms`, límite de 10 salas, `rate_limit_hit`, crear sala y entrada de admin.
@@ -306,8 +320,8 @@ El 4-nov-2026, "Crear sala" en Producción respondía "El servicio no está disp
 ## 17. Para retomar en otro chat
 
 **Estado del proyecto**
-- Pasos 1 a 4 cerrados y confirmados. **Paso 5 entregado, pendiente de que el cliente lo pruebe y confirme.**
-- Siguiente: **Paso 6**, cerrar sala (el enlace deja de permitir jugar; se borran los intentos).
+- Pasos 1 a 5 cerrados. **Paso 6 entregado; falta aplicar la migración `close_room` y que el cliente lo pruebe y confirme.** Con el Paso 6 termina la Fase 1.
+- Siguiente: cierre de la Fase 1 y, antes de pedir la Fase 2, cerrar la sección 13 (el brief lo exige).
 - La sección 13 sigue en borrador.
 
 **Reglas de trabajo**
