@@ -1,12 +1,16 @@
 import { cookies, headers } from "next/headers";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { GameRoom } from "../../../../components/GameRoom";
 import { AdminLoginForm, CopyButton } from "../../../../components/RoomForms";
+import type { FeedSnapshot } from "../../../../lib/feed-types";
 import { adminCookieName, normalizeCode } from "../../../../lib/room-codes";
 import { verifyAdminCode } from "../../../../lib/room-secrets";
 import { createServiceClient } from "../../../../lib/supabase/server";
 import { btnSecondary } from "../../../../lib/ui";
 import { ROOM_CODE_PATTERN } from "../../../../lib/validation/rooms";
+import { getFeed } from "../../../../services/attempts.service";
+import { MAX_PLAYERS_PER_ROOM } from "../../../../services/players.service";
 import { getPokemonName } from "../../../../services/pokemon.service";
 import { findRoom, type Room } from "../../../../services/rooms.service";
 
@@ -23,13 +27,17 @@ export default async function AdminPage({ params }: Props) {
   let room: Room | null = null;
   let secretName: string | null = null;
   let isAdmin = false;
+  let feed: FeedSnapshot | null = null;
   try {
     const db = createServiceClient();
     room = await findRoom(db, roomCode);
     if (room && room.status === "open") {
       const cookie = (await cookies()).get(adminCookieName(roomCode))?.value;
       isAdmin = cookie ? verifyAdminCode(roomCode, normalizeCode(cookie), room.adminCodeHash) : false;
-      if (isAdmin) secretName = await getPokemonName(db, room.secretPokemonId);
+      if (isAdmin) {
+        secretName = await getPokemonName(db, room.secretPokemonId);
+        feed = await getFeed(db, room, { after: null, withPlayers: true });
+      }
     }
   } catch {
     return (
@@ -71,6 +79,8 @@ export default async function AdminPage({ params }: Props) {
         <p className="break-all text-ec-muted">{link}</p>
         <CopyButton value={link} label="Copiar enlace" />
       </section>
+      {feed ? <GameRoom roomCode={roomCode} nickname={null} initial={feed} maxPlayers={MAX_PLAYERS_PER_ROOM} /> : null}
+      <p className="text-sm text-ec-muted">Cerrar la sala llega en el siguiente paso.</p>
     </Shell>
   );
 }

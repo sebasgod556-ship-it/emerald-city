@@ -12,6 +12,7 @@ const roomRowSchema = z.object({
   secret_pokemon_id: z.number(),
   status: z.enum(["open", "closed"]),
   created_at: z.string(),
+  finished_at: z.string().nullable().optional(),
 });
 
 export type Room = {
@@ -21,6 +22,8 @@ export type Room = {
   secretPokemonId: number;
   status: "open" | "closed";
   createdAt: string;
+  /** Set when somebody guessed the secret. The room stays open until the admin closes it. */
+  finishedAt: string | null;
 };
 
 /**
@@ -60,7 +63,7 @@ export async function createRoom(
 export async function findRoom(db: SupabaseClient, roomCode: string): Promise<Room | null> {
   const { data, error } = await db
     .from("rooms")
-    .select("id, room_code, admin_code_hash, secret_pokemon_id, status, created_at")
+    .select("id, room_code, admin_code_hash, secret_pokemon_id, status, created_at, finished_at")
     .eq("room_code", roomCode)
     .maybeSingle();
   if (error) {
@@ -77,6 +80,7 @@ export async function findRoom(db: SupabaseClient, roomCode: string): Promise<Ro
     secretPokemonId: row.secret_pokemon_id,
     status: row.status,
     createdAt: row.created_at,
+    finishedAt: row.finished_at ?? null,
   };
 }
 

@@ -1,6 +1,6 @@
 # Emerald City
 
-Juego web multijugador para la comunidad Emerald City. Estado: backend-v0.1 (Fase 1, Paso 1).
+Juego web multijugador para la comunidad Emerald City. Estado: backend-v0.5 (Fase 1, Paso 5: jugar en modo libre).
 
 ## Correr en tu computadora (menos de 10 minutos)
 
@@ -17,3 +17,7 @@ Juego web multijugador para la comunidad Emerald City. Estado: backend-v0.1 (Fas
 ## Más información
 
 Contrato del proyecto (nombres, tokens, errores, variables): `docs/CONTRACTS.md`.
+
+## Pruebas de base de datos (pgTAP)
+
+`supabase test db` (necesita la CLI de Supabase y Docker) corre `supabase/tests/*.test.sql`, incluido `attempts_rls.test.sql` (Paso 5).
