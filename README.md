@@ -1,6 +1,6 @@
 # Emerald City
 
-Juego web multijugador para la comunidad Emerald City. Estado: backend-v0.6 (Fase 1, Paso 6: cerrar sala).
+Juego web multijugador para la comunidad Emerald City. Estado: backend-v0.8 (Fase 2, Pasos 7+8: pistas, repetido y chat).
 
 ## Correr en tu computadora (menos de 10 minutos)
 

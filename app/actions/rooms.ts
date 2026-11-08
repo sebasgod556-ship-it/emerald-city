@@ -2,12 +2,26 @@
 
 import { cookies, headers } from "next/headers";
 import { clientIdentifier, enforceRateLimit } from "../../lib/rate-limit";
-import { fail, ok, toFailure, type Result } from "../../lib/result";
+import { AppError, fail, ok, toFailure, type Result } from "../../lib/result";
 import { adminCookieName, normalizeCode } from "../../lib/room-codes";
 import { verifyAdminCode } from "../../lib/room-secrets";
 import { createServiceClient } from "../../lib/supabase/server";
-import { closeRoomInputSchema, createRoomInputSchema, loginAdminInputSchema } from "../../lib/validation/rooms";
-import { closeRoom, createRoom, findRoom, verifyAdmin } from "../../services/rooms.service";
+import {
+  closeRoomInputSchema,
+  createRoomInputSchema,
+  loginAdminInputSchema,
+  startRoomInputSchema,
+  updateCooldownInputSchema,
+} from "../../lib/validation/rooms";
+import {
+  closeRoom,
+  createRoom,
+  findRoom,
+  setAttemptCooldown,
+  startRoom,
+  verifyAdmin,
+  type Room,
+} from "../../services/rooms.service";
 
 // Rate limits (documented in docs/CONTRACTS.md). Counted per caller, hashed.
 const CREATE_ROOM_LIMIT = 10; // per hour
@@ -31,13 +45,18 @@ export async function createRoomAction(input: unknown): Promise<Result<{ roomCod
   const requestId = crypto.randomUUID();
   try {
     const parsed = createRoomInputSchema.safeParse(input);
-    if (!parsed.success) return fail("VALIDATION_ERROR", "Elige un Pokémon válido.");
+    if (!parsed.success) {
+      return fail("VALIDATION_ERROR", "Revisa los datos: elige un Pokémon, una espera de 1 a 120 segundos y de 0 a 60 minutos de sala de espera.");
+    }
 
     const db = createServiceClient();
     const caller = clientIdentifier(await headers());
     await enforceRateLimit(db, `create_room:${caller}`, CREATE_ROOM_LIMIT, CREATE_ROOM_WINDOW_SECONDS);
 
-    const { roomCode, adminCode } = await createRoom(db, parsed.data.pokemonId);
+    const { roomCode, adminCode } = await createRoom(db, parsed.data.pokemonId, {
+      cooldownSeconds: parsed.data.cooldownSeconds,
+      waitMinutes: parsed.data.waitMinutes,
+    });
     (await cookies()).set(adminCookieName(roomCode), adminCode, adminCookieOptions());
     return ok({ roomCode, adminCode });
   } catch (err) {
@@ -93,6 +112,51 @@ export async function closeRoomAction(input: unknown): Promise<Result<{ closed: 
     if (!(await closeRoom(db, room.id))) return fail("ROOM_CLOSED", "Esta sala ya cerró.");
     (await cookies()).delete(adminCookieName(roomCode));
     return ok({ closed: true });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/** Re-checks the admin cookie against the room and returns the OPEN room. Throws FORBIDDEN, NOT_FOUND or ROOM_CLOSED. */
+async function requireOpenAdminRoom(roomCode: string): Promise<{ db: ReturnType<typeof createServiceClient>; room: Room }> {
+  const adminCookie = (await cookies()).get(adminCookieName(roomCode))?.value;
+  if (adminCookie === undefined) throw new AppError("FORBIDDEN", "Solo el administrador puede hacer esto.");
+  const db = createServiceClient();
+  const room = await findRoom(db, roomCode);
+  if (!room) throw new AppError("NOT_FOUND", "Esta sala no existe.");
+  if (!verifyAdminCode(roomCode, normalizeCode(adminCookie), room.adminCodeHash)) {
+    throw new AppError("FORBIDDEN", "Solo el administrador puede hacer esto.");
+  }
+  if (room.status !== "open") throw new AppError("ROOM_CLOSED", "Esta sala ya cerró.");
+  return { db, room };
+}
+
+/**
+ * The admin starts the game now, without waiting for the timer. Idempotent: if the room already started
+ * (the timer was faster, or a second tap) it answers started: false. No rate limit of its own: it needs the
+ * secret admin cookie and repeating it changes nothing.
+ */
+export async function startRoomAction(input: unknown): Promise<Result<{ started: boolean }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = startRoomInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Código de sala inválido.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    return ok({ started: await startRoom(db, room.id) });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/** The admin changes the wait between attempts (1 to 120 s). Takes effect on the next attempt of every player. */
+export async function updateCooldownAction(input: unknown): Promise<Result<{ seconds: number }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = updateCooldownInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "La espera debe ser un número de 1 a 120 segundos.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    if (!(await setAttemptCooldown(db, room.id, parsed.data.seconds))) return fail("ROOM_CLOSED", "Esta sala ya cerró.");
+    return ok({ seconds: parsed.data.seconds });
   } catch (err) {
     return toFailure(err, requestId);
   }

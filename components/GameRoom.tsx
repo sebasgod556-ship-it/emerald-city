@@ -1,10 +1,14 @@
 "use client";
 
 import { submitAttemptAction } from "../app/actions/attempts";
+import { sendChatMessageAction } from "../app/actions/chat";
 import { HINT_META, type FeedAttempt, type FeedSnapshot } from "../lib/feed-types";
 import { btnSecondary } from "../lib/ui";
-import { PokemonPicker } from "./PokemonPicker";
+import { ChatPanel } from "./ChatPanel";
+import { HintsTable } from "./HintsTable";
+import { PokemonPicker, type SendOutcome } from "./PokemonPicker";
 import { useRoomFeed } from "./useRoomFeed";
+import { WaitingRoom } from "./WaitingRoom";
 
 /**
  * Room screen. A player (nickname set) can guess; the admin (nickname null) only watches.
@@ -24,10 +28,21 @@ export function GameRoom({
   const feed = useRoomFeed(roomCode, initial);
   const winning = feed.attempts.find((a) => a.isWinner) ?? null;
   const newestFirst = [...feed.attempts].reverse();
+  const waiting = feed.status === "waiting";
 
-  async function send(pokemonId: number): Promise<string | null> {
-    const res = await submitAttemptAction({ roomCode, pokemonId });
+  async function send(pokemonId: number, confirmRepeat: boolean): Promise<SendOutcome> {
+    const res = await submitAttemptAction({ roomCode, pokemonId, confirmRepeat });
+    if (res.error?.code === "ALREADY_TRIED") return { kind: "repeat", message: res.error.message };
     feed.refresh(); // show the new attempt (or the winner) without waiting for the next poll
+    if (res.error === null) return { kind: "sent" };
+    const retryAfter = res.error.details?.retryAfter;
+    if (res.error.code === "RATE_LIMITED" && typeof retryAfter === "number") return { kind: "wait", seconds: retryAfter };
+    return { kind: "error", message: res.error.message };
+  }
+
+  async function sendChat(body: string): Promise<string | null> {
+    const res = await sendChatMessageAction({ roomCode, body });
+    feed.refresh();
     return res.error === null ? null : res.error.message;
   }
 
@@ -53,20 +68,39 @@ export function GameRoom({
         </p>
       ) : null}
 
-      {nickname !== null && !feed.finished ? <PokemonPicker disabled={false} onSend={send} /> : null}
+      {waiting ? (
+        <WaitingRoom
+          roomCode={roomCode}
+          isAdmin={nickname === null}
+          startsAt={feed.startsAt}
+          players={feed.players}
+          maxPlayers={maxPlayers}
+          onStarted={feed.refresh}
+        />
+      ) : null}
 
-      <section role="log" aria-label="Intentos de la partida" aria-live="polite" className="flex flex-col gap-2">
-        <h2 className="font-semibold">Intentos</h2>
-        {newestFirst.length === 0 ? (
-          <p className="text-sm text-ec-muted">Todavía no hay intentos. ¡Sé el primero!</p>
-        ) : (
-          <ol className="flex flex-col gap-2">
-            {newestFirst.map((a) => (
-              <AttemptItem key={a.id} attempt={a} mine={a.nickname === nickname} />
-            ))}
-          </ol>
-        )}
-      </section>
+      {nickname !== null && !feed.finished && !waiting ? (
+        <PokemonPicker disabled={false} cooldownSeconds={feed.cooldownSeconds} onSend={send} />
+      ) : null}
+
+      {waiting ? null : <HintsTable hints={feed.hints} />}
+
+      {waiting ? null : (
+        <section role="log" aria-label="Intentos de la partida" aria-live="polite" className="flex flex-col gap-2">
+          <h2 className="font-semibold">Intentos</h2>
+          {newestFirst.length === 0 ? (
+            <p className="text-sm text-ec-muted">Todavía no hay intentos. ¡Sé el primero!</p>
+          ) : (
+            <ol className="flex flex-col gap-2">
+              {newestFirst.map((a) => (
+                <AttemptItem key={a.id} attempt={a} mine={a.nickname === nickname} />
+              ))}
+            </ol>
+          )}
+        </section>
+      )}
+
+      <ChatPanel messages={feed.chat} mine={nickname} onSend={sendChat} />
 
       <details className="rounded-xl bg-ec-surface p-4">
         <summary className="cursor-pointer font-semibold">

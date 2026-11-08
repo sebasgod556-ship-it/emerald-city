@@ -8,7 +8,7 @@ import { normalizeCode } from "../../../lib/room-codes";
 import { createServiceClient } from "../../../lib/supabase/server";
 import { btnSecondary } from "../../../lib/ui";
 import { ROOM_CODE_PATTERN } from "../../../lib/validation/rooms";
-import { getFeed } from "../../../services/attempts.service";
+import { getFeed } from "../../../services/feed.service";
 import { findPlayerBySession, MAX_PLAYERS_PER_ROOM } from "../../../services/players.service";
 import { findRoom } from "../../../services/rooms.service";
 
@@ -35,7 +35,7 @@ export default async function RoomPage({ params }: Props) {
         const hash = playerSessionHash(await cookies(), roomCode);
         const me = hash ? await findPlayerBySession(db, room.id, hash) : null;
         if (me) {
-          const feed = await getFeed(db, room, { after: null, withPlayers: true });
+          const feed = await getFeed(db, room, { after: null, chatAfter: null, full: true });
           state = { kind: "game", nickname: me.nickname, feed };
         } else {
           state = { kind: "join" };

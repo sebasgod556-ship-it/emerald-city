@@ -6,16 +6,26 @@ import { searchPokemonNames } from "../lib/pokemon-search";
 import { btnPrimary, btnSecondary, inputClass } from "../lib/ui";
 import type { PokemonName } from "../lib/validation/pokemon";
 
+export type SendOutcome =
+  | { kind: "sent" }
+  | { kind: "repeat"; message: string }
+  | { kind: "error"; message: string }
+  /** Too fast: the player must wait this many seconds (shown as a countdown on the button). */
+  | { kind: "wait"; seconds: number };
+
 /**
  * Search box (names only, ignores case/accents/dots/hyphens) plus the send button.
- * `onSend` returns an error message to show, or null when the attempt was accepted.
+ * `onSend(id, confirmRepeat)` reports whether the attempt was sent, needs the "already tried" confirmation, or failed.
  */
 export function PokemonPicker({
   disabled,
+  cooldownSeconds,
   onSend,
 }: {
   disabled: boolean;
-  onSend: (pokemonId: number) => Promise<string | null>;
+  /** Wait between attempts chosen by the admin: after a sent attempt the button counts down this long. */
+  cooldownSeconds: number;
+  onSend: (pokemonId: number, confirmRepeat: boolean) => Promise<SendOutcome>;
 }) {
   const [names, setNames] = useState<PokemonName[] | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -24,6 +34,14 @@ export function PokemonPicker({
   const [selected, setSelected] = useState<PokemonName | null>(null);
   const [pending, setPending] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [repeatOf, setRepeatOf] = useState<PokemonName | null>(null);
+  const [waitLeft, setWaitLeft] = useState(0);
+
+  useEffect(() => {
+    if (waitLeft <= 0) return;
+    const timer = setTimeout(() => setWaitLeft((n) => n - 1), 1000);
+    return () => clearTimeout(timer);
+  }, [waitLeft]);
 
   useEffect(() => {
     let cancelled = false;
@@ -46,27 +64,40 @@ export function PokemonPicker({
 
   const results = useMemo(() => (names ? searchPokemonNames(names, query) : []), [names, query]);
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (pending || disabled) return;
-    // Enter without a choice picks the first result, so it is quick on a phone keyboard.
-    const choice = selected ?? results[0] ?? null;
-    if (choice === null) return;
+  async function send(choice: PokemonName, confirmRepeat: boolean) {
     setPending(true);
     setMessage(null);
     try {
-      const error = await onSend(choice.id);
-      if (error === null) {
+      const outcome = await onSend(choice.id, confirmRepeat);
+      if (outcome.kind === "sent") {
         setQuery("");
         setSelected(null);
+        setRepeatOf(null);
+        setWaitLeft(cooldownSeconds);
+      } else if (outcome.kind === "wait") {
+        setRepeatOf(null);
+        setWaitLeft(outcome.seconds);
+      } else if (outcome.kind === "repeat") {
+        setRepeatOf(choice); // ask before sending a Pokémon somebody already tried
+        setMessage(outcome.message);
       } else {
-        setMessage(error);
+        setRepeatOf(null);
+        setMessage(outcome.message);
       }
     } catch {
       setMessage("No se pudo conectar. Revisa tu internet e intenta de nuevo.");
     } finally {
       setPending(false);
     }
+  }
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (pending || disabled || waitLeft > 0 || repeatOf !== null) return;
+    // Enter without a choice picks the first result, so it is quick on a phone keyboard.
+    const choice = selected ?? results[0] ?? null;
+    if (choice === null) return;
+    void send(choice, false);
   }
 
   if (loadFailed) {
@@ -81,7 +112,7 @@ export function PokemonPicker({
   }
 
   return (
-    <form onSubmit={(e) => void onSubmit(e)} className="flex w-full flex-col gap-3 text-left">
+    <form onSubmit={onSubmit} className="flex w-full flex-col gap-3 text-left">
       <label htmlFor="pokemon-search" className="text-sm text-ec-muted">
         Busca un Pokémon por su nombre
       </label>
@@ -91,6 +122,7 @@ export function PokemonPicker({
         onChange={(e) => {
           setQuery(e.target.value);
           setSelected(null);
+          setRepeatOf(null);
           setMessage(null);
         }}
         disabled={disabled || names === null}
@@ -126,13 +158,37 @@ export function PokemonPicker({
         </p>
       ) : null}
       {message ? (
-        <p id="pokemon-message" role="alert" className="text-sm text-red-400">
+        <p id="pokemon-message" role="alert" className={repeatOf ? "text-sm text-ec-primary" : "text-sm text-red-400"}>
           {message}
         </p>
       ) : null}
-      <button type="submit" disabled={disabled || pending || (selected === null && results.length === 0)} className={btnPrimary}>
-        {pending ? "Enviando..." : selected ? `Enviar ${selected.nombre_es}` : "Enviar"}
+      {repeatOf ? (
+        <div role="group" aria-label="Confirmar intento repetido" className="flex flex-col gap-2">
+          <button type="button" disabled={pending || waitLeft > 0} onClick={() => void send(repeatOf, true)} className={btnPrimary}>
+            {pending ? "Enviando..." : waitLeft > 0 ? `Espera ${waitLeft} s` : `Enviar ${repeatOf.nombre_es} de todos modos`}
+          </button>
+          <button
+            type="button"
+            disabled={pending}
+            onClick={() => {
+              setRepeatOf(null);
+              setMessage(null);
+              setSelected(null);
+            }}
+            className={btnSecondary}
+          >
+            Elegir otro
+          </button>
+        </div>
+      ) : (
+      <button
+        type="submit"
+        disabled={disabled || pending || waitLeft > 0 || (selected === null && results.length === 0)}
+        className={btnPrimary}
+      >
+        {pending ? "Enviando..." : waitLeft > 0 ? `Espera ${waitLeft} s` : selected ? `Enviar ${selected.nombre_es}` : "Enviar"}
       </button>
+      )}
     </form>
   );
 }

@@ -1,7 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { describe, expect, it } from "vitest";
 import { AppError } from "../lib/result";
-import { FEED_PAGE_LIMIT, getFeed, listAttempts, submitAttempt } from "./attempts.service";
+import { FEED_PAGE_LIMIT, listAttempts, listHints, submitAttempt, wasTried } from "./attempts.service";
 
 type RpcResult = { data: unknown; error: { code: string; message: string } | null };
 
@@ -109,17 +109,53 @@ describe("listAttempts", () => {
   });
 });
 
-describe("getFeed", () => {
-  it("keeps the caller's cursor when nothing is new and marks a finished room", async () => {
-    const { db } = fakeRpc({ list_attempts: { data: [], error: null } });
-    const feed = await getFeed(db, { id: "room", finishedAt: "2026-11-05T00:00:00Z" }, { after: 42, withPlayers: false });
-    expect(feed).toEqual({ status: "finished", attempts: [], cursor: 42, hasMore: false, players: null });
+describe("wasTried", () => {
+  it("returns the boolean from the database", async () => {
+    const { db, calls } = fakeRpc({ was_tried: { data: true, error: null } });
+    await expect(wasTried(db, "room", 4)).resolves.toBe(true);
+    expect(calls[0]).toEqual({ fn: "was_tried", args: { p_room_id: "room", p_pokemon_id: 4 } });
+  });
+  it("is unavailable on a database error or a strange answer", async () => {
+    const bad = fakeRpc({ was_tried: { data: null, error: { code: "XX000", message: "secret internals" } } });
+    const err = await errorOf(wasTried(bad.db, "room", 4));
+    expect(err.code).toBe("EXTERNAL_SERVICE_UNAVAILABLE");
+    expect(err.message).not.toContain("secret internals");
+    const odd = fakeRpc({ was_tried: { data: "yes", error: null } });
+    expect((await errorOf(wasTried(odd.db, "room", 4))).code).toBe("EXTERNAL_SERVICE_UNAVAILABLE");
+  });
+});
+
+describe("listHints", () => {
+  it("maps rows to hint entries", async () => {
+    const { db } = fakeRpc({
+      list_hints: { data: [{ o_pokemon: "Ivysaur", o_result: "fire" }, { o_pokemon: "Charmander", o_result: "warm" }], error: null },
+    });
+    await expect(listHints(db, "room")).resolves.toEqual([
+      { pokemon: "Ivysaur", result: "fire" },
+      { pokemon: "Charmander", result: "warm" },
+    ]);
+  });
+});
+
+describe("submitAttempt: waiting room and admin-defined wait", () => {
+  it("maps not_started to ROOM_NOT_STARTED", async () => {
+    const { db } = fakeRpc({ submit_attempt: row("not_started") });
+    await expect(errorOf(submitAttempt(db, "room", "hash", 7))).resolves.toMatchObject({ code: "ROOM_NOT_STARTED" });
   });
 
-  it("uses the last attempt id as the cursor", async () => {
-    const { db } = fakeRpc({ list_attempts: { data: [feedRow(5), feedRow(9)], error: null } });
-    const feed = await getFeed(db, { id: "room", finishedAt: null }, { after: null, withPlayers: false });
-    expect(feed.cursor).toBe(9);
-    expect(feed.status).toBe("playing");
+  it("tells the player how many seconds to wait", async () => {
+    const { db } = fakeRpc({
+      submit_attempt: { data: [{ o_outcome: "cooldown", o_result: null, o_is_winner: null, o_retry_after: 7 }], error: null },
+    });
+    const err = await errorOf(submitAttempt(db, "room", "hash", 7));
+    expect(err.code).toBe("RATE_LIMITED");
+    expect(err.details).toEqual({ retryAfter: 7 });
+    expect(err.message).toContain("7");
+  });
+
+  it("falls back to 1 second when the database sends no wait time", async () => {
+    const { db } = fakeRpc({ submit_attempt: row("cooldown") });
+    const err = await errorOf(submitAttempt(db, "room", "hash", 7));
+    expect(err.details).toEqual({ retryAfter: 1 });
   });
 });

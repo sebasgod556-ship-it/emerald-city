@@ -1,7 +1,7 @@
 import { cookies, headers } from "next/headers";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { CloseRoomButton } from "../../../../components/AdminControls";
+import { CloseRoomButton, CooldownControl } from "../../../../components/AdminControls";
 import { GameRoom } from "../../../../components/GameRoom";
 import { AdminLoginForm, CopyButton } from "../../../../components/RoomForms";
 import type { FeedSnapshot } from "../../../../lib/feed-types";
@@ -10,7 +10,7 @@ import { verifyAdminCode } from "../../../../lib/room-secrets";
 import { createServiceClient } from "../../../../lib/supabase/server";
 import { btnSecondary } from "../../../../lib/ui";
 import { ROOM_CODE_PATTERN } from "../../../../lib/validation/rooms";
-import { getFeed } from "../../../../services/attempts.service";
+import { getFeed } from "../../../../services/feed.service";
 import { MAX_PLAYERS_PER_ROOM } from "../../../../services/players.service";
 import { getPokemonName } from "../../../../services/pokemon.service";
 import { findRoom, type Room } from "../../../../services/rooms.service";
@@ -37,7 +37,7 @@ export default async function AdminPage({ params }: Props) {
       isAdmin = cookie ? verifyAdminCode(roomCode, normalizeCode(cookie), room.adminCodeHash) : false;
       if (isAdmin) {
         secretName = await getPokemonName(db, room.secretPokemonId);
-        feed = await getFeed(db, room, { after: null, withPlayers: true });
+        feed = await getFeed(db, room, { after: null, chatAfter: null, full: true });
       }
     }
   } catch {
@@ -81,6 +81,7 @@ export default async function AdminPage({ params }: Props) {
         <CopyButton value={link} label="Copiar enlace" />
       </section>
       {feed ? <GameRoom roomCode={roomCode} nickname={null} initial={feed} maxPlayers={MAX_PLAYERS_PER_ROOM} /> : null}
+      <CooldownControl roomCode={roomCode} initialSeconds={room.attemptCooldownSeconds} />
       <CloseRoomButton roomCode={roomCode} />
     </Shell>
   );

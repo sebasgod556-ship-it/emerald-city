@@ -1,8 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import type { FeedAttempt, FeedSnapshot, HintResult } from "../lib/feed-types";
+import type { FeedAttempt, HintEntry, HintResult } from "../lib/feed-types";
 import { AppError } from "../lib/result";
-import { listPlayers } from "./players.service";
 
 /** First load: the latest attempts only. Later polls: pages of up to FEED_PAGE_LIMIT after the cursor. */
 export const FEED_INITIAL_LIMIT = 50;
@@ -15,11 +14,14 @@ const submitRowSchema = z.object({
     "room_closed",
     "round_finished",
     "not_player",
+    "not_started",
     "unknown_pokemon",
     "cooldown",
   ]),
   o_result: z.enum(["fire", "warm", "cold"]).nullable(),
   o_is_winner: z.boolean().nullable(),
+  // Seconds left to wait; only present with "cooldown". Absent in answers from the pre-step-9 function.
+  o_retry_after: z.number().int().nullable().optional(),
 });
 
 const feedRowSchema = z.object({
@@ -36,7 +38,7 @@ function unavailable(message: string, internal: string): AppError {
 
 /**
  * Records one attempt. The database (submit_attempt) computes the hint from types and generation,
- * decides the single winner under a room lock and applies the 1-attempt-per-second brake.
+ * decides the single winner under a room lock and applies the wait between attempts chosen by the admin.
  * Only the icon name and the winner flag come back: types and generation never leave the database.
  */
 export async function submitAttempt(
@@ -73,12 +75,16 @@ export async function submitAttempt(
       throw new AppError("ROUND_FINISHED", "La partida ya terminó. Ya no se aceptan más intentos.");
     case "not_player":
       throw new AppError("UNAUTHENTICATED", "Entra a la sala con tu apodo primero.");
+    case "not_started":
+      throw new AppError("ROOM_NOT_STARTED", "La partida todavía no empieza. Espera en la sala.");
     case "unknown_pokemon":
       throw new AppError("VALIDATION_ERROR", "Ese Pokémon no existe. Elige uno de la lista.");
-    case "cooldown":
-      throw new AppError("RATE_LIMITED", "Vas muy rápido. Espera un segundo e intenta de nuevo.", {
-        details: { retryAfter: 1 },
+    case "cooldown": {
+      const retryAfter = Math.max(1, row.o_retry_after ?? 1);
+      throw new AppError("RATE_LIMITED", `Espera ${retryAfter} s para enviar otro intento.`, {
+        details: { retryAfter },
       });
+    }
   }
 }
 
@@ -103,20 +109,23 @@ export async function listAttempts(
   return { attempts, hasMore };
 }
 
-/** One feed payload for the polling endpoint and the first render: attempts, status and (optionally) players. */
-export async function getFeed(
-  db: SupabaseClient,
-  room: { id: string; finishedAt: string | null },
-  options: { after: number | null; withPlayers: boolean },
-): Promise<FeedSnapshot> {
-  const { attempts, hasMore } = await listAttempts(db, room.id, options.after);
-  const players = options.withPlayers ? (await listPlayers(db, room.id)).map((p) => p.nickname) : null;
-  const last = attempts[attempts.length - 1];
-  return {
-    status: room.finishedAt === null ? "playing" : "finished",
-    attempts,
-    cursor: last ? last.id : (options.after ?? 0),
-    hasMore,
-    players,
-  };
+/** True when somebody in the room already sent this Pokémon (courtesy check for the repeat warning). */
+export async function wasTried(db: SupabaseClient, roomId: string, pokemonId: number): Promise<boolean> {
+  const { data, error } = await db.rpc("was_tried", { p_room_id: roomId, p_pokemon_id: pokemonId });
+  if (error || typeof data !== "boolean") {
+    throw unavailable("No se pudo revisar tu intento. Intenta de nuevo.", error ? `${error.code}: ${error.message}` : "unexpected was_tried response");
+  }
+  return data;
+}
+
+const hintRowSchema = z.object({ o_pokemon: z.string(), o_result: z.enum(["fire", "warm"]) });
+
+/** Side table: every Pokémon tried in the room that was not cold. Names and icon names only. */
+export async function listHints(db: SupabaseClient, roomId: string): Promise<HintEntry[]> {
+  const { data, error } = await db.rpc("list_hints", { p_room_id: roomId });
+  if (error) throw unavailable("No se pudo cargar la partida. Intenta de nuevo.", `${error.code}: ${error.message}`);
+  return z
+    .array(hintRowSchema)
+    .parse(data ?? [])
+    .map((row) => ({ pokemon: row.o_pokemon, result: row.o_result }));
 }

@@ -10,14 +10,32 @@ export type FeedAttempt = {
   isWinner: boolean;
 };
 
+export type HintEntry = { pokemon: string; result: "fire" | "warm" };
+
+export type ChatMessage = { id: number; nickname: string; body: string; isAdmin: boolean };
+
+/** waiting = lobby before the game starts, playing = attempts accepted, finished = somebody guessed the secret. */
+export type RoomStatus = "waiting" | "playing" | "finished";
+
 export type FeedSnapshot = {
-  status: "playing" | "finished";
+  status: RoomStatus;
+  /** Seconds a player waits between two attempts (chosen by the admin; can change while playing). */
+  cooldownSeconds: number;
+  /** UTC instant when the waiting room starts by itself. Only sent while status is "waiting". */
+  startDeadlineAt: string | null;
+  /** Database clock at the moment of the read. Only sent while "waiting": the countdown uses it, not the phone's clock. */
+  serverNow: string | null;
   attempts: FeedAttempt[];
   /** Id of the last attempt the caller has seen. Send it back as ?after= to get only newer ones. */
   cursor: number;
-  /** True when more attempts than one page are waiting: ask again right away. */
+  /** Chat messages, oldest first, with their own cursor. */
+  chat: ChatMessage[];
+  chatCursor: number;
+  /** True when more attempts or chat messages than one page are waiting: ask again right away. */
   hasMore: boolean;
-  /** Nicknames in order of arrival, or null when the caller did not ask for them (?players=1). */
+  /** Every non-cold Pokémon tried in the room (side table). Only sent with ?players=1 (full refresh). */
+  hints: HintEntry[] | null;
+  /** Nicknames in order of arrival, or null when the caller did not ask for the full refresh (?players=1). */
   players: string[] | null;
 };
 

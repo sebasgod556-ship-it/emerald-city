@@ -7,7 +7,7 @@ import { verifyAdminCode } from "../../../../../lib/room-secrets";
 import { createServiceClient } from "../../../../../lib/supabase/server";
 import { parseFeedQuery } from "../../../../../lib/validation/attempts";
 import { roomCodeSchema } from "../../../../../lib/validation/rooms";
-import { getFeed } from "../../../../../services/attempts.service";
+import { getFeed } from "../../../../../services/feed.service";
 import { findPlayerBySession } from "../../../../../services/players.service";
 import { findRoom } from "../../../../../services/rooms.service";
 
@@ -19,8 +19,8 @@ function respond<T>(result: Result<T>) {
 }
 
 /**
- * Room feed: new attempts after ?after=<id> (or the latest ones without it), the room status and,
- * with ?players=1, the nickname list. One request replaces the old players endpoint.
+ * Room feed: new attempts after ?after=<id> and new chat messages after ?chatAfter=<id> (the latest ones
+ * without them), the room status and, with ?players=1, the nickname list and the hints table. One request replaces the old players endpoint.
  * Only someone inside the room may read it: a player with a valid session cookie, or the room's admin.
  * No rate limit of its own: it needs a valid secret cookie (see docs/CONTRACTS.md, section 13).
  */

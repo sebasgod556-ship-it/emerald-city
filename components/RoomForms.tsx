@@ -8,6 +8,14 @@ import { searchPokemonNames } from "../lib/pokemon-search";
 import { extractRoomCode, formatAdminCode } from "../lib/room-codes";
 import { btnPrimary, btnSecondary, inputClass } from "../lib/ui";
 import type { PokemonName } from "../lib/validation/pokemon";
+import {
+  DEFAULT_COOLDOWN_SECONDS,
+  DEFAULT_WAIT_MINUTES,
+  MAX_COOLDOWN_SECONDS,
+  MAX_WAIT_MINUTES,
+  MIN_COOLDOWN_SECONDS,
+  MIN_WAIT_MINUTES,
+} from "../lib/validation/rooms";
 
 export function CopyButton({ value, label }: { value: string; label: string }) {
   const [copied, setCopied] = useState(false);
@@ -89,18 +97,29 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
   const [selected, setSelected] = useState<PokemonName | null>(null);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [created, setCreated] = useState<{ roomCode: string; adminCode: string; origin: string } | null>(null);
+  const [created, setCreated] = useState<{ roomCode: string; adminCode: string; origin: string; waitMinutes: number } | null>(null);
+  const [cooldown, setCooldown] = useState(String(DEFAULT_COOLDOWN_SECONDS));
+  const [waitMinutes, setWaitMinutes] = useState(String(DEFAULT_WAIT_MINUTES));
+
+  const cooldownNumber = Number(cooldown);
+  const waitNumber = Number(waitMinutes);
+  const cooldownValid =
+    cooldown.trim() !== "" && Number.isInteger(cooldownNumber) && cooldownNumber >= MIN_COOLDOWN_SECONDS && cooldownNumber <= MAX_COOLDOWN_SECONDS;
+  const waitValid =
+    waitMinutes.trim() !== "" && Number.isInteger(waitNumber) && waitNumber >= MIN_WAIT_MINUTES && waitNumber <= MAX_WAIT_MINUTES;
 
   const results = useMemo(() => (selected ? [] : searchPokemonNames(names, query)), [names, query, selected]);
 
   async function onCreate() {
-    if (!selected || pending) return;
+    if (!selected || pending || !cooldownValid || !waitValid) return;
     setPending(true);
     setError(null);
     try {
-      const res = await createRoomAction({ pokemonId: selected.id });
+      const res = await createRoomAction({ pokemonId: selected.id, cooldownSeconds: cooldownNumber, waitMinutes: waitNumber });
       if (res.error) setError(res.error.message);
-      else setCreated({ roomCode: res.data.roomCode, adminCode: res.data.adminCode, origin: window.location.origin });
+      else {
+        setCreated({ roomCode: res.data.roomCode, adminCode: res.data.adminCode, origin: window.location.origin, waitMinutes: waitNumber });
+      }
     } catch {
       setError("No se pudo conectar. Revisa tu internet e intenta de nuevo.");
     } finally {
@@ -129,6 +148,12 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
           </p>
           <CopyButton value={code} label="Copiar código" />
         </section>
+
+        <p className="text-sm text-ec-muted">
+          {created.waitMinutes > 0
+            ? `La sala está en sala de espera: la partida arranca sola en ${created.waitMinutes} min, o antes si pulsas "Empezar ya" en tu panel.`
+            : "La sala no tiene sala de espera: los jugadores pueden adivinar desde que entran."}
+        </p>
 
         <Link href={`/sala/${created.roomCode}/admin`} className={btnPrimary}>
           Ir al panel de administrador
@@ -193,7 +218,55 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
         </p>
       ) : null}
 
-      <button type="button" onClick={() => void onCreate()} disabled={!selected || pending} className={btnPrimary}>
+      <details className="rounded-xl bg-ec-surface p-4">
+        <summary className="cursor-pointer font-semibold">Opciones de la sala</summary>
+        <div className="mt-3 flex flex-col gap-3">
+          <div className="flex flex-col gap-1">
+            <label htmlFor="opt-cooldown" className="text-sm text-ec-muted">
+              Espera entre intentos de cada jugador (segundos)
+            </label>
+            <input
+              id="opt-cooldown"
+              type="number"
+              inputMode="numeric"
+              min={MIN_COOLDOWN_SECONDS}
+              max={MAX_COOLDOWN_SECONDS}
+              value={cooldown}
+              onChange={(e) => setCooldown(e.target.value)}
+              aria-invalid={!cooldownValid}
+              className={inputClass}
+            />
+            {!cooldownValid ? (
+              <p role="alert" className="text-sm text-red-400">
+                Escribe un número de {MIN_COOLDOWN_SECONDS} a {MAX_COOLDOWN_SECONDS}.
+              </p>
+            ) : null}
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="opt-wait" className="text-sm text-ec-muted">
+              Minutos de sala de espera antes de empezar (0 = sin sala de espera)
+            </label>
+            <input
+              id="opt-wait"
+              type="number"
+              inputMode="numeric"
+              min={MIN_WAIT_MINUTES}
+              max={MAX_WAIT_MINUTES}
+              value={waitMinutes}
+              onChange={(e) => setWaitMinutes(e.target.value)}
+              aria-invalid={!waitValid}
+              className={inputClass}
+            />
+            {!waitValid ? (
+              <p role="alert" className="text-sm text-red-400">
+                Escribe un número de {MIN_WAIT_MINUTES} a {MAX_WAIT_MINUTES}.
+              </p>
+            ) : null}
+          </div>
+        </div>
+      </details>
+
+      <button type="button" onClick={() => void onCreate()} disabled={!selected || pending || !cooldownValid || !waitValid} className={btnPrimary}>
         {pending ? "Creando..." : error ? "Reintentar" : "Crear sala"}
       </button>
     </div>

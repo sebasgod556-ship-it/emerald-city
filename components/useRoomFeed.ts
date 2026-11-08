@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { parseFeed } from "../lib/feed-parse";
-import type { FeedAttempt, FeedSnapshot } from "../lib/feed-types";
+import { hintsFromAttempts, mergeHints } from "../lib/feed-hints";
+import type { ChatMessage, FeedAttempt, FeedSnapshot, HintEntry, RoomStatus } from "../lib/feed-types";
 
 // Polling (not Realtime) on purpose in Step 5: it needs no login and spends none of the 100 messages/second
 // budget. This hook is the ONLY place that reads the feed, so moving to batched Realtime later
@@ -13,12 +14,23 @@ const FINISHED_POLL_INTERVAL_MS = 5000; // nothing new to guess: just notice a c
 const HIDDEN_CHECK_MS = 2000; // tab in the background: no requests, only a cheap timer
 const CATCH_UP_DELAY_MS = 150; // a full page arrived, more are waiting
 const PLAYERS_EVERY_N_POLLS = 5; // the nickname list changes slowly: ask for it every ~10 s
+const WAITING_PLAYERS_EVERY_N_POLLS = 2; // in the waiting room people arrive all the time: every ~4 s
 const MAX_FAILED_POLLS = 3;
 const MAX_KEPT_ATTEMPTS = 200;
+const MAX_KEPT_CHAT = 200;
 
 export type RoomFeedState = {
   attempts: FeedAttempt[]; // oldest first
+  chat: ChatMessage[]; // oldest first
+  /** Every non-cold Pokémon tried in the room (side table). Grows live and is completed every ~10 s. */
+  hints: HintEntry[];
   finished: boolean;
+  /** waiting = lobby, playing = attempts accepted, finished = somebody guessed the secret. */
+  status: RoomStatus;
+  /** Seconds a player waits between attempts (follows the admin's changes). */
+  cooldownSeconds: number;
+  /** Start deadline of the waiting room on the server's clock, plus how far the phone's clock is from it. */
+  startsAt: { deadlineMs: number; offsetMs: number } | null;
   players: string[];
   /** A poll failed and is being retried with backoff. */
   unstable: boolean;
@@ -32,13 +44,19 @@ export type RoomFeedState = {
 export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedState {
   const router = useRouter();
   const [attempts, setAttempts] = useState(initial.attempts);
-  const [finished, setFinished] = useState(initial.status === "finished");
+  const [chat, setChat] = useState(initial.chat);
+  const [hints, setHints] = useState(() => mergeHints(initial.hints ?? [], hintsFromAttempts(initial.attempts)));
+  const [status, setStatus] = useState<RoomStatus>(initial.status);
+  const [cooldownSeconds, setCooldownSeconds] = useState(initial.cooldownSeconds);
+  const [startsAt, setStartsAt] = useState(() => toStartsAt(initial));
   const [players, setPlayers] = useState(initial.players ?? []);
   const [unstable, setUnstable] = useState(false);
   const [halted, setHalted] = useState(false);
   const [kick, setKick] = useState(0);
   const cursorRef = useRef(initial.cursor);
+  const chatCursorRef = useRef(initial.chatCursor);
   const finishedRef = useRef(initial.status === "finished");
+  const waitingRef = useRef(initial.status === "waiting");
   const pollCountRef = useRef(0);
 
   useEffect(() => {
@@ -58,9 +76,10 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
         schedule(HIDDEN_CHECK_MS);
         return;
       }
-      const withPlayers = pollCountRef.current % PLAYERS_EVERY_N_POLLS === 0;
+      const every = waitingRef.current ? WAITING_PLAYERS_EVERY_N_POLLS : PLAYERS_EVERY_N_POLLS;
+      const withPlayers = pollCountRef.current % every === 0;
       pollCountRef.current += 1;
-      const url = `/api/rooms/${roomCode}/feed?after=${cursorRef.current}${withPlayers ? "&players=1" : ""}`;
+      const url = `/api/rooms/${roomCode}/feed?after=${cursorRef.current}&chatAfter=${chatCursorRef.current}${withPlayers ? "&players=1" : ""}`;
       try {
         const res = await fetch(url, { cache: "no-store" });
         if (res.status === 401 || res.status === 404 || res.status === 409) {
@@ -82,10 +101,26 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
             return fresh.length === 0 ? previous : [...previous, ...fresh].slice(-MAX_KEPT_ATTEMPTS);
           });
         }
+        if (snapshot.attempts.length > 0 || snapshot.hints !== null) {
+          setHints((previous) =>
+            mergeHints(mergeHints(previous, snapshot.hints ?? []), hintsFromAttempts(snapshot.attempts)),
+          );
+        }
+        if (snapshot.chat.length > 0) {
+          chatCursorRef.current = Math.max(chatCursorRef.current, snapshot.chatCursor);
+          setChat((previous) => {
+            const lastKnown = previous[previous.length - 1]?.id ?? 0;
+            const fresh = snapshot.chat.filter((m) => m.id > lastKnown);
+            return fresh.length === 0 ? previous : [...previous, ...fresh].slice(-MAX_KEPT_CHAT);
+          });
+        }
         if (snapshot.players !== null) setPlayers(snapshot.players);
         const isFinished = snapshot.status === "finished";
         finishedRef.current = isFinished;
-        setFinished(isFinished);
+        waitingRef.current = snapshot.status === "waiting";
+        setStatus(snapshot.status);
+        setCooldownSeconds(snapshot.cooldownSeconds);
+        setStartsAt(toStartsAt(snapshot));
         schedule(snapshot.hasMore ? CATCH_UP_DELAY_MS : isFinished ? FINISHED_POLL_INTERVAL_MS : POLL_INTERVAL_MS);
       } catch {
         if (cancelled) return;
@@ -118,5 +153,27 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
     setKick((n) => n + 1);
   }, []);
 
-  return { attempts, finished, players, unstable, halted, refresh, retry };
+  return {
+    attempts,
+    chat,
+    hints,
+    finished: status === "finished",
+    status,
+    cooldownSeconds,
+    startsAt,
+    players,
+    unstable,
+    halted,
+    refresh,
+    retry,
+  };
+}
+
+/** The countdown uses the server's clock: offset = server time minus this phone's time at the moment of the read. */
+function toStartsAt(snapshot: FeedSnapshot): { deadlineMs: number; offsetMs: number } | null {
+  if (snapshot.status !== "waiting" || snapshot.startDeadlineAt === null || snapshot.serverNow === null) return null;
+  const deadlineMs = Date.parse(snapshot.startDeadlineAt);
+  const serverMs = Date.parse(snapshot.serverNow);
+  if (Number.isNaN(deadlineMs) || Number.isNaN(serverMs)) return null;
+  return { deadlineMs, offsetMs: serverMs - Date.now() };
 }

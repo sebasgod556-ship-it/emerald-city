@@ -6,7 +6,8 @@ import { playerSessionHash } from "../../lib/player-session";
 import { fail, ok, toFailure, type Result } from "../../lib/result";
 import { createServiceClient } from "../../lib/supabase/server";
 import { submitAttemptInputSchema } from "../../lib/validation/attempts";
-import { submitAttempt } from "../../services/attempts.service";
+import { submitAttempt, wasTried } from "../../services/attempts.service";
+import { findPlayerBySession } from "../../services/players.service";
 import { findRoom } from "../../services/rooms.service";
 
 // No IP rate limit on purpose (see docs/CONTRACTS.md): every call needs a valid secret player cookie and the
@@ -18,7 +19,7 @@ export async function submitAttemptAction(input: unknown): Promise<Result<{ resu
   try {
     const parsed = submitAttemptInputSchema.safeParse(input);
     if (!parsed.success) return fail("VALIDATION_ERROR", "Elige un Pokémon de la lista.");
-    const { roomCode, pokemonId } = parsed.data;
+    const { roomCode, pokemonId, confirmRepeat } = parsed.data;
 
     const sessionHash = playerSessionHash(await cookies(), roomCode);
     if (sessionHash === null) return fail("UNAUTHENTICATED", "Entra a la sala con tu apodo primero.");
@@ -27,6 +28,17 @@ export async function submitAttemptAction(input: unknown): Promise<Result<{ resu
     const room = await findRoom(db, roomCode);
     if (!room) return fail("NOT_FOUND", "Esta sala no existe. Revisa el código.");
     if (room.status !== "open") return fail("ROOM_CLOSED", "Esta sala ya cerró.");
+
+    // Repeat warning (phase 2): repeating is allowed, but the player is asked to confirm first.
+    // Only someone really inside the room may probe it, so the player is verified before asking.
+    if (confirmRepeat !== true) {
+      if ((await findPlayerBySession(db, room.id, sessionHash)) === null) {
+        return fail("UNAUTHENTICATED", "Entra a la sala con tu apodo primero.");
+      }
+      if (await wasTried(db, room.id, pokemonId)) {
+        return fail("ALREADY_TRIED", "Ya intentaron ese Pokémon en esta sala. ¿Quieres enviarlo de todos modos?");
+      }
+    }
 
     return ok(await submitAttempt(db, room.id, sessionHash, pokemonId));
   } catch (err) {

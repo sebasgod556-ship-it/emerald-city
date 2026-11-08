@@ -5,6 +5,10 @@ describe("submitAttemptInputSchema", () => {
   it("accepts a room code and a Pokémon id", () => {
     expect(submitAttemptInputSchema.safeParse({ roomCode: "ABCDEF", pokemonId: 25 }).success).toBe(true);
   });
+  it("accepts the confirmRepeat flag", () => {
+    expect(submitAttemptInputSchema.safeParse({ roomCode: "ABCDEF", pokemonId: 25, confirmRepeat: true }).success).toBe(true);
+    expect(submitAttemptInputSchema.safeParse({ roomCode: "ABCDEF", pokemonId: 25, confirmRepeat: "yes" }).success).toBe(false);
+  });
   it.each([
     { roomCode: "ABCDEF", pokemonId: 0 },
     { roomCode: "ABCDEF", pokemonId: 1.5 },
@@ -18,13 +22,13 @@ describe("submitAttemptInputSchema", () => {
 
 describe("parseFeedQuery", () => {
   it("defaults to no cursor and no players", () => {
-    expect(parseFeedQuery(new URLSearchParams())).toEqual({ after: null, withPlayers: false });
+    expect(parseFeedQuery(new URLSearchParams())).toEqual({ after: null, chatAfter: null, full: false });
   });
   it("reads after and players", () => {
-    expect(parseFeedQuery(new URLSearchParams("after=12&players=1"))).toEqual({ after: 12, withPlayers: true });
-    expect(parseFeedQuery(new URLSearchParams("after=0"))).toEqual({ after: 0, withPlayers: false });
+    expect(parseFeedQuery(new URLSearchParams("after=12&chatAfter=3&players=1"))).toEqual({ after: 12, chatAfter: 3, full: true });
+    expect(parseFeedQuery(new URLSearchParams("after=0"))).toEqual({ after: 0, chatAfter: null, full: false });
   });
-  it.each(["after=-1", "after=abc", "after=1.5", "after=1234567890123456", "players=yes"])("rejects %s", (q) => {
+  it.each(["after=-1", "after=abc", "after=1.5", "after=1234567890123456", "chatAfter=-1", "players=yes"])("rejects %s", (q) => {
     expect(parseFeedQuery(new URLSearchParams(q))).toBeNull();
   });
 });
