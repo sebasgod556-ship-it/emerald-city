@@ -57,7 +57,8 @@ export async function joinRoomAction(input: unknown): Promise<Result<{ nickname:
     const existingHash = playerSessionHash(jar, roomCode);
     if (existingHash) {
       const existing = await findPlayerBySession(db, room.id, existingHash);
-      if (existing) return ok(existing);
+      if (existing?.kicked) return fail("PLAYER_KICKED", "El administrador te expulsó de esta sala.");
+      if (existing) return ok({ nickname: existing.nickname });
     }
 
     const token = generatePlayerToken();

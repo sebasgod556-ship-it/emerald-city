@@ -37,11 +37,18 @@ export function parseFeed(body: unknown): FeedSnapshot | null {
   if (!isRecord(body) || !isRecord(body.data)) return null;
   const { status, attempts, cursor, hasMore, players, chat, chatCursor, hints, cooldownSeconds, startDeadlineAt, serverNow } =
     body.data;
+  const { mode, turnNickname, turnDeadlineAt, awayPlayers } = body.data;
   if (status !== "waiting" && status !== "playing" && status !== "finished") return null;
   // Tolerant on purpose: a phone that loaded the old page can read an answer from the new server and the other way round.
   if (cooldownSeconds !== undefined && typeof cooldownSeconds !== "number") return null;
   if (startDeadlineAt !== undefined && startDeadlineAt !== null && typeof startDeadlineAt !== "string") return null;
   if (serverNow !== undefined && serverNow !== null && typeof serverNow !== "string") return null;
+  if (mode !== undefined && mode !== "free" && mode !== "turns") return null;
+  if (turnNickname !== undefined && turnNickname !== null && typeof turnNickname !== "string") return null;
+  if (turnDeadlineAt !== undefined && turnDeadlineAt !== null && typeof turnDeadlineAt !== "string") return null;
+  if (awayPlayers !== undefined && awayPlayers !== null && !(Array.isArray(awayPlayers) && awayPlayers.every((n) => typeof n === "string"))) {
+    return null;
+  }
   if (!Array.isArray(attempts)) return null;
   if (typeof cursor !== "number" || typeof hasMore !== "boolean") return null;
   if (!Array.isArray(chat) || typeof chatCursor !== "number") return null;
@@ -78,9 +85,12 @@ export function parseFeed(body: unknown): FeedSnapshot | null {
   }
   return {
     status,
+    mode: mode ?? "free",
     cooldownSeconds: cooldownSeconds ?? 1,
     startDeadlineAt: (startDeadlineAt as string | null | undefined) ?? null,
     serverNow: (serverNow as string | null | undefined) ?? null,
+    turnNickname: (turnNickname as string | null | undefined) ?? null,
+    turnDeadlineAt: (turnDeadlineAt as string | null | undefined) ?? null,
     attempts: parsed,
     cursor,
     chat: messages,
@@ -88,6 +98,7 @@ export function parseFeed(body: unknown): FeedSnapshot | null {
     hasMore,
     hints: hintList,
     players: nicknames,
+    awayPlayers: (awayPlayers as string[] | null | undefined) ?? null,
   };
 }
 

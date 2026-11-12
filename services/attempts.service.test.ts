@@ -159,3 +159,17 @@ describe("submitAttempt: waiting room and admin-defined wait", () => {
     expect(err.details).toEqual({ retryAfter: 1 });
   });
 });
+
+describe("submitAttempt: turns and kicked players", () => {
+  it("maps not_your_turn to NOT_YOUR_TURN", async () => {
+    const { db } = fakeRpc({ submit_attempt: row("not_your_turn") });
+    const err = await errorOf(submitAttempt(db, "room", "hash", 7));
+    expect(err.code).toBe("NOT_YOUR_TURN");
+    expect(err.message).toContain("turno");
+  });
+
+  it("maps kicked to PLAYER_KICKED", async () => {
+    const { db } = fakeRpc({ submit_attempt: row("kicked") });
+    expect((await errorOf(submitAttempt(db, "room", "hash", 7))).code).toBe("PLAYER_KICKED");
+  });
+});

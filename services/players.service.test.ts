@@ -1,13 +1,14 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { describe, expect, it } from "vitest";
 import { AppError } from "../lib/result";
-import { addPlayer, findPlayerBySession, listPlayers, MAX_PLAYERS_PER_ROOM } from "./players.service";
+import { addPlayer, findPlayerBySession, kickPlayer, listPlayers, MAX_PLAYERS_PER_ROOM, touchPlayer } from "./players.service";
 
 type DbResult = { data: unknown; error: { code: string; message: string; details?: string | null } | null };
 
 type Query = {
   select: () => Query;
   eq: () => Query;
+  is: () => Query;
   order: () => Query;
   limit: () => Query;
   insert: () => Promise<DbResult>;
@@ -20,6 +21,7 @@ function fakeDb(result: DbResult): SupabaseClient {
   const query: Query = {
     select: () => query,
     eq: () => query,
+    is: () => query,
     order: () => query,
     limit: () => query,
     insert: () => Promise.resolve(result),
@@ -93,8 +95,13 @@ describe("addPlayer", () => {
 
 describe("findPlayerBySession", () => {
   it("returns the player when found", async () => {
-    const db = fakeDb({ data: { nickname: "Ana" }, error: null });
-    await expect(findPlayerBySession(db, "room-1", HASH)).resolves.toEqual({ nickname: "Ana" });
+    const db = fakeDb({ data: { nickname: "Ana", kicked_at: null }, error: null });
+    await expect(findPlayerBySession(db, "room-1", HASH)).resolves.toEqual({ nickname: "Ana", kicked: false });
+  });
+
+  it("says when the admin kicked the player", async () => {
+    const db = fakeDb({ data: { nickname: "Ana", kicked_at: "2026-11-08T01:00:00Z" }, error: null });
+    await expect(findPlayerBySession(db, "room-1", HASH)).resolves.toEqual({ nickname: "Ana", kicked: true });
   });
 
   it("returns null when there is no such session", async () => {
@@ -108,15 +115,41 @@ describe("findPlayerBySession", () => {
 });
 
 describe("listPlayers", () => {
-  it("returns nicknames only, in the order given", async () => {
-    const db = fakeDb({ data: [{ nickname: "Ana" }, { nickname: "Luis" }], error: null });
-    await expect(listPlayers(db, "room-1")).resolves.toEqual([{ nickname: "Ana" }, { nickname: "Luis" }]);
+  const recent = () => new Date(Date.now() - 2_000).toISOString();
+  const old = () => new Date(Date.now() - 120_000).toISOString();
+
+  it("returns nicknames only, in the order given, nobody away when presence is not tracked", async () => {
+    const db = fakeDb({
+      data: [
+        { nickname: "Ana", last_seen_at: recent() },
+        { nickname: "Luis", last_seen_at: old() },
+      ],
+      error: null,
+    });
+    await expect(listPlayers(db, "room-1")).resolves.toEqual([
+      { nickname: "Ana", away: false },
+      { nickname: "Luis", away: false },
+    ]);
+  });
+
+  it("marks as away who has not been seen for 30 s when presence is tracked", async () => {
+    const db = fakeDb({
+      data: [
+        { nickname: "Ana", last_seen_at: recent() },
+        { nickname: "Luis", last_seen_at: old() },
+      ],
+      error: null,
+    });
+    await expect(listPlayers(db, "room-1", { trackPresence: true })).resolves.toEqual([
+      { nickname: "Ana", away: false },
+      { nickname: "Luis", away: true },
+    ]);
   });
 
   it("never leaks extra columns such as the session hash", async () => {
-    const db = fakeDb({ data: [{ nickname: "Ana", session_hash: HASH }], error: null });
+    const db = fakeDb({ data: [{ nickname: "Ana", last_seen_at: recent(), session_hash: HASH }], error: null });
     const players = await listPlayers(db, "room-1");
-    expect(players).toEqual([{ nickname: "Ana" }]);
+    expect(players).toEqual([{ nickname: "Ana", away: false }]);
     expect(JSON.stringify(players)).not.toContain(HASH);
   });
 
@@ -127,6 +160,51 @@ describe("listPlayers", () => {
   it("throws EXTERNAL_SERVICE_UNAVAILABLE when the database fails", async () => {
     const db = fakeDb({ data: null, error: { code: "08006", message: "connection failure" } });
     expect((await errorOf(listPlayers(db, "room-1"))).code).toBe("EXTERNAL_SERVICE_UNAVAILABLE");
+  });
+});
+
+function rpcDb(answer: DbResult | Error) {
+  const calls: { fn: string; args: unknown }[] = [];
+  const db = {
+    rpc: (fn: string, args: unknown) => {
+      calls.push({ fn, args });
+      return answer instanceof Error ? Promise.reject(answer) : Promise.resolve(answer);
+    },
+  } as unknown as SupabaseClient;
+  return { db, calls };
+}
+
+describe("kickPlayer", () => {
+  it("sends the nickname and returns true when somebody was kicked", async () => {
+    const { db, calls } = rpcDb({ data: "ok", error: null });
+    expect(await kickPlayer(db, "room-1", "Ana")).toBe(true);
+    expect(calls[0]).toEqual({ fn: "kick_player", args: { p_room_id: "room-1", p_nickname: "Ana" } });
+  });
+
+  it("returns false when the player is not there any more", async () => {
+    expect(await kickPlayer(rpcDb({ data: "not_found", error: null }).db, "room-1", "Ana")).toBe(false);
+  });
+
+  it("maps a closed room to ROOM_CLOSED", async () => {
+    expect((await errorOf(kickPlayer(rpcDb({ data: "room_closed", error: null }).db, "room-1", "Ana"))).code).toBe("ROOM_CLOSED");
+  });
+
+  it("hides internal errors", async () => {
+    const err = await errorOf(kickPlayer(rpcDb({ data: null, error: { code: "XX000", message: "secret" } }).db, "room-1", "Ana"));
+    expect(err.code).toBe("EXTERNAL_SERVICE_UNAVAILABLE");
+    expect(err.internal).toBe("XX000: secret");
+  });
+});
+
+describe("touchPlayer", () => {
+  it("calls the presence function", async () => {
+    const { db, calls } = rpcDb({ data: null, error: null });
+    await touchPlayer(db, "room-1", HASH);
+    expect(calls[0]).toEqual({ fn: "touch_player", args: { p_room_id: "room-1", p_session_hash: HASH } });
+  });
+
+  it("never throws: presence is best effort", async () => {
+    await expect(touchPlayer(rpcDb(new Error("network down")).db, "room-1", HASH)).resolves.toBeUndefined();
   });
 });
 

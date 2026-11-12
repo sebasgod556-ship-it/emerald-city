@@ -77,3 +77,39 @@ describe("parseFeed waiting room fields", () => {
     expect(parseFeed(body({ ...base, ...extra }))).toBeNull();
   });
 });
+
+describe("parseFeed turn mode fields", () => {
+  it("accepts the turn holder, the deadline and the away list", () => {
+    const feed = parseFeed(
+      body({
+        ...base,
+        mode: "turns",
+        turnNickname: "Beto",
+        turnDeadlineAt: "2026-11-08T01:00:20Z",
+        serverNow: "2026-11-08T01:00:00Z",
+        players: ["Ana", "Beto"],
+        awayPlayers: ["Ana"],
+      }),
+    );
+    expect(feed).toMatchObject({
+      mode: "turns",
+      turnNickname: "Beto",
+      turnDeadlineAt: "2026-11-08T01:00:20Z",
+      awayPlayers: ["Ana"],
+    });
+  });
+
+  it("defaults to free mode, no turn and no away list when an older server leaves them out", () => {
+    expect(parseFeed(body(base))).toMatchObject({ mode: "free", turnNickname: null, turnDeadlineAt: null, awayPlayers: null });
+  });
+
+  it.each([
+    ["unknown mode", { mode: "chaos" }],
+    ["turn nickname as number", { turnNickname: 4 }],
+    ["turn deadline as number", { turnDeadlineAt: 4 }],
+    ["away list with a number", { awayPlayers: ["Ana", 4] }],
+    ["away as text", { awayPlayers: "Ana" }],
+  ])("rejects %s", (_name, extra) => {
+    expect(parseFeed(body({ ...base, ...extra }))).toBeNull();
+  });
+});

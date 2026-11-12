@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { closeRoomAction, startRoomAction, updateCooldownAction } from "../app/actions/rooms";
+import { closeRoomAction, kickPlayerAction, startRoomAction, updateCooldownAction } from "../app/actions/rooms";
 import { btnPrimary, btnSecondary, inputClass } from "../lib/ui";
 import { MAX_COOLDOWN_SECONDS, MIN_COOLDOWN_SECONDS } from "../lib/validation/rooms";
 
@@ -154,5 +154,60 @@ export function CooldownControl({ roomCode, initialSeconds }: { roomCode: string
         {pending ? "Guardando..." : "Guardar espera"}
       </button>
     </section>
+  );
+}
+
+/** Kick one player. Two taps on purpose: the first asks "¿Expulsar a X?", the second confirms. */
+export function KickPlayerButton({ roomCode, nickname, onKicked }: { roomCode: string; nickname: string; onKicked: () => void }) {
+  const [asking, setAsking] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+
+  async function kick() {
+    setPending(true);
+    setMessage(null);
+    try {
+      const res = await kickPlayerAction({ roomCode, nickname });
+      if (res.error === null) {
+        setAsking(false);
+        onKicked();
+      } else {
+        setMessage(res.error.message);
+        setAsking(false);
+        onKicked(); // the player may be gone already: refresh the list either way
+      }
+    } catch {
+      setMessage("No se pudo conectar. Revisa tu internet e intenta de nuevo.");
+    } finally {
+      setPending(false);
+    }
+  }
+
+  if (!asking) {
+    return (
+      <span className="flex items-center gap-2">
+        {message ? (
+          <span role="alert" className="text-sm text-red-400">
+            {message}
+          </span>
+        ) : null}
+        <button type="button" onClick={() => setAsking(true)} className="text-sm text-red-400 underline">
+          <span aria-hidden="true">Expulsar</span>
+          <span className="sr-only">Expulsar a {nickname}</span>
+        </button>
+      </span>
+    );
+  }
+
+  return (
+    <span role="group" aria-label={`Confirmar expulsión de ${nickname}`} className="flex items-center gap-2 text-sm">
+      <span>¿Expulsar a {nickname}?</span>
+      <button type="button" onClick={() => void kick()} disabled={pending} className="text-red-400 underline">
+        {pending ? "Expulsando..." : "Sí, expulsar"}
+      </button>
+      <button type="button" onClick={() => setAsking(false)} disabled={pending} className="underline">
+        No
+      </button>
+    </span>
   );
 }

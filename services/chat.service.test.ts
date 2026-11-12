@@ -45,6 +45,7 @@ describe("postChatMessage", () => {
     ["unknown_room", "NOT_FOUND"],
     ["room_closed", "ROOM_CLOSED"],
     ["not_player", "UNAUTHENTICATED"],
+    ["kicked", "PLAYER_KICKED"],
     ["invalid", "VALIDATION_ERROR"],
     ["rate_limited", "RATE_LIMITED"],
   ])("maps outcome %s to %s", async (outcome, code) => {

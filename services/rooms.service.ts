@@ -1,7 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import { AppError } from "../lib/result";
-import { DEFAULT_COOLDOWN_SECONDS, DEFAULT_WAIT_MINUTES } from "../lib/validation/rooms";
+import { DEFAULT_COOLDOWN_SECONDS, DEFAULT_TURN_SECONDS, DEFAULT_WAIT_MINUTES } from "../lib/validation/rooms";
 import { generateAdminCode, generateRoomCode, hashAdminCode, verifyAdminCode } from "../lib/room-secrets";
 
 const MAX_CODE_ATTEMPTS = 5;
@@ -17,6 +17,9 @@ const roomRowSchema = z.object({
   attempt_cooldown_seconds: z.number().int().default(1),
   phase: z.enum(["waiting", "playing"]).default("playing"),
   start_deadline_at: z.string().nullable().optional(),
+  mode: z.enum(["free", "turns"]).default("free"),
+  turn_order: z.enum(["random", "arrival"]).default("random"),
+  turn_seconds: z.number().int().default(20),
 });
 
 export type Room = {
@@ -34,6 +37,12 @@ export type Room = {
   phase: "waiting" | "playing";
   /** UTC instant when a waiting room starts by itself (null when the room was created without a lobby). */
   startDeadlineAt: string | null;
+  /** free = everybody sends at once; turns = one player at a time (Mode A). Chosen when the room is created. */
+  mode: "free" | "turns";
+  /** Turn queue order: random (assigned on entry) or arrival. Only used in turn mode. */
+  turnOrder: "random" | "arrival";
+  /** Seconds a player has to answer in turn mode before the turn is skipped. */
+  turnSeconds: number;
 };
 
 export type CreateRoomOptions = {
@@ -41,6 +50,12 @@ export type CreateRoomOptions = {
   cooldownSeconds?: number;
   /** Minutes of waiting room before the game starts by itself. 0 = no waiting room. */
   waitMinutes?: number;
+  /** "free" (default) or "turns". */
+  mode?: "free" | "turns";
+  /** Queue order in turn mode (default random). */
+  turnOrder?: "random" | "arrival";
+  /** Seconds per turn (5 to 120, default 20). */
+  turnSeconds?: number;
 };
 
 /**
@@ -56,6 +71,9 @@ export async function createRoom(
 ): Promise<{ roomCode: string; adminCode: string }> {
   const cooldownSeconds = options.cooldownSeconds ?? DEFAULT_COOLDOWN_SECONDS;
   const waitMinutes = options.waitMinutes ?? DEFAULT_WAIT_MINUTES;
+  const mode = options.mode ?? "free";
+  const turnOrder = options.turnOrder ?? "random";
+  const turnSeconds = options.turnSeconds ?? DEFAULT_TURN_SECONDS;
   const waiting = waitMinutes > 0;
   for (let attempt = 0; attempt < MAX_CODE_ATTEMPTS; attempt++) {
     const roomCode = generateRoomCode();
@@ -65,6 +83,9 @@ export async function createRoom(
       admin_code_hash: hashAdminCode(roomCode, adminCode),
       secret_pokemon_id: pokemonId,
       attempt_cooldown_seconds: cooldownSeconds,
+      mode,
+      turn_order: turnOrder,
+      turn_seconds: turnSeconds,
       phase: waiting ? "waiting" : "playing",
       start_deadline_at: waiting ? new Date(Date.now() + waitMinutes * 60_000).toISOString() : null,
     });
@@ -90,7 +111,7 @@ export async function findRoom(db: SupabaseClient, roomCode: string): Promise<Ro
   const { data, error } = await db
     .from("rooms")
     .select(
-      "id, room_code, admin_code_hash, secret_pokemon_id, status, created_at, finished_at, attempt_cooldown_seconds, phase, start_deadline_at",
+      "id, room_code, admin_code_hash, secret_pokemon_id, status, created_at, finished_at, attempt_cooldown_seconds, phase, start_deadline_at, mode, turn_order, turn_seconds",
     )
     .eq("room_code", roomCode)
     .maybeSingle();
@@ -112,6 +133,9 @@ export async function findRoom(db: SupabaseClient, roomCode: string): Promise<Ro
     attemptCooldownSeconds: row.attempt_cooldown_seconds,
     phase: row.phase,
     startDeadlineAt: row.start_deadline_at ?? null,
+    mode: row.mode,
+    turnOrder: row.turn_order,
+    turnSeconds: row.turn_seconds,
   };
 }
 
@@ -140,17 +164,31 @@ const timersRowSchema = z.object({
   o_phase: z.enum(["waiting", "playing"]),
   o_start_deadline_at: z.string().nullable(),
   o_server_now: z.string(),
+  // Turn mode only. Absent in answers from the pre-step-11 function.
+  o_turn_nickname: z.string().nullable().optional(),
+  o_turn_deadline_at: z.string().nullable().optional(),
 });
 
+export type DueTimers = {
+  phase: "waiting" | "playing";
+  startDeadlineAt: string | null;
+  /** Database clock at the moment of the read. */
+  serverNow: string;
+  /** Turn mode, game running: who has the turn and until when (UTC). Null otherwise. */
+  turnNickname: string | null;
+  turnDeadlineAt: string | null;
+};
+
 /**
- * Applies the start timer of a waiting room if it is due (the database does it ONCE, even if 100 players ask
- * at the same time) and returns the room phase with the database clock, used for the countdown on the phones.
+ * Applies every due timer of a room (start of the waiting room, turn changes in turn mode). The database does it
+ * ONCE under a room lock, even if 100 players ask at the same time, and returns the room phase, the turn holder and
+ * the database clock, used for the countdowns on the phones.
  * Returns null when the room is unknown or closed.
  */
 export async function applyDueTimers(
   db: SupabaseClient,
   roomId: string,
-): Promise<{ phase: "waiting" | "playing"; startDeadlineAt: string | null; serverNow: string } | null> {
+): Promise<DueTimers | null> {
   const { data, error } = await db.rpc("apply_due_timers", { p_room_id: roomId });
   if (error || !Array.isArray(data)) {
     throw new AppError("EXTERNAL_SERVICE_UNAVAILABLE", "No se pudo cargar la sala. Intenta de nuevo.", {
@@ -159,7 +197,13 @@ export async function applyDueTimers(
   }
   if (data.length === 0) return null;
   const row = timersRowSchema.parse(data[0]);
-  return { phase: row.o_phase, startDeadlineAt: row.o_start_deadline_at, serverNow: row.o_server_now };
+  return {
+    phase: row.o_phase,
+    startDeadlineAt: row.o_start_deadline_at,
+    serverNow: row.o_server_now,
+    turnNickname: row.o_turn_nickname ?? null,
+    turnDeadlineAt: row.o_turn_deadline_at ?? null,
+  };
 }
 
 /** "Start now" from the admin. True only if this call moved the room from waiting to playing. */

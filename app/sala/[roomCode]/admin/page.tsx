@@ -81,7 +81,14 @@ export default async function AdminPage({ params }: Props) {
         <CopyButton value={link} label="Copiar enlace" />
       </section>
       {feed ? <GameRoom roomCode={roomCode} nickname={null} initial={feed} maxPlayers={MAX_PLAYERS_PER_ROOM} /> : null}
-      <CooldownControl roomCode={roomCode} initialSeconds={room.attemptCooldownSeconds} />
+      {room.mode === "turns" ? (
+        <p className="w-full rounded-xl bg-ec-surface p-4 text-left text-sm text-ec-muted">
+          Modo turnos: {room.turnSeconds} s por turno, orden {room.turnOrder === "random" ? "aleatorio" : "de llegada"}.
+          Si un jugador no responde, el turno pasa al siguiente. Puedes expulsar desde la lista de jugadores.
+        </p>
+      ) : (
+        <CooldownControl roomCode={roomCode} initialSeconds={room.attemptCooldownSeconds} />
+      )}
       <CloseRoomButton roomCode={roomCode} />
     </Shell>
   );

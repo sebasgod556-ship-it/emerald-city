@@ -19,12 +19,17 @@ export type RoomStatus = "waiting" | "playing" | "finished";
 
 export type FeedSnapshot = {
   status: RoomStatus;
+  /** free = everybody sends at once; turns = one player at a time. */
+  mode: "free" | "turns";
   /** Seconds a player waits between two attempts (chosen by the admin; can change while playing). */
   cooldownSeconds: number;
   /** UTC instant when the waiting room starts by itself. Only sent while status is "waiting". */
   startDeadlineAt: string | null;
-  /** Database clock at the moment of the read. Only sent while "waiting": the countdown uses it, not the phone's clock. */
+  /** Database clock at the moment of the read. Sent while "waiting" and while a turn is running: the countdowns use it, not the phone's clock. */
   serverNow: string | null;
+  /** Turn mode, game running: nickname of the player who has the turn, and when the turn is skipped (UTC). */
+  turnNickname: string | null;
+  turnDeadlineAt: string | null;
   attempts: FeedAttempt[];
   /** Id of the last attempt the caller has seen. Send it back as ?after= to get only newer ones. */
   cursor: number;
@@ -37,6 +42,8 @@ export type FeedSnapshot = {
   hints: HintEntry[] | null;
   /** Nicknames in order of arrival, or null when the caller did not ask for the full refresh (?players=1). */
   players: string[] | null;
+  /** Nicknames of players who look disconnected (turn mode only). Sent together with players. */
+  awayPlayers: string[] | null;
 };
 
 export const HINT_META: Record<HintResult, { icon: string; label: string }> = {

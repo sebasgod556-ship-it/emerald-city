@@ -9,10 +9,12 @@ import { createServiceClient } from "../../lib/supabase/server";
 import {
   closeRoomInputSchema,
   createRoomInputSchema,
+  kickPlayerInputSchema,
   loginAdminInputSchema,
   startRoomInputSchema,
   updateCooldownInputSchema,
 } from "../../lib/validation/rooms";
+import { kickPlayer } from "../../services/players.service";
 import {
   closeRoom,
   createRoom,
@@ -46,7 +48,7 @@ export async function createRoomAction(input: unknown): Promise<Result<{ roomCod
   try {
     const parsed = createRoomInputSchema.safeParse(input);
     if (!parsed.success) {
-      return fail("VALIDATION_ERROR", "Revisa los datos: elige un Pokémon, una espera de 1 a 120 segundos y de 0 a 60 minutos de sala de espera.");
+      return fail("VALIDATION_ERROR", "Revisa los datos: elige un Pokémon, una espera de 1 a 120 segundos, de 0 a 60 minutos de sala de espera y de 5 a 120 segundos por turno.");
     }
 
     const db = createServiceClient();
@@ -56,6 +58,9 @@ export async function createRoomAction(input: unknown): Promise<Result<{ roomCod
     const { roomCode, adminCode } = await createRoom(db, parsed.data.pokemonId, {
       cooldownSeconds: parsed.data.cooldownSeconds,
       waitMinutes: parsed.data.waitMinutes,
+      mode: parsed.data.mode,
+      turnOrder: parsed.data.turnOrder,
+      turnSeconds: parsed.data.turnSeconds,
     });
     (await cookies()).set(adminCookieName(roomCode), adminCode, adminCookieOptions());
     return ok({ roomCode, adminCode });
@@ -157,6 +162,25 @@ export async function updateCooldownAction(input: unknown): Promise<Result<{ sec
     const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
     if (!(await setAttemptCooldown(db, room.id, parsed.data.seconds))) return fail("ROOM_CLOSED", "Esta sala ya cerró.");
     return ok({ seconds: parsed.data.seconds });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/**
+ * The admin kicks a player by nickname (the button asks for confirmation first). The player stays reserved in the
+ * database, cannot send, chat or come back from that device, and in turn mode loses the turn at once.
+ * No rate limit of its own: it needs the secret admin cookie.
+ */
+export async function kickPlayerAction(input: unknown): Promise<Result<{ kicked: boolean }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = kickPlayerInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Jugador inválido.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    const kicked = await kickPlayer(db, room.id, parsed.data.nickname);
+    if (!kicked) return fail("NOT_FOUND", "Ese jugador ya no está en la sala.");
+    return ok({ kicked });
   } catch (err) {
     return toFailure(err, requestId);
   }

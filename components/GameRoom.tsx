@@ -5,8 +5,10 @@ import { sendChatMessageAction } from "../app/actions/chat";
 import { HINT_META, type FeedAttempt, type FeedSnapshot } from "../lib/feed-types";
 import { btnSecondary } from "../lib/ui";
 import { ChatPanel } from "./ChatPanel";
+import { KickPlayerButton } from "./AdminControls";
 import { HintsTable } from "./HintsTable";
 import { PokemonPicker, type SendOutcome } from "./PokemonPicker";
+import { TurnBanner } from "./TurnBanner";
 import { useRoomFeed } from "./useRoomFeed";
 import { WaitingRoom } from "./WaitingRoom";
 
@@ -29,12 +31,16 @@ export function GameRoom({
   const winning = feed.attempts.find((a) => a.isWinner) ?? null;
   const newestFirst = [...feed.attempts].reverse();
   const waiting = feed.status === "waiting";
+  const turnMode = feed.mode === "turns";
+  const isAdmin = nickname === null;
+  const myTurn = turnMode && feed.turn !== null && feed.turn.nickname === nickname;
 
   async function send(pokemonId: number, confirmRepeat: boolean): Promise<SendOutcome> {
     const res = await submitAttemptAction({ roomCode, pokemonId, confirmRepeat });
     if (res.error?.code === "ALREADY_TRIED") return { kind: "repeat", message: res.error.message };
     feed.refresh(); // show the new attempt (or the winner) without waiting for the next poll
     if (res.error === null) return { kind: "sent" };
+    if (res.error.code === "NOT_YOUR_TURN") return { kind: "error", message: res.error.message };
     const retryAfter = res.error.details?.retryAfter;
     if (res.error.code === "RATE_LIMITED" && typeof retryAfter === "number") return { kind: "wait", seconds: retryAfter };
     return { kind: "error", message: res.error.message };
@@ -79,8 +85,14 @@ export function GameRoom({
         />
       ) : null}
 
+      {turnMode && !waiting && !feed.finished ? <TurnBanner turn={feed.turn} me={nickname} /> : null}
+
       {nickname !== null && !feed.finished && !waiting ? (
-        <PokemonPicker disabled={false} cooldownSeconds={feed.cooldownSeconds} onSend={send} />
+        <PokemonPicker
+          disabled={turnMode && !myTurn}
+          cooldownSeconds={turnMode ? 0 : feed.cooldownSeconds}
+          onSend={send}
+        />
       ) : null}
 
       {waiting ? null : <HintsTable hints={feed.hints} />}
@@ -108,9 +120,16 @@ export function GameRoom({
         </summary>
         <ul aria-label="Lista de jugadores" className="mt-2 flex flex-col gap-1">
           {feed.players.map((name) => (
-            <li key={name} className={name === nickname ? "font-semibold text-ec-primary" : undefined}>
-              {name}
-              {name === nickname ? " (tú)" : ""}
+            <li
+              key={name}
+              className={`flex flex-wrap items-center justify-between gap-2 ${name === nickname ? "font-semibold text-ec-primary" : ""}`}
+            >
+              <span>
+                {name}
+                {name === nickname ? " (tú)" : ""}
+                {feed.awayPlayers.includes(name) ? <span className="text-sm font-normal text-ec-muted"> · desconectado</span> : null}
+              </span>
+              {isAdmin ? <KickPlayerButton roomCode={roomCode} nickname={name} onKicked={feed.refresh} /> : null}
             </li>
           ))}
         </ul>

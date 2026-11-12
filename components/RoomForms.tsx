@@ -11,9 +11,12 @@ import type { PokemonName } from "../lib/validation/pokemon";
 import {
   DEFAULT_COOLDOWN_SECONDS,
   DEFAULT_WAIT_MINUTES,
+  DEFAULT_TURN_SECONDS,
   MAX_COOLDOWN_SECONDS,
+  MAX_TURN_SECONDS,
   MAX_WAIT_MINUTES,
   MIN_COOLDOWN_SECONDS,
+  MIN_TURN_SECONDS,
   MIN_WAIT_MINUTES,
 } from "../lib/validation/rooms";
 
@@ -100,22 +103,37 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
   const [created, setCreated] = useState<{ roomCode: string; adminCode: string; origin: string; waitMinutes: number } | null>(null);
   const [cooldown, setCooldown] = useState(String(DEFAULT_COOLDOWN_SECONDS));
   const [waitMinutes, setWaitMinutes] = useState(String(DEFAULT_WAIT_MINUTES));
+  const [mode, setMode] = useState<"free" | "turns">("free");
+  const [turnOrder, setTurnOrder] = useState<"random" | "arrival">("random");
+  const [turnSeconds, setTurnSeconds] = useState(String(DEFAULT_TURN_SECONDS));
+  const turnNumber = Number(turnSeconds);
+  const turnValid =
+    turnSeconds.trim() !== "" && Number.isInteger(turnNumber) && turnNumber >= MIN_TURN_SECONDS && turnNumber <= MAX_TURN_SECONDS;
 
   const cooldownNumber = Number(cooldown);
   const waitNumber = Number(waitMinutes);
   const cooldownValid =
     cooldown.trim() !== "" && Number.isInteger(cooldownNumber) && cooldownNumber >= MIN_COOLDOWN_SECONDS && cooldownNumber <= MAX_COOLDOWN_SECONDS;
+  // Only the fields of the chosen mode have to be valid: the other ones are hidden and sent with their defaults.
   const waitValid =
     waitMinutes.trim() !== "" && Number.isInteger(waitNumber) && waitNumber >= MIN_WAIT_MINUTES && waitNumber <= MAX_WAIT_MINUTES;
+  const formOk = waitValid && (mode === "turns" ? turnValid : cooldownValid);
 
   const results = useMemo(() => (selected ? [] : searchPokemonNames(names, query)), [names, query, selected]);
 
   async function onCreate() {
-    if (!selected || pending || !cooldownValid || !waitValid) return;
+    if (!selected || pending || !formOk) return;
     setPending(true);
     setError(null);
     try {
-      const res = await createRoomAction({ pokemonId: selected.id, cooldownSeconds: cooldownNumber, waitMinutes: waitNumber });
+      const res = await createRoomAction({
+        pokemonId: selected.id,
+        cooldownSeconds: cooldownValid ? cooldownNumber : DEFAULT_COOLDOWN_SECONDS,
+        waitMinutes: waitNumber,
+        mode,
+        turnOrder,
+        turnSeconds: turnValid ? turnNumber : DEFAULT_TURN_SECONDS,
+      });
       if (res.error) setError(res.error.message);
       else {
         setCreated({ roomCode: res.data.roomCode, adminCode: res.data.adminCode, origin: window.location.origin, waitMinutes: waitNumber });
@@ -222,6 +240,60 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
         <summary className="cursor-pointer font-semibold">Opciones de la sala</summary>
         <div className="mt-3 flex flex-col gap-3">
           <div className="flex flex-col gap-1">
+            <label htmlFor="opt-mode" className="text-sm text-ec-muted">
+              Modo de juego
+            </label>
+            <select
+              id="opt-mode"
+              value={mode}
+              onChange={(e) => setMode(e.target.value === "turns" ? "turns" : "free")}
+              className={inputClass}
+            >
+              <option value="free">Libre: todos envían a la vez</option>
+              <option value="turns">Turnos: uno a la vez</option>
+            </select>
+          </div>
+          {mode === "turns" ? (
+            <>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="opt-order" className="text-sm text-ec-muted">
+                  Orden de los turnos
+                </label>
+                <select
+                  id="opt-order"
+                  value={turnOrder}
+                  onChange={(e) => setTurnOrder(e.target.value === "arrival" ? "arrival" : "random")}
+                  className={inputClass}
+                >
+                  <option value="random">Aleatorio</option>
+                  <option value="arrival">Orden de llegada</option>
+                </select>
+              </div>
+              <div className="flex flex-col gap-1">
+                <label htmlFor="opt-turn-seconds" className="text-sm text-ec-muted">
+                  Segundos para responder en cada turno
+                </label>
+                <input
+                  id="opt-turn-seconds"
+                  type="number"
+                  inputMode="numeric"
+                  min={MIN_TURN_SECONDS}
+                  max={MAX_TURN_SECONDS}
+                  value={turnSeconds}
+                  onChange={(e) => setTurnSeconds(e.target.value)}
+                  aria-invalid={!turnValid}
+                  className={inputClass}
+                />
+                {!turnValid ? (
+                  <p role="alert" className="text-sm text-red-400">
+                    Escribe un número de {MIN_TURN_SECONDS} a {MAX_TURN_SECONDS}.
+                  </p>
+                ) : null}
+              </div>
+            </>
+          ) : null}
+          {mode === "free" ? (
+          <div className="flex flex-col gap-1">
             <label htmlFor="opt-cooldown" className="text-sm text-ec-muted">
               Espera entre intentos de cada jugador (segundos)
             </label>
@@ -242,6 +314,7 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
               </p>
             ) : null}
           </div>
+          ) : null}
           <div className="flex flex-col gap-1">
             <label htmlFor="opt-wait" className="text-sm text-ec-muted">
               Minutos de sala de espera antes de empezar (0 = sin sala de espera)
@@ -266,7 +339,7 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
         </div>
       </details>
 
-      <button type="button" onClick={() => void onCreate()} disabled={!selected || pending || !cooldownValid || !waitValid} className={btnPrimary}>
+      <button type="button" onClick={() => void onCreate()} disabled={!selected || pending || !formOk} className={btnPrimary}>
         {pending ? "Creando..." : error ? "Reintentar" : "Crear sala"}
       </button>
     </div>

@@ -48,12 +48,14 @@ export async function GET(request: Request, context: { params: Promise<{ roomCod
     if (room.status !== "open") return respond(fail("ROOM_CLOSED", "Esta sala ya cerró."));
 
     const isAdmin = adminCookie !== undefined && verifyAdminCode(roomCode, normalizeCode(adminCookie), room.adminCodeHash);
-    const isPlayer = !isAdmin && playerHash !== null && (await findPlayerBySession(db, room.id, playerHash)) !== null;
-    if (!isAdmin && !isPlayer) {
+    const player = isAdmin || playerHash === null ? null : await findPlayerBySession(db, room.id, playerHash);
+    if (player?.kicked) return respond(fail("PLAYER_KICKED", "El administrador te expulsó de esta sala."));
+    if (!isAdmin && player === null) {
       return respond(fail("UNAUTHENTICATED", "Entra a la sala con tu apodo primero."));
     }
 
-    return respond(ok(await getFeed(db, room, query)));
+    // A player's read doubles as a presence ping in turn mode (the admin is never part of the queue).
+    return respond(ok(await getFeed(db, room, { ...query, viewerSessionHash: isAdmin ? null : playerHash })));
   } catch (err) {
     return respond(toFailure(err, requestId));
   }

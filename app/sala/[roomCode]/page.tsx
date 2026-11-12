@@ -20,6 +20,7 @@ type ScreenState =
   | { kind: "unavailable" }
   | { kind: "error" }
   | { kind: "join" }
+  | { kind: "kicked" }
   | { kind: "game"; nickname: string; feed: FeedSnapshot };
 
 // PROVISIONAL screen. The Designer replaces it at the end (see docs/CONTRACTS.md).
@@ -34,8 +35,10 @@ export default async function RoomPage({ params }: Props) {
       if (room && room.status === "open") {
         const hash = playerSessionHash(await cookies(), roomCode);
         const me = hash ? await findPlayerBySession(db, room.id, hash) : null;
-        if (me) {
-          const feed = await getFeed(db, room, { after: null, chatAfter: null, full: true });
+        if (me?.kicked) {
+          state = { kind: "kicked" };
+        } else if (me) {
+          const feed = await getFeed(db, room, { after: null, chatAfter: null, full: true, viewerSessionHash: hash });
           state = { kind: "game", nickname: me.nickname, feed };
         } else {
           state = { kind: "join" };
@@ -61,6 +64,13 @@ export default async function RoomPage({ params }: Props) {
           initial={state.feed}
           maxPlayers={MAX_PLAYERS_PER_ROOM}
         />
+      ) : state.kind === "kicked" ? (
+        <>
+          <h1 className="text-3xl font-bold text-ec-primary">Te expulsaron</h1>
+          <p role="alert" className="text-ec-muted">
+            El administrador te sacó de esta sala. Ya no puedes jugar ni escribir en ella.
+          </p>
+        </>
       ) : state.kind === "error" ? (
         <>
           <h1 className="text-3xl font-bold text-ec-primary">Sin conexión</h1>

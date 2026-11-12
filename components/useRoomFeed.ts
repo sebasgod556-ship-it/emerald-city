@@ -29,6 +29,12 @@ export type RoomFeedState = {
   status: RoomStatus;
   /** Seconds a player waits between attempts (follows the admin's changes). */
   cooldownSeconds: number;
+  /** free = everybody sends at once; turns = one player at a time. */
+  mode: "free" | "turns";
+  /** Turn mode: who has the turn and when it is skipped (server clock + this phone's offset), or null. */
+  turn: { nickname: string; deadlineMs: number; offsetMs: number } | null;
+  /** Nicknames that look disconnected (turn mode). */
+  awayPlayers: string[];
   /** Start deadline of the waiting room on the server's clock, plus how far the phone's clock is from it. */
   startsAt: { deadlineMs: number; offsetMs: number } | null;
   players: string[];
@@ -49,6 +55,8 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
   const [status, setStatus] = useState<RoomStatus>(initial.status);
   const [cooldownSeconds, setCooldownSeconds] = useState(initial.cooldownSeconds);
   const [startsAt, setStartsAt] = useState(() => toStartsAt(initial));
+  const [turn, setTurn] = useState(() => toTurn(initial));
+  const [awayPlayers, setAwayPlayers] = useState<string[]>(initial.awayPlayers ?? []);
   const [players, setPlayers] = useState(initial.players ?? []);
   const [unstable, setUnstable] = useState(false);
   const [halted, setHalted] = useState(false);
@@ -82,8 +90,8 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
       const url = `/api/rooms/${roomCode}/feed?after=${cursorRef.current}&chatAfter=${chatCursorRef.current}${withPlayers ? "&players=1" : ""}`;
       try {
         const res = await fetch(url, { cache: "no-store" });
-        if (res.status === 401 || res.status === 404 || res.status === 409) {
-          // Session lost or room closed: stop polling and let the server render the right screen.
+        if (res.status === 401 || res.status === 403 || res.status === 404 || res.status === 409) {
+          // Session lost, kicked out or room closed: stop polling and let the server render the right screen.
           if (!cancelled) router.refresh();
           return;
         }
@@ -121,6 +129,8 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
         setStatus(snapshot.status);
         setCooldownSeconds(snapshot.cooldownSeconds);
         setStartsAt(toStartsAt(snapshot));
+        setTurn(toTurn(snapshot));
+        if (snapshot.awayPlayers !== null) setAwayPlayers(snapshot.awayPlayers);
         schedule(snapshot.hasMore ? CATCH_UP_DELAY_MS : isFinished ? FINISHED_POLL_INTERVAL_MS : POLL_INTERVAL_MS);
       } catch {
         if (cancelled) return;
@@ -160,6 +170,9 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
     finished: status === "finished",
     status,
     cooldownSeconds,
+    mode: initial.mode,
+    turn,
+    awayPlayers,
     startsAt,
     players,
     unstable,
@@ -176,4 +189,14 @@ function toStartsAt(snapshot: FeedSnapshot): { deadlineMs: number; offsetMs: num
   const serverMs = Date.parse(snapshot.serverNow);
   if (Number.isNaN(deadlineMs) || Number.isNaN(serverMs)) return null;
   return { deadlineMs, offsetMs: serverMs - Date.now() };
+}
+
+/** Turn countdown on the server's clock, same idea as the waiting-room countdown. */
+function toTurn(snapshot: FeedSnapshot): { nickname: string; deadlineMs: number; offsetMs: number } | null {
+  if (snapshot.status !== "playing" || snapshot.turnNickname === null) return null;
+  if (snapshot.turnDeadlineAt === null || snapshot.serverNow === null) return null;
+  const deadlineMs = Date.parse(snapshot.turnDeadlineAt);
+  const serverMs = Date.parse(snapshot.serverNow);
+  if (Number.isNaN(deadlineMs) || Number.isNaN(serverMs)) return null;
+  return { nickname: snapshot.turnNickname, deadlineMs, offsetMs: serverMs - Date.now() };
 }

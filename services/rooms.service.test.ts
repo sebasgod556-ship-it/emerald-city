@@ -5,6 +5,9 @@ import { applyDueTimers, createRoom, findRoom, setAttemptCooldown, startRoom, ve
 
 type DbError = { code: string; message: string } | null;
 type Inserted = {
+  mode: string;
+  turn_order: string;
+  turn_seconds: number;
   room_code: string;
   admin_code_hash: string;
   secret_pokemon_id: number;
@@ -191,10 +194,65 @@ describe("startRoom / setAttemptCooldown / applyDueTimers", () => {
       phase: "waiting",
       startDeadlineAt: "2026-11-08T01:05:00Z",
       serverNow: "2026-11-08T01:00:00Z",
+      turnNickname: null,
+      turnDeadlineAt: null,
     });
     expect(await applyDueTimers(rpcDb({ data: [], error: null }).db, "room")).toBeNull();
     await expect(applyDueTimers(rpcDb({ data: null, error: { code: "XX000", message: "boom" } }).db, "room")).rejects.toMatchObject({
       code: "EXTERNAL_SERVICE_UNAVAILABLE",
+    });
+  });
+});
+
+describe("turn mode (Mode A)", () => {
+  it("rooms are free by default, with a random queue and 20 s per turn", async () => {
+    const inserted: Inserted[] = [];
+    await createRoom(insertDb([null], inserted), 25);
+    expect(inserted[0]).toMatchObject({ mode: "free", turn_order: "random", turn_seconds: 20 });
+  });
+
+  it("stores the admin's mode, order and seconds", async () => {
+    const inserted: Inserted[] = [];
+    await createRoom(insertDb([null], inserted), 25, { mode: "turns", turnOrder: "arrival", turnSeconds: 45 });
+    expect(inserted[0]).toMatchObject({ mode: "turns", turn_order: "arrival", turn_seconds: 45 });
+  });
+
+  it("findRoom maps the mode fields and defaults old rows to free", async () => {
+    const base = {
+      id: "00000000-0000-0000-0000-000000000000",
+      room_code: "ABC234",
+      admin_code_hash: "a".repeat(64),
+      secret_pokemon_id: 1,
+      status: "open",
+      created_at: "2026-11-02T00:00:00Z",
+    };
+    expect(await findRoom(selectDb({ ...base, mode: "turns", turn_order: "arrival", turn_seconds: 30 }), "ABC234")).toMatchObject({
+      mode: "turns",
+      turnOrder: "arrival",
+      turnSeconds: 30,
+    });
+    expect(await findRoom(selectDb(base), "ABC234")).toMatchObject({ mode: "free", turnOrder: "random", turnSeconds: 20 });
+  });
+
+  it("applyDueTimers returns who has the turn and until when", async () => {
+    const answer = rpcDb({
+      data: [
+        {
+          o_phase: "playing",
+          o_start_deadline_at: null,
+          o_server_now: "2026-11-08T01:00:00Z",
+          o_turn_nickname: "Beto",
+          o_turn_deadline_at: "2026-11-08T01:00:20Z",
+        },
+      ],
+      error: null,
+    });
+    expect(await applyDueTimers(answer.db, "room")).toEqual({
+      phase: "playing",
+      startDeadlineAt: null,
+      serverNow: "2026-11-08T01:00:00Z",
+      turnNickname: "Beto",
+      turnDeadlineAt: "2026-11-08T01:00:20Z",
     });
   });
 });
