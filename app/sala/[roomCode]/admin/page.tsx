@@ -96,7 +96,7 @@ export default async function AdminPage({ params }: Props) {
 
 function Shell({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center gap-4 p-6 text-center">
+    <main className="mx-auto flex flex-1 max-w-md flex-col items-center justify-center gap-4 p-6 text-center">
       <h1 className="text-3xl font-bold text-ec-primary">{title}</h1>
       {children}
       <Link href="/" className="text-ec-muted underline">

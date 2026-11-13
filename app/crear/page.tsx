@@ -18,7 +18,7 @@ export default async function CreateRoomPage() {
   }
 
   return (
-    <main className="mx-auto flex min-h-dvh max-w-md flex-col items-center gap-4 p-6">
+    <main className="mx-auto flex flex-1 max-w-md flex-col items-center gap-4 p-6">
       <h1 className="text-3xl font-bold text-ec-primary">Crear sala</h1>
       {names ? (
         <CreateRoomForm names={names} />

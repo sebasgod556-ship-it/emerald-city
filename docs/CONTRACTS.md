@@ -1,8 +1,8 @@
 # CONTRACTS — Emerald City
 
-**contract-v0.13** · **backend-v0.12** · diseño: ninguna entrega todavía (interfaz provisional) · **Fase 1 completa. Fase 2: Pasos 7+8 y 9+10 probados por el cliente en Producción; Pasos 11+12 ENTREGADOS en el código, con la migración ya pegada por el cliente y la verificación por simulación pendiente (ver sección 11 y 17). Este proyecto se va a UNIR con otro proyecto existente: sección 18**
+**contract-v0.15** · **backend-v0.13** · diseño: ninguna entrega todavía (interfaz provisional) · **Fase 1 completa. Fase 2 completa en código: Pasos 7 a 12 verificados en la base y Paso 13 (aviso legal, provisional) entregado; falta la prueba del cliente en teléfonos de los Pasos 11+12 y pegar 5 simulaciones extra. Fase 3: alcance del bloque 1 propuesto. Proyecto a UNIR con otro: sección 18**
 
-> Contrato compartido entre Programador, Diseñador e Integrador. Lo mantiene el Programador. El Diseñador aporta la tabla de nombres; el Integrador solo lee y audita.
+> Fusiona el contract-v0.14 (que el cliente pegó; el archivo del repo era el v0.13) con el Paso 13 y las simulaciones extra. No inventar nada que no esté aquí; lo no verificado está marcado como tal.
 > Fusiona el contract-v0.12 con los Pasos 11+12 (Modo A por turnos, presencia/reconexión y expulsar). Por petición del cliente la Fase 2 se entrega en bloques: 7+8, 9+10, 11+12. No inventar nada que no esté aquí; lo no verificado está marcado como tal.
 
 ## 1. Respuestas del proyecto
@@ -63,6 +63,7 @@ Interfaz **provisional**: el Diseñador entra al final y reconcilia con esta tab
 |---|---|---|
 | Página principal (con espacio de logo) | `app/page.tsx` | provisional |
 | Layout raíz | `app/layout.tsx` | provisional |
+| Aviso legal del pie de página — **nuevo Paso 13** | `components/LegalFooter.tsx` (usado en `app/layout.tsx`) | provisional (redacción por aprobar) |
 | Pantalla Crear sala | `app/crear/page.tsx` + `components/RoomForms.tsx` (CreateRoomForm) | provisional |
 | Botón Unirme a una sala | `components/RoomForms.tsx` (JoinRoomForm) | provisional |
 | Pantalla de sala (jugadores): entrar / jugar / no disponible / sin conexión | `app/sala/[roomCode]/page.tsx` | provisional |
@@ -302,7 +303,9 @@ Migraciones (cada una con rollback documentado):
 | **Simulación de 10 partidas con los Pasos 7+8 (7-nov-2026)** | **Ejecutada** contra la base de pruebas en una transacción que se revirtió sola (comprobado después: 0 jugadores, 0 intentos, 0 mensajes de más). Por partida: secreto al azar (incluye formas regionales), 6 jugadores, 5 intentos con pista comparada contra un cálculo independiente (uno repetido a propósito: `was_tried` correcto), ganador, tabla de pistas igual a un cálculo independiente y sin ❄️, chat de los 6 jugadores y del admin, límite de 10 mensajes por minuto (exactamente 9 más aceptados tras el primero), chat que sigue funcionando con la partida terminada, intento rechazado tras ganar, cierre que borra intentos, jugadores y chat (incluido el del admin), rechazo de intento, chat y chat de admin tras cerrar, y segundo cierre en falso. **290 comprobaciones, 0 fallos.** No cubre la capa web ni la simultaneidad real de varios teléfonos |
 | pgTAP Pasos 9+10 (`wait_room_cooldown.test.sql`, 32 pruebas) | escritas, **NO ejecutadas como pgTAP** |
 | pgTAP Pasos 11+12 (`turns_kick.test.sql`, 28 pruebas) | escritas, **NO ejecutadas** (falta la migración en la base y el entorno no corre `supabase test db`) |
-| **Simulación Pasos 11+12** (`turns_kick_simulation_1.sql`, `_2.sql` y `_3.sql`, 5 partidas) | **NO ejecutada todavía** (el primer intento con un archivo único falló porque el editor lo cortó). Son 3 pegados cortos en el SQL Editor (el editor cortó el archivo largo de una sola pieza) y cada uno termina con un error intencional que revierte todo; el último renglón debe decir `FAILS 0`. Cubre: turnos por llegada hasta un ganador, orden aleatorio con sala de espera, plazos vencidos y desconectados, expulsar y el tope de 100, y el modo libre sin cambios |
+| **Simulación Pasos 11+12** (`turns_kick_simulation_1.sql`, `_2.sql` y `_3.sql`, 5 partidas) | **Ejecutada por el cliente en el SQL Editor** (10 y 11-nov-2026) contra la base de pruebas, ya con la migración aplicada: **las tres partes terminaron con `FAILS 0`**. No cubre concurrencia real, teléfonos ni pantallas |
+| **Simulaciones extra Pasos 11+12** (`turns_kick_extra_1.sql` a `_5.sql`, 10 escenarios S1 a S10: un solo jugador, expulsar al único y que entre otro, sala que arranca con 0 jugadores, expulsar al último de la cola con el turno, desconectado que vuelve a tiempo, plazos vencidos sin lecturas, turnos de 5 y 120 s, 100 jugadores girando, ganador y sala terminada, chat/presencia con expulsados y desconectados en modo libre y turnos) | escritas el 12-nov-2026 y revisadas a mano; **NO ejecutadas** (sin Postgres local; la herramienta del Programador solo hace lecturas). Las pega el cliente; el resultado se anota aquí |
+| Estado de la base comprobado por lectura (12-nov-2026) | `submit_attempt` y `post_chat_message` desplegadas con la lógica de turnos y expulsión; las 5 funciones de turnos/presencia existen; 0 salas abiertas, 0 jugadores |
 | Vitest Pasos 11+12 | pruebas nuevas o actualizadas en `lib/validation/rooms.test.ts`, `lib/feed-parse.test.ts`, `services/rooms.service.test.ts`, `services/players.service.test.ts`, `services/attempts.service.test.ts`, `services/chat.service.test.ts` y `services/feed.service.test.ts`: **NO ejecutadas** (sin `node_modules` ni red). Comando: `npm test` |
 | **Comprobaciones SQL de los Pasos 9+10 (38)** | **Ejecutadas** contra la base de pruebas (8-nov-2026) en una transacción que se revirtió sola: valores por defecto, restricciones, `not_started`, `not_player` antes que `not_started`, `apply_due_timers` (sin vencer, vencido, repetido, sala inexistente o cerrada), inicio por primer intento vencido, `start_room`, espera de 3 s con `retry_after`, cambiar la espera y esperar 1,2 s, rangos, chat en espera, `close_room` en espera, permisos. **38 de 38 pasaron.** No cubren concurrencia real (100 lecturas a la vez del mismo plazo) |
 | Vitest Pasos 9+10 | pruebas nuevas o actualizadas en `lib/validation/rooms.test.ts`, `lib/feed-parse.test.ts`, `services/rooms.service.test.ts`, `services/attempts.service.test.ts` y `services/feed.service.test.ts`: **NO ejecutadas** (el entorno del Programador no tiene `node_modules` ni red). Comando: `npm test` |
@@ -386,6 +389,8 @@ El reloj vive en la base de datos, no en un proceso: cada plazo es una columna `
 - Para el Integrador (Fase 3): proteger `main` con checks, crear el Upstash definitivo, medir cuántos jugadores totales aguanta el proyecto, reconfirmar el límite de invocaciones de Vercel Hobby.
 - Para el cliente: logo y HEX; revisar nombres en español de las generaciones 3 a 8; decidir los nombres de los 3 Tauros de Paldea.
 - Salas de prueba abiertas (5 al 5-nov-2026 por la consulta del Programador) ocupan cupo de las 10 hasta el Paso 6 o 24 horas.
+- **Aviso legal (Paso 13)**: entregado como `LegalFooter` (provisional). El cliente aprueba o cambia la redacción.
+- Riesgo a medir en la prueba de carga: en salas de turnos cada lectura del feed llama a `apply_due_timers`, que bloquea la fila de la sala un instante; con 100 jugadores sondeando cada 2 s son ~50 bloqueos por segundo en esa sala.
 
 ## 15. Incidente resuelto (lección)
 
@@ -396,9 +401,11 @@ El 4-nov-2026, "Crear sala" en Producción respondía "El servicio no está disp
 | Entrega | Versión |
 |---|---|
 | Diseño | ninguna (interfaz provisional) |
-| Backend | backend-v0.12 |
-| Contrato | contract-v0.13 |
+| Backend | backend-v0.13 |
+| Contrato | contract-v0.15 |
 
+- **backend-v0.13 / contract-v0.15**: Paso 13 (aviso legal provisional en el pie de todas las páginas, `components/LegalFooter.tsx`; el layout pasa a columna para que el pie quede abajo y las 4 páginas usan `flex-1` en vez de `min-h-dvh`) y 5 archivos de simulación extra (`supabase/tests/turns_kick_extra_*.sql`). Sin cambios de base de datos ni de contratos de API.
+- **contract-v0.14** (sin cambio de código): migración de los Pasos 11+12 aplicada por el cliente y verificada (FAILS 0 en las 3 simulaciones); mapa de fases; limpieza de pendientes.
 - **backend-v0.12 / contract-v0.13**: Pasos 11+12 (juntos). Modo A (turnos): `rooms.mode`, `turn_order`, `turn_seconds`, `turn_seq`, `turn_player_id`, `turn_deadline_at`; cola con `players.turn_rank`; los plazos de turno los aplica `apply_due_timers` (reemplazada) bajo el bloqueo de la sala, sin `pg_cron`. Presencia: `touch_player`, 30 s = desconectado. Expulsar: `players.kicked_at`, `kick_player`, `kickPlayerAction`, pantalla "Te expulsaron". Códigos `NOT_YOUR_TURN` y `PLAYER_KICKED`. Opciones de modo al crear la sala; `TurnBanner`; lista del admin con "desconectado" y Expulsar. Sin tope global de 60 ni `nextPollMs` (decisión del cliente). **La migración ya está pegada; falta la simulación.**
 - **contract-v0.12** (sin cambio de código): Pasos 9+10 confirmados por el cliente en Producción. Se agrega la sección 18 (unión con otro proyecto existente): ficha de lo que este proyecto ocupa, riesgos de choque, modos de unión y preguntas abiertas. El Brief la completa y adapta el contrato antes de enviarlo.
 - **backend-v0.10 / contract-v0.11**: Pasos 9+10 (juntos). Columnas `rooms.attempt_cooldown_seconds`, `phase`, `start_deadline_at`; funciones `apply_due_timers`, `start_room`, `set_attempt_cooldown`; `submit_attempt` reemplazada (`not_started`, `o_retry_after`); código `ROOM_NOT_STARTED`; opciones al crear la sala; `startRoomAction`, `updateCooldownAction`; `WaitingRoom`, `StartRoomButton`, `CooldownControl`; el feed trae `status: waiting`, `cooldownSeconds`, `startDeadlineAt`, `serverNow`. Se quitan `list_clues` y `find_previous_attempt`. Sin `nextPollMs` ni tope global de 60 jugadores (decisión del cliente: más adelante).
@@ -413,45 +420,48 @@ El 4-nov-2026, "Crear sala" en Producción respondía "El servicio no está disp
 - **v0.2**: Paso 2. `pokemon` (1082), `pokemon_names`, `normalize_name`, RLS.
 - **v0.1**: Paso 1. Sitio base y `/api/health`.
 
-## 17. Para retomar en otro chat (arranque de los Pasos 11+12)
+## 17. Para retomar en otro chat
 
-**Estado del proyecto**
-- Fase 1 (Pasos 1 a 6) cerrada y probada por el cliente en Producción. Pasos 7+8 probados por el cliente ("funciona bien").
-- Pasos 9+10: probados por el cliente en Producción ("funcionó bien") y verificados antes por el Programador (38 comprobaciones SQL y 5 partidas simuladas, 66 comprobaciones, 0 fallos).
-- **Pasos 11+12: código entregado; migración `20261108120000_turns_presence_kick` ya pegada** (antes de subir el código, porque sin las columnas nuevas crear salas falla). Falta: pegar `supabase/tests/turns_kick_simulation_1.sql, _2.sql y _3.sql` y comprobar `FAILS 0`, y recién entonces probar en Producción.
-- Siguiente: **Fase 3** (pistas automáticas, poderes del admin, filtro de chat, cierre de sala vacía con `pg_cron`, `/api/health` programado, CI/CD y prueba de carga), según el brief, cuando el cliente confirme los Pasos 11+12. **Aparte:** unión con otro proyecto (sección 18).
+**Mapa de fases (brief v1.8 contra lo hecho, al 12-nov-2026)**
 
-**Decisiones del cliente en los Pasos 9+10 (no repetir)**
-- Espera entre intentos por defecto 3 s (1 a 120). Sala de espera opcional, 5 min por defecto, 0 = sin sala de espera. Vence con 0 jugadores: pasa a `playing`. Sin `pg_cron` en este bloque. Tope global de 60 jugadores y `nextPollMs`: fuera de este bloque (hacerlo con el Paso 12 o antes de la prueba de carga). La sección 13 sigue vigente para ellos.
-- Pendiente de la sección 13: `pg_cron` disponible (v1.6.4) pero NO habilitado; para el cierre de salas vacías (Fase 3).
+| Fase / paso | Qué | Estado |
+|---|---|---|
+| 1 · Pasos 1 a 6 | Sitio, Pokémon, crear sala y código de admin, entrar como jugador, jugar en modo libre, cerrar sala | **Cerrada y probada por el cliente** |
+| 2 · Pasos 7 a 10 | Pistas laterales, aviso de repetido, chat, espera entre intentos, sala de espera | **Probados por el cliente** |
+| 2 · Pasos 11+12 | Modo A (turnos), reconexión, expulsar | Entregados, **base verificada (FAILS 0)**; **falta la prueba del cliente en teléfonos**. Además 5 archivos de simulación extra escritos (`turns_kick_extra_1..5.sql`, 10 escenarios), **pendientes de pegar** |
+| 2 · Paso 13 | Aviso legal en el pie de página | **Entregado (provisional)**; el cliente aprueba la redacción |
+| 3 | Pistas automáticas; pausar, saltar turno, silenciar, cambiar secreto y reiniciar; filtro de groserías y límite de chat personalizables; cierre de sala vacía a los 5 min (`pg_cron`); tarea contra `/api/health`; CI/CD y prueba de carga (Integrador); guía del admin; Diseñador con logo y HEX; revisión de nombres de generaciones 3 a 8 | **Bloque 1 (pistas automáticas + poderes del admin): alcance propuesto, esperando respuestas del cliente.** El resto sin empezar |
+| Aparte | Unión con otro proyecto (sección 18) | El cliente aún no da datos; lo completa el Brief |
 
+**Decisiones del cliente que no se repiten**
+- Espera entre intentos por defecto 3 s (1 a 120). Sala de espera opcional, 5 min por defecto, 0 = sin sala de espera; si vence con 0 jugadores, pasa a `playing`.
+- Modo de juego (Libre o Turnos) solo al crear la sala. Turnos: 20 s por defecto (5 a 120), orden aleatorio o por llegada, un intento por turno, el turno pasa al instante, quien entra tarde va al final de la cola, sin espera entre intentos en turnos.
+- Desconectado = 30 s sin señal. Expulsar es definitivo en esa sala, se conservan sus intentos y el bloqueo es por dispositivo (cookie).
+- Sin `pg_cron` hasta la Fase 3 (disponible, v1.6.4, **no** habilitado).
+- El tope global de 60 jugadores y `nextPollMs` quedaron fuera de los Pasos 9 a 12: hacerlos **antes de la prueba de carga**.
 
 **Reglas de trabajo**
-- Un bloque a la vez, con "Cómo sé que funcionó" y "Qué haces tú ahora". No se empieza el siguiente sin confirmación del cliente.
-- Un ZIP del repo completo y **un solo commit en inglés** por bloque (Conventional Commits). El ZIP no borra archivos: si se elimina alguno, avisar qué borrar a mano.
-- Explicaciones en español; código, commits y comentarios en inglés. Lenguaje sencillo para el cliente (no técnico).
-- El Programador no puede leer el repo desde el chat: pedir el ZIP completo (sin `node_modules`, `.next` ni `.env.local`). El ZIP del cliente puede no traer archivos que empiezan con punto: `.env.example` y `.gitignore` ya se agregaron en el Paso 5.
-- Se prueba siempre en la dirección de Producción de Vercel. El cliente no puede instalar Node.js: tipos, lint y build los da el despliegue de Vercel (pedirle el estado Ready).
-- Conexión al Supabase de **pruebas** (ref `hizsxxuipewlwbjbwzic`). No pedir conexión al definitivo.
+- Un bloque a la vez, con "Cómo sé que funcionó" y "Qué haces tú ahora". Un ZIP del repo completo y **un solo commit en inglés** por bloque (Conventional Commits). El ZIP no borra archivos: si se elimina alguno, avisar qué borrar a mano.
+- Explicaciones en español; código, commits y comentarios en inglés. Lenguaje sencillo para el cliente.
+- El Programador no puede leer el repo desde el chat: pedir el ZIP completo (sin `node_modules`, `.next` ni `.env.local`). Se prueba siempre en Producción de Vercel; tipos, lint y build los da el despliegue (pedir el estado Ready).
+- Conexión solo al Supabase de **pruebas** (ref `hizsxxuipewlwbjbwzic`). Jamás la base definitiva.
 
 **Trucos aprendidos (herramienta de Supabase y entorno)**
-- `apply_migration` funciona sin confirmación para `create`/`alter`/`revoke`/`grant`. **Pide confirmación y el cliente de ese chat la cancela** si el SQL contiene `delete`, `update` sin más, `create extension`, etc.: en ese caso, entregar el SQL como archivo para que el cliente lo pegue en el SQL Editor, y no rodear la confirmación.
-- Cada migración aplicada con `apply_migration` recibe su propia versión (leerla con `list_migrations` y nombrar el archivo del repo igual).
-- Para probar sin dejar rastro: un bloque `do $do$ ... raise exception E'REPORT\n%', informe; end $do$;` con funciones temporales en `pg_temp` y sin `delete`/`update`/`create extension` en el texto (las funciones que se prueban sí pueden borrar por dentro). Las simulaciones de 10 partidas siguen este patrón.
-- pgTAP real no se pudo ejecutar (no se puede crear la extensión desde esa herramienta): las pruebas `.test.sql` quedan escritas para `supabase test db`.
-- Verificación local en el entorno del Programador: `tsc` con declaraciones de reemplazo y un sustituto mínimo de Vitest con `zod/v4` (ver sección 11); no hay Node de verdad ni red.
-- Respuestas de funciones de la base: nombres de salida con prefijo `o_` para no chocar con columnas; resultado como `outcome` + datos; el servicio traduce a códigos de error.
+- `apply_migration` y `execute_sql` con `create/alter/revoke/grant` funcionan; con `delete`, `update`, `drop`, `create extension` el cliente de ese chat cancela la confirmación. Entonces: SQL como archivo, el cliente lo pega en el SQL Editor y el Programador comprueba **solo con lecturas** (`information_schema`, `pg_proc`, `has_function_privilege`).
+- **SQL Editor:** (1) partir las simulaciones en archivos de ~8 KB; (2) evitar `select ... into variable`: usar `variable := (select ...)`; (3) en `plpgsql` evitar `perform expr from ...`: usar un bucle `for t in select unnest(...) loop`; (4) si pregunta por Row Level Security, ejecutar sin activarlo; (5) comprobar con Ctrl+F que lo pegado es la versión nueva.
+- **Patrón de simulación:** `pg_temp.ck(juego, ok, nombre, obtenido)` acumula con `set_config` (`sim.total`, `sim.fails`, `sim.rep`), un bloque `do` juega y un `raise exception` final con el resumen; todo se revierte solo. Ejemplos: `supabase/tests/turns_kick_simulation_*.sql` y `turns_kick_extra_*.sql` (estos agregan ayudantes `pg_temp.cur/snd/sq/late/away/add/hsh`).
+- Dentro de una simulación `now()` es el inicio de la transacción y `clock_timestamp()` avanza: el valor por defecto de `last_seen_at` envejece durante el script (30 s = desconectado).
+- Cada migración aplicada con `apply_migration` recibe su propia versión (leerla con `list_migrations`). pgTAP real no se pudo ejecutar desde esa herramienta.
+- Funciones de la base: salidas con prefijo `o_`; resultado como `outcome` + datos; el servicio traduce a códigos de error.
 
-**Archivos que el Programador necesita:** lo más simple, el ZIP completo del repo actual (sin `node_modules`, `.next` ni `.env.local`) y el BRIEF v1.8. Los archivos más relevantes para 9+10: `supabase/migrations/*`, `services/rooms.service.ts`, `services/attempts.service.ts`, `services/feed.service.ts`, `app/actions/rooms.ts`, `app/actions/attempts.ts`, `app/api/rooms/[roomCode]/feed/route.ts`, `components/useRoomFeed.ts`, `components/GameRoom.tsx`, `components/RoomForms.tsx`, `app/crear/page.tsx`, `app/sala/[roomCode]/page.tsx`, `app/sala/[roomCode]/admin/page.tsx`, `lib/validation/rooms.ts`, `lib/result.ts`.
-
-**Conexiones necesarias en el chat:** Supabase (proyecto de pruebas) y, opcional pero útil, Vercel para leer los registros si algo falla.
+**Archivos que el Programador necesita:** el ZIP completo del repo, `docs/CONTRACTS.md` y el BRIEF v1.8.
 
 **Pendientes abiertos que arrastra el nuevo chat**
-- Confirmación del cliente de los Pasos 7+8 en Producción.
-- Migración ajena `20261107033549_create_clue_functions` (`find_previous_attempt`, `list_clues`): sigue en la base; averiguar quién la aplicó (sección 14).
-- pgTAP real pendiente (Integrador, Fase 3).
-- Tope de 100 jugadores y concurrencia real: sin probar hasta la prueba de carga.
-
+- Pegar las 5 simulaciones extra y pasar las últimas líneas (Parte A).
+- Prueba del cliente en teléfonos de los Pasos 11+12 y aprobación del texto legal.
+- pgTAP real pendiente (Integrador): varios `.test.sql` escritos y ninguno ejecutado con `supabase test db`.
+- Tope de 100 jugadores, tope global de 60 y concurrencia real (muchas lecturas a la vez; `apply_due_timers` toma un bloqueo de la sala en cada lectura de una sala de turnos): sin probar hasta la prueba de carga.
+- Unión con otro proyecto (sección 18).
 
 ## 18. Unión con otro proyecto existente
 
