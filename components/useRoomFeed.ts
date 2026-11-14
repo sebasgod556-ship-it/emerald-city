@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { parseFeed } from "../lib/feed-parse";
 import { hintsFromAttempts, mergeHints } from "../lib/feed-hints";
-import type { ChatMessage, FeedAttempt, FeedSnapshot, HintEntry, RoomStatus } from "../lib/feed-types";
+import type { ChatMessage, Clue, FeedAttempt, FeedSnapshot, HintEntry, RoomStatus } from "../lib/feed-types";
 
 // Polling (not Realtime) on purpose in Step 5: it needs no login and spends none of the 100 messages/second
 // budget. This hook is the ONLY place that reads the feed, so moving to batched Realtime later
@@ -25,7 +25,7 @@ export type RoomFeedState = {
   /** Every non-cold Pokémon tried in the room (side table). Grows live and is completed every ~10 s. */
   hints: HintEntry[];
   finished: boolean;
-  /** waiting = lobby, playing = attempts accepted, finished = somebody guessed the secret. */
+  /** waiting = lobby, playing = attempts accepted, paused = the admin paused the game, finished = somebody guessed the secret. */
   status: RoomStatus;
   /** Seconds a player waits between attempts (follows the admin's changes). */
   cooldownSeconds: number;
@@ -35,6 +35,10 @@ export type RoomFeedState = {
   turn: { nickname: string; deadlineMs: number; offsetMs: number } | null;
   /** Nicknames that look disconnected (turn mode). */
   awayPlayers: string[];
+  /** Nicknames the admin muted (only filled for the admin). */
+  mutedPlayers: string[];
+  /** Automatic clues revealed so far, oldest first. */
+  clues: Clue[];
   /** Start deadline of the waiting room on the server's clock, plus how far the phone's clock is from it. */
   startsAt: { deadlineMs: number; offsetMs: number } | null;
   players: string[];
@@ -57,6 +61,8 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
   const [startsAt, setStartsAt] = useState(() => toStartsAt(initial));
   const [turn, setTurn] = useState(() => toTurn(initial));
   const [awayPlayers, setAwayPlayers] = useState<string[]>(initial.awayPlayers ?? []);
+  const [mutedPlayers, setMutedPlayers] = useState<string[]>(initial.mutedPlayers ?? []);
+  const [clues, setClues] = useState<Clue[]>(initial.clues ?? []);
   const [players, setPlayers] = useState(initial.players ?? []);
   const [unstable, setUnstable] = useState(false);
   const [halted, setHalted] = useState(false);
@@ -66,6 +72,7 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
   const finishedRef = useRef(initial.status === "finished");
   const waitingRef = useRef(initial.status === "waiting");
   const pollCountRef = useRef(0);
+  const roundRef = useRef(initial.round);
 
   useEffect(() => {
     if (halted) return;
@@ -101,6 +108,14 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
 
         failures = 0;
         setUnstable(false);
+        if (snapshot.round !== roundRef.current) {
+          // The admin changed the secret and restarted: forget the old round before adding the new items.
+          roundRef.current = snapshot.round;
+          setAttempts([]);
+          setChat([]);
+          setHints([]);
+          setClues([]);
+        }
         if (snapshot.attempts.length > 0) {
           cursorRef.current = Math.max(cursorRef.current, snapshot.cursor);
           setAttempts((previous) => {
@@ -131,6 +146,8 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
         setStartsAt(toStartsAt(snapshot));
         setTurn(toTurn(snapshot));
         if (snapshot.awayPlayers !== null) setAwayPlayers(snapshot.awayPlayers);
+        if (snapshot.mutedPlayers !== null) setMutedPlayers(snapshot.mutedPlayers);
+        if (snapshot.clues !== null) setClues(snapshot.clues); // null = not asked: keep the ones we have
         schedule(snapshot.hasMore ? CATCH_UP_DELAY_MS : isFinished ? FINISHED_POLL_INTERVAL_MS : POLL_INTERVAL_MS);
       } catch {
         if (cancelled) return;
@@ -173,6 +190,8 @@ export function useRoomFeed(roomCode: string, initial: FeedSnapshot): RoomFeedSt
     mode: initial.mode,
     turn,
     awayPlayers,
+    mutedPlayers,
+    clues,
     startsAt,
     players,
     unstable,

@@ -15,7 +15,7 @@ const chatRowSchema = z.object({
 });
 
 const postRowSchema = z.object({
-  o_outcome: z.enum(["ok", "unknown_room", "room_closed", "not_player", "kicked", "invalid", "rate_limited"]),
+  o_outcome: z.enum(["ok", "unknown_room", "room_closed", "not_player", "kicked", "muted", "invalid", "rate_limited"]),
   o_id: z.number().int().nullable(),
 });
 
@@ -44,6 +44,8 @@ function interpret(data: unknown, error: { code: string; message: string } | nul
       throw new AppError("UNAUTHENTICATED", "Entra a la sala con tu apodo primero.");
     case "kicked":
       throw new AppError("PLAYER_KICKED", "El administrador te expulsó de esta sala.");
+    case "muted":
+      throw new AppError("PLAYER_MUTED", "El administrador te silenció: ya no puedes escribir en el chat.");
     case "invalid":
       throw new AppError("VALIDATION_ERROR", "Escribe un mensaje de 1 a 200 caracteres.");
     case "rate_limited":

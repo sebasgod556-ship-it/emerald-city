@@ -1,4 +1,4 @@
-import type { ChatMessage, FeedAttempt, FeedSnapshot, HintEntry, HintResult } from "./feed-types";
+import type { ChatMessage, Clue, FeedAttempt, FeedSnapshot, HintEntry, HintResult } from "./feed-types";
 
 // Hand-written on purpose (no Zod) so the browser bundle stays small. Returns null for anything unexpected.
 const RESULTS: readonly string[] = ["fire", "warm", "cold"];
@@ -25,6 +25,13 @@ function parseChat(item: unknown): ChatMessage | null {
   return { id, nickname, body, isAdmin };
 }
 
+function parseClue(item: unknown): Clue | null {
+  if (!isRecord(item)) return null;
+  const { kind, value } = item;
+  if ((kind !== "type" && kind !== "generation") || typeof value !== "string") return null;
+  return { kind, value };
+}
+
 function parseHint(item: unknown): HintEntry | null {
   if (!isRecord(item)) return null;
   const { pokemon, result } = item;
@@ -37,8 +44,9 @@ export function parseFeed(body: unknown): FeedSnapshot | null {
   if (!isRecord(body) || !isRecord(body.data)) return null;
   const { status, attempts, cursor, hasMore, players, chat, chatCursor, hints, cooldownSeconds, startDeadlineAt, serverNow } =
     body.data;
-  const { mode, turnNickname, turnDeadlineAt, awayPlayers } = body.data;
-  if (status !== "waiting" && status !== "playing" && status !== "finished") return null;
+  const { mode, turnNickname, turnDeadlineAt, awayPlayers, clues, mutedPlayers, round } = body.data;
+  if (round !== undefined && (typeof round !== "number" || !Number.isInteger(round))) return null;
+  if (status !== "waiting" && status !== "playing" && status !== "paused" && status !== "finished") return null;
   // Tolerant on purpose: a phone that loaded the old page can read an answer from the new server and the other way round.
   if (cooldownSeconds !== undefined && typeof cooldownSeconds !== "number") return null;
   if (startDeadlineAt !== undefined && startDeadlineAt !== null && typeof startDeadlineAt !== "string") return null;
@@ -48,6 +56,19 @@ export function parseFeed(body: unknown): FeedSnapshot | null {
   if (turnDeadlineAt !== undefined && turnDeadlineAt !== null && typeof turnDeadlineAt !== "string") return null;
   if (awayPlayers !== undefined && awayPlayers !== null && !(Array.isArray(awayPlayers) && awayPlayers.every((n) => typeof n === "string"))) {
     return null;
+  }
+  if (mutedPlayers !== undefined && mutedPlayers !== null && !(Array.isArray(mutedPlayers) && mutedPlayers.every((n) => typeof n === "string"))) {
+    return null;
+  }
+  let clueList: Clue[] | null = null;
+  if (clues !== undefined && clues !== null) {
+    if (!Array.isArray(clues)) return null;
+    clueList = [];
+    for (const item of clues as unknown[]) {
+      const clue = parseClue(item);
+      if (clue === null) return null;
+      clueList.push(clue);
+    }
   }
   if (!Array.isArray(attempts)) return null;
   if (typeof cursor !== "number" || typeof hasMore !== "boolean") return null;
@@ -99,6 +120,9 @@ export function parseFeed(body: unknown): FeedSnapshot | null {
     hints: hintList,
     players: nicknames,
     awayPlayers: (awayPlayers as string[] | null | undefined) ?? null,
+    round: (round as number | undefined) ?? 1,
+    clues: clueList,
+    mutedPlayers: (mutedPlayers as string[] | null | undefined) ?? null,
   };
 }
 

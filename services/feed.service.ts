@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { FeedSnapshot, RoomStatus } from "../lib/feed-types";
+import type { Clue, FeedSnapshot, RoomStatus } from "../lib/feed-types";
 import { listAttempts, listHints } from "./attempts.service";
 import { listChat } from "./chat.service";
 import { listPlayers, touchPlayer } from "./players.service";
@@ -17,11 +17,21 @@ export async function getFeed(
   room: {
     id: string;
     finishedAt: string | null;
-    phase: "waiting" | "playing";
+    phase: "waiting" | "playing" | "paused";
     attemptCooldownSeconds: number;
     mode: "free" | "turns";
+    clueMax: number;
+    cluesRevealed: number;
+    roundNo: number;
   },
-  options: { after: number | null; chatAfter: number | null; full: boolean; viewerSessionHash?: string | null },
+  options: {
+    after: number | null;
+    chatAfter: number | null;
+    full: boolean;
+    viewerSessionHash?: string | null;
+    /** The admin also gets the list of muted players. */
+    viewerIsAdmin?: boolean;
+  },
 ): Promise<FeedSnapshot> {
   // Once per full refresh (~10 s): the database accepts a ping every 10 s per player and counts "away" after 30 s.
   if (room.mode === "turns" && options.full && options.viewerSessionHash) {
@@ -32,7 +42,10 @@ export async function getFeed(
   let serverNow: string | null = null;
   let turnNickname: string | null = null;
   let turnDeadlineAt: string | null = null;
-  if ((phase === "waiting" || room.mode === "turns") && room.finishedAt === null) {
+  let clues: Clue[] | null = null;
+  // Timers (start of the game, turns, automatic clues) are applied by the database on the reads of rooms that have any.
+  const hasTimers = phase === "waiting" || phase === "paused" || room.mode === "turns" || room.clueMax > 0 || room.cluesRevealed > 0;
+  if (hasTimers && room.finishedAt === null) {
     const timers = await applyDueTimers(db, room.id);
     if (timers !== null) {
       phase = timers.phase;
@@ -40,9 +53,10 @@ export async function getFeed(
       if (phase === "waiting" || timers.turnDeadlineAt !== null) serverNow = timers.serverNow;
       turnNickname = timers.turnNickname;
       turnDeadlineAt = timers.turnDeadlineAt;
+      clues = timers.clues;
     }
   }
-  const status: RoomStatus = room.finishedAt !== null ? "finished" : phase === "waiting" ? "waiting" : "playing";
+  const status: RoomStatus = room.finishedAt !== null ? "finished" : phase;
 
   const [attemptsPage, chatPage, hints, players] = await Promise.all([
     listAttempts(db, room.id, options.after),
@@ -68,5 +82,8 @@ export async function getFeed(
     hints,
     players: players === null ? null : players.map((p) => p.nickname),
     awayPlayers: players === null ? null : players.filter((p) => p.away).map((p) => p.nickname),
+    round: room.roundNo,
+    clues,
+    mutedPlayers: players === null || options.viewerIsAdmin !== true ? null : players.filter((p) => p.muted).map((p) => p.nickname),
   };
 }

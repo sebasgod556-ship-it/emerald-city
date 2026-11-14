@@ -11,15 +11,26 @@ import {
   createRoomInputSchema,
   kickPlayerInputSchema,
   loginAdminInputSchema,
+  mutePlayerInputSchema,
+  pauseRoomInputSchema,
+  resetRoomInputSchema,
+  resumeRoomInputSchema,
+  skipTurnInputSchema,
   startRoomInputSchema,
+  updateClueSettingsInputSchema,
   updateCooldownInputSchema,
 } from "../../lib/validation/rooms";
-import { kickPlayer } from "../../services/players.service";
+import { kickPlayer, setPlayerMuted } from "../../services/players.service";
 import {
   closeRoom,
   createRoom,
   findRoom,
+  pauseRoom,
+  resetRoom,
+  resumeRoom,
   setAttemptCooldown,
+  setClueSettings,
+  skipTurn,
   startRoom,
   verifyAdmin,
   type Room,
@@ -48,7 +59,7 @@ export async function createRoomAction(input: unknown): Promise<Result<{ roomCod
   try {
     const parsed = createRoomInputSchema.safeParse(input);
     if (!parsed.success) {
-      return fail("VALIDATION_ERROR", "Revisa los datos: elige un Pokémon, una espera de 1 a 120 segundos, de 0 a 60 minutos de sala de espera y de 5 a 120 segundos por turno.");
+      return fail("VALIDATION_ERROR", "Revisa los datos: elige un Pokémon, una espera de 1 a 120 segundos, de 0 a 60 minutos de sala de espera y de 5 a 120 segundos por turno y pistas de 0 a 5 cada 15 a 300 segundos.");
     }
 
     const db = createServiceClient();
@@ -61,6 +72,8 @@ export async function createRoomAction(input: unknown): Promise<Result<{ roomCod
       mode: parsed.data.mode,
       turnOrder: parsed.data.turnOrder,
       turnSeconds: parsed.data.turnSeconds,
+      clueIntervalSeconds: parsed.data.clueIntervalSeconds,
+      clueMax: parsed.data.clueMax,
     });
     (await cookies()).set(adminCookieName(roomCode), adminCode, adminCookieOptions());
     return ok({ roomCode, adminCode });
@@ -181,6 +194,97 @@ export async function kickPlayerAction(input: unknown): Promise<Result<{ kicked:
     const kicked = await kickPlayer(db, room.id, parsed.data.nickname);
     if (!kicked) return fail("NOT_FOUND", "Ese jugador ya no está en la sala.");
     return ok({ kicked });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+// ---- Admin powers (Phase 3, block 1). Every one re-checks the secret admin cookie on the server (requireOpenAdminRoom),
+// has no rate limit of its own (it needs that cookie) and is harmless to repeat.
+
+/** Pauses the game: no attempts, turns or clues until the admin resumes. The chat keeps working. */
+export async function pauseRoomAction(input: unknown): Promise<Result<{ paused: true }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = pauseRoomInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Código de sala inválido.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    await pauseRoom(db, room.id);
+    return ok({ paused: true });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/** Resumes a paused game. The running turn and the next clue get back the time they had left. */
+export async function resumeRoomAction(input: unknown): Promise<Result<{ resumed: true }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = resumeRoomInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Código de sala inválido.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    await resumeRoom(db, room.id);
+    return ok({ resumed: true });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/** Skips the turn of whoever holds it (turn mode). */
+export async function skipTurnAction(input: unknown): Promise<Result<{ skipped: true }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = skipTurnInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Código de sala inválido.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    await skipTurn(db, room.id);
+    return ok({ skipped: true });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/** Mutes or unmutes a player: they keep playing but cannot write in the chat. Lasts until the admin unmutes. */
+export async function mutePlayerAction(input: unknown): Promise<Result<{ muted: boolean }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = mutePlayerInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Jugador inválido.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    if (!(await setPlayerMuted(db, room.id, parsed.data.nickname, parsed.data.muted))) {
+      return fail("NOT_FOUND", "Ese jugador ya no está en la sala.");
+    }
+    return ok({ muted: parsed.data.muted });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/** Changes the automatic clues: seconds between clues (15 to 300) and the most clues (0 to 5; 0 = off). */
+export async function updateClueSettingsAction(input: unknown): Promise<Result<{ intervalSeconds: number; max: number }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = updateClueSettingsInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Las pistas deben ser de 0 a 5, cada 15 a 300 segundos.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    if (!(await setClueSettings(db, room.id, parsed.data.intervalSeconds, parsed.data.max))) {
+      return fail("ROOM_CLOSED", "Esta sala ya cerró.");
+    }
+    return ok({ intervalSeconds: parsed.data.intervalSeconds, max: parsed.data.max });
+  } catch (err) {
+    return toFailure(err, requestId);
+  }
+}
+
+/** Changes the secret Pokémon and restarts: attempts, chat and clues are erased; the players stay. */
+export async function resetRoomAction(input: unknown): Promise<Result<{ reset: true }>> {
+  const requestId = crypto.randomUUID();
+  try {
+    const parsed = resetRoomInputSchema.safeParse(input);
+    if (!parsed.success) return fail("VALIDATION_ERROR", "Elige un Pokémon de la lista.");
+    const { db, room } = await requireOpenAdminRoom(parsed.data.roomCode);
+    await resetRoom(db, room.id, parsed.data.pokemonId);
+    return ok({ reset: true });
   } catch (err) {
     return toFailure(err, requestId);
   }

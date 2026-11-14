@@ -55,7 +55,7 @@ export async function GET(request: Request, context: { params: Promise<{ roomCod
     }
 
     // A player's read doubles as a presence ping in turn mode (the admin is never part of the queue).
-    return respond(ok(await getFeed(db, room, { ...query, viewerSessionHash: isAdmin ? null : playerHash })));
+    return respond(ok(await getFeed(db, room, { ...query, viewerSessionHash: isAdmin ? null : playerHash, viewerIsAdmin: isAdmin })));
   } catch (err) {
     return respond(toFailure(err, requestId));
   }

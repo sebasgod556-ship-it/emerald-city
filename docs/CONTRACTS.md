@@ -1,6 +1,6 @@
 # CONTRACTS — Emerald City
 
-**contract-v0.15** · **backend-v0.13** · diseño: ninguna entrega todavía (interfaz provisional) · **Fase 1 completa. Fase 2 completa en código: Pasos 7 a 12 verificados en la base y Paso 13 (aviso legal, provisional) entregado; falta la prueba del cliente en teléfonos de los Pasos 11+12 y pegar 5 simulaciones extra. Fase 3: alcance del bloque 1 propuesto. Proyecto a UNIR con otro: sección 18**
+**contract-v0.16** · **backend-v0.14** · diseño: ninguna entrega todavía (interfaz provisional) · **Fase 1 completa. Fase 2 completa en código: Pasos 7 a 12 verificados en la base y Paso 13 (aviso legal, provisional) entregado; falta la prueba del cliente en teléfonos de los Pasos 11+12 y pegar 5 simulaciones extra. Fase 3 bloque 1 (pistas automáticas y poderes del admin) entregado en código, con la migración aplicada. Proyecto a UNIR con otro: sección 18**
 
 > Fusiona el contract-v0.14 (que el cliente pegó; el archivo del repo era el v0.13) con el Paso 13 y las simulaciones extra. No inventar nada que no esté aquí; lo no verificado está marcado como tal.
 > Fusiona el contract-v0.12 con los Pasos 11+12 (Modo A por turnos, presencia/reconexión y expulsar). Por petición del cliente la Fase 2 se entrega en bloques: 7+8, 9+10, 11+12. No inventar nada que no esté aquí; lo no verificado está marcado como tal.
@@ -92,6 +92,10 @@ Interfaz **provisional**: el Diseñador entra al final y reconcilia con esta tab
 | Acción de enviar mensaje de chat — **nuevo** | `app/actions/chat.ts` (sendChatMessageAction) | definitivo |
 | Acción de cerrar sala | `app/actions/rooms.ts` (closeRoomAction) | definitivo |
 | Acciones de empezar ya y cambiar la espera — **nuevo Pasos 9+10** | `app/actions/rooms.ts` (startRoomAction, updateCooldownAction) | definitivo |
+| Pistas automáticas visibles (lista de pistas reveladas) — **nuevo Fase 3** | `components/ClueBanner.tsx` | provisional |
+| Botones Pausar/Reanudar, Saltar turno, Silenciar, ajustes de pistas y Cambiar secreto y reiniciar — **nuevo Fase 3** | `components/AdminControls.tsx` (PauseResumeButton, SkipTurnButton, MutePlayerButton, ClueSettingsControl, ResetRoomControl), usados en `components/GameRoom.tsx` y `app/sala/[roomCode]/admin/page.tsx` | provisional |
+| Opciones de pistas al crear la sala — **nuevo Fase 3** | `components/RoomForms.tsx` | provisional |
+| Acciones de poderes del admin — **nuevo Fase 3** | `app/actions/rooms.ts` (pauseRoomAction, resumeRoomAction, skipTurnAction, mutePlayerAction, updateClueSettingsAction, resetRoomAction) | definitivo |
 | Servicio de salas | `services/rooms.service.ts` | definitivo |
 | Servicio de jugadores | `services/players.service.ts` | definitivo |
 | Servicio de intentos y pistas | `services/attempts.service.ts` | definitivo |
@@ -136,6 +140,7 @@ Nadie inicia sesión en Supabase. Jugador y admin llegan como `anon`; el servido
 | anon, authenticated, **service_role** | `attempts` | ✗ | ✗ | ✗ | ✗ | ninguna. **Nadie** tiene privilegios directos: solo `submit_attempt()` y `list_attempts()` (SECURITY DEFINER, solo `service_role`). El Paso 6 borrará los intentos con una función de cierre |
 
 | anon, authenticated, **service_role** | `chat_messages` | ✗ | ✗ | ✗ | ✗ | ninguna. Nadie tiene privilegios directos: solo `post_chat_message()`, `post_admin_chat_message()` y `list_chat()` (SECURITY DEFINER, solo `service_role`). `close_room()` lo borra al cerrar |
+| anon, authenticated, **service_role** | `room_clues` | ✗ | ✗ | ✗ | ✗ | ninguna. Nadie tiene privilegios directos: se escribe con `_reveal_clue()` (interna) y se lee con `apply_due_timers()`. `close_room()` y `reset_room()` la borran. **Fase 3:** `rooms.phase` también la cambian `pause_room()`, `resume_room()` y `reset_room()`; `rooms.secret_pokemon_id`, `finished_at` y `round_no` también `reset_room()`; `clue_*` solo `set_clue_settings()` (y la creación de la sala); `players.muted_at` solo `set_player_muted()` |
 
 Justificaciones:
 - `pokemon` guarda tipo y generación (las pistas). Si el navegador pudiera leerla, un jugador vería la respuesta.
@@ -153,6 +158,7 @@ Todo devuelve `{ data, error }`, con `error = { code, message, details? }`. `det
 | 401 | UNAUTHENTICATED | en uso (feed; enviar intento sin entrar con apodo) |
 | 403 | FORBIDDEN | en uso |
 | 403 | **PLAYER_KICKED** | **nuevo (Pasos 11+12)**: el admin expulsó al jugador (envío, chat, lectura del feed o volver a entrar) |
+| 403 | **PLAYER_MUTED** | **nuevo (Fase 3)**: el admin silenció al jugador; no puede escribir en el chat |
 | 404 | NOT_FOUND | en uso |
 | 409 | CONFLICT | en uso (caso raro de unicidad de sesión) |
 | 409 | ROOM_LIMIT_REACHED | en uso |
@@ -163,6 +169,7 @@ Todo devuelve `{ data, error }`, con `error = { code, message, details? }`. `det
 | 409 | **ALREADY_TRIED** | **nuevo (Pasos 7+8)**: alguien ya envió ese Pokémon; la pantalla pide confirmar. Se repite el envío con `confirmRepeat: true` |
 | 409 | **ROOM_NOT_STARTED** | **nuevo (Pasos 9+10)**: la sala sigue en espera; no se aceptan intentos todavía |
 | 409 | **NOT_YOUR_TURN** | **nuevo (Pasos 11+12)**: modo turnos, no le toca a este jugador |
+| 409 | **ROOM_PAUSED** | **nuevo (Fase 3)**: el admin pausó la partida; no se aceptan intentos hasta reanudarla |
 | 429 | RATE_LIMITED (en acciones va en `details.retryAfter`, en segundos) | en uso (también: espera entre intentos; desde los Pasos 9+10 `retryAfter` es lo que de verdad falta, no siempre 1) |
 | 500 | INTERNAL | en uso |
 | 503 | EXTERNAL_SERVICE_UNAVAILABLE | en uso |
@@ -182,6 +189,7 @@ Almacén de límites: Supabase, ventana fija, **falla cerrado**. Clave: hash de 
 | **startRoomAction** | Server Action | sin límite propio: exige la cookie secreta de admin y repetirla no cambia nada (`started: false`) | cookie de admin |
 | **updateCooldownAction** | Server Action | sin límite propio: exige la cookie secreta de admin; rango 1 a 120 validado en Zod y en la base | cookie de admin |
 | **kickPlayerAction** | Server Action | sin límite propio: exige la cookie secreta de admin; el botón pide confirmación | cookie de admin |
+| **pauseRoomAction**, **resumeRoomAction**, **skipTurnAction**, **mutePlayerAction**, **updateClueSettingsAction**, **resetRoomAction** (Fase 3) | Server Action | sin límite propio: exigen la cookie secreta de admin y son inofensivas de repetir. Entradas: `{ roomCode }`; `mutePlayerAction` `{ roomCode, nickname, muted }`; `updateClueSettingsAction` `{ roomCode, intervalSeconds, max }`; `resetRoomAction` `{ roomCode, pokemonId }`. Errores: `VALIDATION_ERROR`, `FORBIDDEN`, `NOT_FOUND` (jugador ya no está), `ROOM_CLOSED`, `CONFLICT` (pausar fuera de juego / saltar turno sin turnos), `EXTERNAL_SERVICE_UNAVAILABLE` | cookie de admin |
 | **GET /api/rooms/[roomCode]/feed** | Route Handler | sin límite propio | exige cookie secreta de jugador o de admin; sin cookie responde 401 sin tocar la base |
 | **GET /api/pokemon/names** | Route Handler | ninguno; respuesta cacheada por la CDN 24 h | público (solo nombres) |
 | GET /api/health | Route Handler | ninguno | público |
@@ -242,6 +250,14 @@ Entrada de `createRoomAction`: `{ pokemonId, cooldownSeconds?, waitMinutes? }` (
 - Supabase devuelve máximo 1000 filas por petición y hay 1082 Pokémon: la lista se pide en páginas.
 - Excluido por código: Basculin de Hisui (`basculin-white-striped`). El JSON no se toca.
 
+**Fase 3 · Bloque 1 (pistas automáticas y poderes del admin; decisiones aprobadas por el cliente con "ok a todo")**
+- **Pistas automáticas:** por defecto 2 pistas, una cada 60 s (admin: 0 a 5 pistas, cada 15 a 300 s; 0 = sin pistas), al crear la sala y desde su panel (al guardar la cuenta empieza de nuevo). El reloj se arma en la primera lectura con la partida en juego y cada lectura aplica como máximo una pista, una sola vez (bloqueo de la sala). No corre en la sala de espera, en pausa ni con ganador.
+- **Qué revela cada pista** (calculado solo en la base): la 1.ª mira los intentos 🌡️ de la sala: si predominan los que coinciden por generación, revela un tipo; si predominan por tipo, o hay empate o ningún dato, revela la generación. La 2.ª revela la característica que falta. La 3.ª, el segundo tipo si el secreto tiene dos (un tipo por pista, al azar). Un secreto de un solo tipo da como máximo 2 pistas. Nunca repite. Cuando ya no hay nada que revelar el reloj se detiene (`next_clue_at = infinity`). Los nombres de generación se muestran como "generación N".
+- **Pausa:** `phase = paused`. Detiene intentos (`ROOM_PAUSED`), turnos y pistas; el chat sigue. Solo se pausa una partida en juego y sin ganador. Al reanudar, el turno en curso y la próxima pista recuperan el tiempo que les quedaba (sus plazos se corren por el tiempo pausado). Un jugador expulsado durante la pausa se reemplaza al reanudar. Crear un secreto nuevo reanuda la partida.
+- **Saltar turno:** solo modo turnos con la partida en juego; el turno pasa al siguiente con plazo nuevo. No guarda intento.
+- **Silenciar:** por apodo; dura hasta que el admin lo quite; el jugador sigue jugando y viendo el chat pero no escribe (`PLAYER_MUTED`); el admin ve "silenciado" en su lista (la lista de silenciados solo se envía al admin). Un expulsado no se puede silenciar.
+- **Cambiar secreto y reiniciar:** el admin elige otro Pokémon; se borran intentos, chat y pistas; se conservan jugadores, cola, expulsados y silenciados; `rooms.round_no` sube y los teléfonos limpian su pantalla al verlo. Una sala en la sala de espera sigue en espera; las demás quedan en juego (pausa incluida) y reinician la cola de turnos.
+
 **Pantalla (provisional)**
 - Intentos: el más nuevo arriba. Cada uno lleva el icono con texto oculto para lectores de pantalla ("Fuego", "Tibio", "Hielo").
 - Lectura del feed: cada 2 s (5 s con la sala terminada); en segundo plano no hace peticiones; tras 3 fallos seguidos muestra el botón Reintentar. En la sala de espera pide la lista de jugadores cada ~4 s (antes ~10 s).
@@ -270,6 +286,7 @@ Entrada de `createRoomAction`: `{ pokemonId, cooldownSeconds?, waitMinutes? }` (
 - **Pasos 11+12:** `apply_due_timers` se **reemplazó** (ahora toma el bloqueo de la sala y devuelve además `o_turn_nickname` y `o_turn_deadline_at`); `submit_attempt`, `start_room` y `post_chat_message` se reemplazaron con la misma firma (`submit_attempt` agrega las salidas `kicked` y `not_your_turn`; `post_chat_message` agrega `kicked`). Funciones nuevas: `touch_player(room_id, session_hash)` y `kick_player(room_id, nickname)` (solo `service_role`), y los ayudantes internos `_advance_turn` y `_turn_tick`, que **nadie** puede llamar directamente (ni `service_role`).
 
 Migraciones (cada una con rollback documentado):
+- `20261112130000_auto_clues_and_admin_powers` (Fase 3 bloque 1, **aplicada por el cliente** en el SQL Editor el 12-nov-2026 sin errores; trae `begin`/`commit` y rollback documentado; expande y reemplaza `apply_due_timers`, `submit_attempt`, `post_chat_message` y `close_room`)
 - `20261101223300_create_pokemon`
 - `20261102222755_create_rooms`
 - `20261102225304_limit_open_rooms`
@@ -310,6 +327,9 @@ Migraciones (cada una con rollback documentado):
 | **Comprobaciones SQL de los Pasos 9+10 (38)** | **Ejecutadas** contra la base de pruebas (8-nov-2026) en una transacción que se revirtió sola: valores por defecto, restricciones, `not_started`, `not_player` antes que `not_started`, `apply_due_timers` (sin vencer, vencido, repetido, sala inexistente o cerrada), inicio por primer intento vencido, `start_room`, espera de 3 s con `retry_after`, cambiar la espera y esperar 1,2 s, rangos, chat en espera, `close_room` en espera, permisos. **38 de 38 pasaron.** No cubren concurrencia real (100 lecturas a la vez del mismo plazo) |
 | Vitest Pasos 9+10 | pruebas nuevas o actualizadas en `lib/validation/rooms.test.ts`, `lib/feed-parse.test.ts`, `services/rooms.service.test.ts`, `services/attempts.service.test.ts` y `services/feed.service.test.ts`: **NO ejecutadas** (el entorno del Programador no tiene `node_modules` ni red). Comando: `npm test` |
 | `tsc`, lint, `next build` (Pasos 9+10 y 11+12) | **NO ejecutados**; los da el despliegue de Vercel |
+| **Fase 3 bloque 1: simulaciones SQL** (`clues_powers_simulation_1.sql` a `_7.sql`: pistas por defecto y reglas (K1, K2), pistas apagadas, cambio de ajustes, sala terminada, sala de espera, cierre (K3 a K7), pausa y reanudar (P1), saltar turno (P2), silenciar (P3), cambiar secreto y reiniciar (P4), permisos (P5)) | **Ejecutadas por el cliente el 12-nov-2026** (migración aplicada sin errores): partes 2, 4, 5, 6 y 7 con `FAILS 0` (11, 14, 18, 12 y 11 comprobaciones); parte 1 con 1 fallo y parte 3 con 3 fallos, **todos errores de las pruebas, no de la base** (el ayudante `step` forzaba `next_clue_at` aunque estuviera vacío). Pruebas corregidas y **repetidas por el cliente: parte 1 con 10 comprobaciones y parte 3 con 16, ambas `FAILS 0`**. Las 7 partes quedan en `FAILS 0` |
+| Vitest Fase 3 bloque 1 | `services/phase3.service.test.ts` (nuevo) y `services/feed.service.test.ts` (actualizado): **NO ejecutadas** (sin `node_modules` ni red). Comando: `npm test` |
+| `tsc`, lint, `next build` (Fase 3 bloque 1) | **NO ejecutados**; los da el despliegue de Vercel |
 | Trigger de 100 jugadores | Sin probar |
 
 ## 12. Excepciones de accesibilidad aceptadas
@@ -390,6 +410,9 @@ El reloj vive en la base de datos, no en un proceso: cada plazo es una columna `
 - Para el cliente: logo y HEX; revisar nombres en español de las generaciones 3 a 8; decidir los nombres de los 3 Tauros de Paldea.
 - Salas de prueba abiertas (5 al 5-nov-2026 por la consulta del Programador) ocupan cupo de las 10 hasta el Paso 6 o 24 horas.
 - **Aviso legal (Paso 13)**: entregado como `LegalFooter` (provisional). El cliente aprueba o cambia la redacción.
+- **Bloque 1 de la Fase 3:** la prueba del cliente en teléfonos (el guion está en la entrega).
+- **Carga:** desde el bloque 1 las salas libres con pistas activas (por defecto 2 cada 60 s) también llaman a `apply_due_timers` en cada lectura del feed, con el bloqueo breve de la sala; medirlo en la prueba de carga. Con 0 pistas el modo libre no lo hace.
+- Pendiente de decisión del cliente (sin cambio hasta que lo diga): nombres de las generaciones en las pistas (hoy "generación N").
 - Riesgo a medir en la prueba de carga: en salas de turnos cada lectura del feed llama a `apply_due_timers`, que bloquea la fila de la sala un instante; con 100 jugadores sondeando cada 2 s son ~50 bloqueos por segundo en esa sala.
 
 ## 15. Incidente resuelto (lección)
@@ -401,9 +424,10 @@ El 4-nov-2026, "Crear sala" en Producción respondía "El servicio no está disp
 | Entrega | Versión |
 |---|---|
 | Diseño | ninguna (interfaz provisional) |
-| Backend | backend-v0.13 |
-| Contrato | contract-v0.15 |
+| Backend | backend-v0.14 |
+| Contrato | contract-v0.16 |
 
+- **backend-v0.14 / contract-v0.16**: Fase 3, bloque 1. **Pistas automáticas** (`room_clues`, `rooms.clue_*`, reglas en `_reveal_clue`, aplicadas al leer por `apply_due_timers` bajo el bloqueo de la sala, sin proceso de servidor). **Poderes del admin**: pausar y reanudar (`phase = paused`, `pause_room`, `resume_room`), saltar turno (`skip_turn`), silenciar (`players.muted_at`, `set_player_muted`), cambiar secreto y reiniciar (`reset_room`, `rooms.round_no`). Códigos nuevos `ROOM_PAUSED` y `PLAYER_MUTED`. El feed trae `status: paused`, `round`, `clues` y (solo al admin) `mutedPlayers`. Opciones de pistas al crear la sala y panel del admin. **Una migración (expande y reemplaza 4 funciones, rollback documentado), aplicada.**
 - **backend-v0.13 / contract-v0.15**: Paso 13 (aviso legal provisional en el pie de todas las páginas, `components/LegalFooter.tsx`; el layout pasa a columna para que el pie quede abajo y las 4 páginas usan `flex-1` en vez de `min-h-dvh`) y 5 archivos de simulación extra (`supabase/tests/turns_kick_extra_*.sql`). Sin cambios de base de datos ni de contratos de API.
 - **contract-v0.14** (sin cambio de código): migración de los Pasos 11+12 aplicada por el cliente y verificada (FAILS 0 en las 3 simulaciones); mapa de fases; limpieza de pendientes.
 - **backend-v0.12 / contract-v0.13**: Pasos 11+12 (juntos). Modo A (turnos): `rooms.mode`, `turn_order`, `turn_seconds`, `turn_seq`, `turn_player_id`, `turn_deadline_at`; cola con `players.turn_rank`; los plazos de turno los aplica `apply_due_timers` (reemplazada) bajo el bloqueo de la sala, sin `pg_cron`. Presencia: `touch_player`, 30 s = desconectado. Expulsar: `players.kicked_at`, `kick_player`, `kickPlayerAction`, pantalla "Te expulsaron". Códigos `NOT_YOUR_TURN` y `PLAYER_KICKED`. Opciones de modo al crear la sala; `TurnBanner`; lista del admin con "desconectado" y Expulsar. Sin tope global de 60 ni `nextPollMs` (decisión del cliente). **La migración ya está pegada; falta la simulación.**
@@ -430,7 +454,8 @@ El 4-nov-2026, "Crear sala" en Producción respondía "El servicio no está disp
 | 2 · Pasos 7 a 10 | Pistas laterales, aviso de repetido, chat, espera entre intentos, sala de espera | **Probados por el cliente** |
 | 2 · Pasos 11+12 | Modo A (turnos), reconexión, expulsar | Entregados, **base verificada (FAILS 0)**; **falta la prueba del cliente en teléfonos**. Además 5 archivos de simulación extra escritos (`turns_kick_extra_1..5.sql`, 10 escenarios), **pendientes de pegar** |
 | 2 · Paso 13 | Aviso legal en el pie de página | **Entregado (provisional)**; el cliente aprueba la redacción |
-| 3 | Pistas automáticas; pausar, saltar turno, silenciar, cambiar secreto y reiniciar; filtro de groserías y límite de chat personalizables; cierre de sala vacía a los 5 min (`pg_cron`); tarea contra `/api/health`; CI/CD y prueba de carga (Integrador); guía del admin; Diseñador con logo y HEX; revisión de nombres de generaciones 3 a 8 | **Bloque 1 (pistas automáticas + poderes del admin): alcance propuesto, esperando respuestas del cliente.** El resto sin empezar |
+| 3 · Bloque 1 | Pistas automáticas y poderes del admin (pausar, saltar turno, silenciar, cambiar secreto y reiniciar) | **Entregado** (backend-v0.14). Migración aplicada; simulaciones 2, 4, 5, 6 y 7 con FAILS 0; **las 7 simulaciones en FAILS 0; falta la prueba del cliente en teléfonos** |
+| 3 · Resto | Filtro de groserías y límite de mensajes personalizables; cierre de sala vacía a los 5 min (`pg_cron`); tarea contra `/api/health`; CI/CD y prueba de carga (Integrador); guía del admin; Diseñador con logo y HEX; revisión de nombres de generaciones 3 a 8 | Sin empezar |
 | Aparte | Unión con otro proyecto (sección 18) | El cliente aún no da datos; lo completa el Brief |
 
 **Decisiones del cliente que no se repiten**
@@ -483,6 +508,7 @@ El Brief modifica **este contrato** (no el código) para que pueda enviarse al e
 |---|---|
 | Tablas (esquema `public`) | `pokemon`, `pokemon_names` (vista), `rooms`, `rate_limits`, `players`, `attempts`, `chat_messages`. RLS activo en todas menos la vista, **sin políticas**: nadie accede como `anon`/`authenticated`; solo `service_role` y funciones SECURITY DEFINER |
 | Funciones (`public`) | `normalize_name`, `rate_limit_hit`, `rooms_enforce_open_limit`, `players_enforce_room_rules`, `submit_attempt`, `list_attempts`, `was_tried`, `list_hints`, `post_chat_message`, `post_admin_chat_message`, `list_chat`, `close_room`, `apply_due_timers`, `start_room`, `set_attempt_cooldown` | **Desde los Pasos 11+12 también:** `touch_player`, `kick_player`, `players_set_turn_rank`, `_advance_turn` y `_turn_tick` (los dos últimos internos).
+| **Fase 3, bloque 1 (nuevo)** | Tabla `room_clues` (RLS activo, sin privilegios para nadie). Columnas nuevas: `rooms.clue_interval_seconds`, `clue_max`, `clues_revealed`, `next_clue_at`, `paused_at`, `round_no`; `players.muted_at`. Funciones: `pause_room`, `resume_room`, `skip_turn`, `set_player_muted`, `set_clue_settings`, `reset_room`, `_reveal_clue`, `_clue_tick` (las dos últimas internas). Reemplazadas: `apply_due_timers`, `submit_attempt`, `post_chat_message`, `close_room`. Nueva migración `20261112130000_auto_clues_and_admin_powers`. Nuevas acciones: `pauseRoomAction`, `resumeRoomAction`, `skipTurnAction`, `mutePlayerAction`, `updateClueSettingsAction`, `resetRoomAction` |
 | Extensiones | `pgcrypto`, `uuid-ossp` (más las de Supabase). `pg_cron` disponible pero **no** habilitado |
 | Migraciones | 10 archivos en `supabase/migrations/` (de `20261101223300_create_pokemon` a `20261108120000_turns_presence_kick`, esta última pegada a mano); 9 archivos de pruebas en `supabase/tests/` (más la simulación) |
 | Rutas de página | `/`, `/crear`, `/sala/[roomCode]`, `/sala/[roomCode]/admin` |

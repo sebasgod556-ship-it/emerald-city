@@ -8,7 +8,7 @@ export const MAX_PLAYERS_PER_ROOM = 100;
 export type PlayerSummary = { nickname: string };
 
 /** A player as the room list shows it: away = no sign of life for a while (only tracked in turn mode). */
-export type RoomPlayer = { nickname: string; away: boolean };
+export type RoomPlayer = { nickname: string; away: boolean; muted: boolean };
 
 /** The player behind a session cookie. kicked = the admin removed them from the room. */
 export type PlayerSession = { nickname: string; kicked: boolean };
@@ -18,7 +18,7 @@ export const AWAY_AFTER_SECONDS = 30;
 
 const playerRowSchema = z.object({ nickname: z.string() });
 const sessionRowSchema = z.object({ nickname: z.string(), kicked_at: z.string().nullable() });
-const listRowSchema = z.object({ nickname: z.string(), last_seen_at: z.string() });
+const listRowSchema = z.object({ nickname: z.string(), last_seen_at: z.string(), muted_at: z.string().nullable().optional() });
 
 type DbError = { code: string; message: string; details?: string | null };
 
@@ -102,7 +102,7 @@ export async function listPlayers(
 ): Promise<RoomPlayer[]> {
   const { data, error } = await db
     .from("players")
-    .select("nickname, last_seen_at")
+    .select("nickname, last_seen_at, muted_at")
     .eq("room_id", roomId)
     .is("kicked_at", null)
     .order("created_at", { ascending: true })
@@ -115,6 +115,7 @@ export async function listPlayers(
     .map((row) => ({
       nickname: row.nickname,
       away: options.trackPresence === true && Date.parse(row.last_seen_at) < cutoff,
+      muted: row.muted_at !== null && row.muted_at !== undefined,
     }));
 }
 
@@ -138,6 +139,16 @@ export async function kickPlayer(db: SupabaseClient, roomId: string, nickname: s
   const { data, error } = await db.rpc("kick_player", { p_room_id: roomId, p_nickname: nickname });
   if (error || typeof data !== "string") {
     throw unavailable(error ?? { code: "unexpected", message: "unexpected kick_player response" });
+  }
+  if (data === "room_closed") throw new AppError("ROOM_CLOSED", "Esta sala ya cerró.");
+  return data === "ok";
+}
+
+/** The admin mutes or unmutes a player by nickname. A muted player keeps playing but cannot chat. True if the player was found. */
+export async function setPlayerMuted(db: SupabaseClient, roomId: string, nickname: string, muted: boolean): Promise<boolean> {
+  const { data, error } = await db.rpc("set_player_muted", { p_room_id: roomId, p_nickname: nickname, p_muted: muted });
+  if (error || typeof data !== "string") {
+    throw unavailable(error ?? { code: "unexpected", message: "unexpected set_player_muted response" });
   }
   if (data === "room_closed") throw new AppError("ROOM_CLOSED", "Esta sala ya cerró.");
   return data === "ok";

@@ -15,6 +15,7 @@ const submitRowSchema = z.object({
     "round_finished",
     "not_player",
     "kicked",
+    "paused",
     "not_started",
     "not_your_turn",
     "unknown_pokemon",
@@ -79,6 +80,8 @@ export async function submitAttempt(
       throw new AppError("UNAUTHENTICATED", "Entra a la sala con tu apodo primero.");
     case "kicked":
       throw new AppError("PLAYER_KICKED", "El administrador te expulsó de esta sala.");
+    case "paused":
+      throw new AppError("ROOM_PAUSED", "La partida está en pausa. Espera a que el administrador la reanude.");
     case "not_your_turn":
       throw new AppError("NOT_YOUR_TURN", "Todavía no es tu turno. Espera a que te toque.");
     case "not_started":

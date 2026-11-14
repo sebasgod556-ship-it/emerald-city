@@ -5,7 +5,8 @@ import { sendChatMessageAction } from "../app/actions/chat";
 import { HINT_META, type FeedAttempt, type FeedSnapshot } from "../lib/feed-types";
 import { btnSecondary } from "../lib/ui";
 import { ChatPanel } from "./ChatPanel";
-import { KickPlayerButton } from "./AdminControls";
+import { KickPlayerButton, MutePlayerButton, PauseResumeButton, SkipTurnButton } from "./AdminControls";
+import { ClueBanner } from "./ClueBanner";
 import { HintsTable } from "./HintsTable";
 import { PokemonPicker, type SendOutcome } from "./PokemonPicker";
 import { TurnBanner } from "./TurnBanner";
@@ -33,6 +34,7 @@ export function GameRoom({
   const waiting = feed.status === "waiting";
   const turnMode = feed.mode === "turns";
   const isAdmin = nickname === null;
+  const paused = feed.status === "paused";
   const myTurn = turnMode && feed.turn !== null && feed.turn.nickname === nickname;
 
   async function send(pokemonId: number, confirmRepeat: boolean): Promise<SendOutcome> {
@@ -85,11 +87,26 @@ export function GameRoom({
         />
       ) : null}
 
-      {turnMode && !waiting && !feed.finished ? <TurnBanner turn={feed.turn} me={nickname} /> : null}
+      {paused && !feed.finished ? (
+        <p role="status" className="rounded-xl border border-ec-primary bg-ec-surface p-4 text-lg font-semibold">
+          ⏸ Partida en pausa. {isAdmin ? "Los jugadores no pueden enviar hasta que la reanudes." : "Espera a que el administrador la reanude."}
+        </p>
+      ) : null}
+
+      {isAdmin && !waiting && !feed.finished ? (
+        <div className="flex flex-col gap-2">
+          <PauseResumeButton roomCode={roomCode} paused={paused} onDone={feed.refresh} />
+          {turnMode && !paused ? <SkipTurnButton roomCode={roomCode} onDone={feed.refresh} /> : null}
+        </div>
+      ) : null}
+
+      {turnMode && !waiting && !paused && !feed.finished ? <TurnBanner turn={feed.turn} me={nickname} /> : null}
+
+      {waiting || feed.finished ? null : <ClueBanner clues={feed.clues} />}
 
       {nickname !== null && !feed.finished && !waiting ? (
         <PokemonPicker
-          disabled={turnMode && !myTurn}
+          disabled={paused || (turnMode && !myTurn)}
           cooldownSeconds={turnMode ? 0 : feed.cooldownSeconds}
           onSend={send}
         />
@@ -128,8 +145,14 @@ export function GameRoom({
                 {name}
                 {name === nickname ? " (tú)" : ""}
                 {feed.awayPlayers.includes(name) ? <span className="text-sm font-normal text-ec-muted"> · desconectado</span> : null}
+                {isAdmin && feed.mutedPlayers.includes(name) ? <span className="text-sm font-normal text-ec-muted"> · silenciado</span> : null}
               </span>
-              {isAdmin ? <KickPlayerButton roomCode={roomCode} nickname={name} onKicked={feed.refresh} /> : null}
+              {isAdmin ? (
+                <span className="flex flex-wrap items-center gap-3">
+                  <MutePlayerButton roomCode={roomCode} nickname={name} muted={feed.mutedPlayers.includes(name)} onDone={feed.refresh} />
+                  <KickPlayerButton roomCode={roomCode} nickname={name} onKicked={feed.refresh} />
+                </span>
+              ) : null}
             </li>
           ))}
         </ul>

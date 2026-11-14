@@ -9,6 +9,12 @@ import { extractRoomCode, formatAdminCode } from "../lib/room-codes";
 import { btnPrimary, btnSecondary, inputClass } from "../lib/ui";
 import type { PokemonName } from "../lib/validation/pokemon";
 import {
+  DEFAULT_CLUE_INTERVAL_SECONDS,
+  DEFAULT_CLUE_MAX,
+  MAX_CLUE_INTERVAL_SECONDS,
+  MAX_CLUE_MAX,
+  MIN_CLUE_INTERVAL_SECONDS,
+  MIN_CLUE_MAX,
   DEFAULT_COOLDOWN_SECONDS,
   DEFAULT_WAIT_MINUTES,
   DEFAULT_TURN_SECONDS,
@@ -106,6 +112,16 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
   const [mode, setMode] = useState<"free" | "turns">("free");
   const [turnOrder, setTurnOrder] = useState<"random" | "arrival">("random");
   const [turnSeconds, setTurnSeconds] = useState(String(DEFAULT_TURN_SECONDS));
+  const [clueMax, setClueMax] = useState(String(DEFAULT_CLUE_MAX));
+  const [clueInterval, setClueInterval] = useState(String(DEFAULT_CLUE_INTERVAL_SECONDS));
+  const clueMaxNumber = Number(clueMax);
+  const clueIntervalNumber = Number(clueInterval);
+  const clueMaxValid = clueMax.trim() !== "" && Number.isInteger(clueMaxNumber) && clueMaxNumber >= MIN_CLUE_MAX && clueMaxNumber <= MAX_CLUE_MAX;
+  const clueIntervalValid =
+    clueInterval.trim() !== "" &&
+    Number.isInteger(clueIntervalNumber) &&
+    clueIntervalNumber >= MIN_CLUE_INTERVAL_SECONDS &&
+    clueIntervalNumber <= MAX_CLUE_INTERVAL_SECONDS;
   const turnNumber = Number(turnSeconds);
   const turnValid =
     turnSeconds.trim() !== "" && Number.isInteger(turnNumber) && turnNumber >= MIN_TURN_SECONDS && turnNumber <= MAX_TURN_SECONDS;
@@ -117,7 +133,7 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
   // Only the fields of the chosen mode have to be valid: the other ones are hidden and sent with their defaults.
   const waitValid =
     waitMinutes.trim() !== "" && Number.isInteger(waitNumber) && waitNumber >= MIN_WAIT_MINUTES && waitNumber <= MAX_WAIT_MINUTES;
-  const formOk = waitValid && (mode === "turns" ? turnValid : cooldownValid);
+  const formOk = waitValid && clueMaxValid && clueIntervalValid && (mode === "turns" ? turnValid : cooldownValid);
 
   const results = useMemo(() => (selected ? [] : searchPokemonNames(names, query)), [names, query, selected]);
 
@@ -133,6 +149,8 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
         mode,
         turnOrder,
         turnSeconds: turnValid ? turnNumber : DEFAULT_TURN_SECONDS,
+        clueMax: clueMaxNumber,
+        clueIntervalSeconds: clueIntervalNumber,
       });
       if (res.error) setError(res.error.message);
       else {
@@ -333,6 +351,48 @@ export function CreateRoomForm({ names }: { names: PokemonName[] }) {
             {!waitValid ? (
               <p role="alert" className="text-sm text-red-400">
                 Escribe un número de {MIN_WAIT_MINUTES} a {MAX_WAIT_MINUTES}.
+              </p>
+            ) : null}
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="opt-clue-max" className="text-sm text-ec-muted">
+              Pistas automáticas: cuántas (0 = sin pistas)
+            </label>
+            <input
+              id="opt-clue-max"
+              type="number"
+              inputMode="numeric"
+              min={MIN_CLUE_MAX}
+              max={MAX_CLUE_MAX}
+              value={clueMax}
+              onChange={(e) => setClueMax(e.target.value)}
+              aria-invalid={!clueMaxValid}
+              className={inputClass}
+            />
+            {!clueMaxValid ? (
+              <p role="alert" className="text-sm text-red-400">
+                Escribe un número de {MIN_CLUE_MAX} a {MAX_CLUE_MAX}.
+              </p>
+            ) : null}
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="opt-clue-interval" className="text-sm text-ec-muted">
+              Pistas automáticas: cada cuántos segundos
+            </label>
+            <input
+              id="opt-clue-interval"
+              type="number"
+              inputMode="numeric"
+              min={MIN_CLUE_INTERVAL_SECONDS}
+              max={MAX_CLUE_INTERVAL_SECONDS}
+              value={clueInterval}
+              onChange={(e) => setClueInterval(e.target.value)}
+              aria-invalid={!clueIntervalValid}
+              className={inputClass}
+            />
+            {!clueIntervalValid ? (
+              <p role="alert" className="text-sm text-red-400">
+                Escribe un número de {MIN_CLUE_INTERVAL_SECONDS} a {MAX_CLUE_INTERVAL_SECONDS}.
               </p>
             ) : null}
           </div>

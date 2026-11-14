@@ -21,11 +21,14 @@ export function PokemonPicker({
   disabled,
   cooldownSeconds,
   onSend,
+  verb = "Enviar",
 }: {
   disabled: boolean;
   /** Wait between attempts chosen by the admin: after a sent attempt the button counts down this long. */
   cooldownSeconds: number;
   onSend: (pokemonId: number, confirmRepeat: boolean) => Promise<SendOutcome>;
+  /** Text of the main button (default "Enviar"). The admin uses it to pick a new secret. */
+  verb?: string;
 }) {
   const [names, setNames] = useState<PokemonName[] | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -186,7 +189,7 @@ export function PokemonPicker({
         disabled={disabled || pending || waitLeft > 0 || (selected === null && results.length === 0)}
         className={btnPrimary}
       >
-        {pending ? "Enviando..." : waitLeft > 0 ? `Espera ${waitLeft} s` : selected ? `Enviar ${selected.nombre_es}` : "Enviar"}
+        {pending ? "Enviando..." : waitLeft > 0 ? `Espera ${waitLeft} s` : selected ? `${verb} ${selected.nombre_es}` : verb}
       </button>
       )}
     </form>

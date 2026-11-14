@@ -14,8 +14,11 @@ export type HintEntry = { pokemon: string; result: "fire" | "warm" };
 
 export type ChatMessage = { id: number; nickname: string; body: string; isAdmin: boolean };
 
-/** waiting = lobby before the game starts, playing = attempts accepted, finished = somebody guessed the secret. */
-export type RoomStatus = "waiting" | "playing" | "finished";
+/** An automatic clue the room revealed: one type of the secret, or its generation number. */
+export type Clue = { kind: "type" | "generation"; value: string };
+
+/** waiting = lobby, playing = attempts accepted, paused = the admin paused the game, finished = somebody guessed the secret. */
+export type RoomStatus = "waiting" | "playing" | "paused" | "finished";
 
 export type FeedSnapshot = {
   status: RoomStatus;
@@ -44,6 +47,12 @@ export type FeedSnapshot = {
   players: string[] | null;
   /** Nicknames of players who look disconnected (turn mode only). Sent together with players. */
   awayPlayers: string[] | null;
+  /** Round number of the room (+1 on every reset). A new number means: clear attempts, chat, hints and clues. */
+  round: number;
+  /** Automatic clues revealed so far. Null when this read did not ask the database for them (finished room): keep the ones you have. */
+  clues: Clue[] | null;
+  /** Nicknames the admin muted. Only sent to the admin, together with players; null for everybody else. */
+  mutedPlayers: string[] | null;
 };
 
 export const HINT_META: Record<HintResult, { icon: string; label: string }> = {

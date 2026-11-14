@@ -1,7 +1,7 @@
 import { cookies, headers } from "next/headers";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { CloseRoomButton, CooldownControl } from "../../../../components/AdminControls";
+import { ClueSettingsControl, CloseRoomButton, CooldownControl, ResetRoomControl } from "../../../../components/AdminControls";
 import { GameRoom } from "../../../../components/GameRoom";
 import { AdminLoginForm, CopyButton } from "../../../../components/RoomForms";
 import type { FeedSnapshot } from "../../../../lib/feed-types";
@@ -19,7 +19,7 @@ export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ roomCode: string }> };
 
-// PROVISIONAL screen. Admin powers (close room, kick, etc.) arrive in later steps.
+// PROVISIONAL screen. Admin powers: close, kick, mute, pause, skip turn, automatic clues, change secret and restart.
 export default async function AdminPage({ params }: Props) {
   const roomCode = normalizeCode((await params).roomCode);
 
@@ -37,7 +37,7 @@ export default async function AdminPage({ params }: Props) {
       isAdmin = cookie ? verifyAdminCode(roomCode, normalizeCode(cookie), room.adminCodeHash) : false;
       if (isAdmin) {
         secretName = await getPokemonName(db, room.secretPokemonId);
-        feed = await getFeed(db, room, { after: null, chatAfter: null, full: true });
+        feed = await getFeed(db, room, { after: null, chatAfter: null, full: true, viewerIsAdmin: true });
       }
     }
   } catch {
@@ -89,6 +89,12 @@ export default async function AdminPage({ params }: Props) {
       ) : (
         <CooldownControl roomCode={roomCode} initialSeconds={room.attemptCooldownSeconds} />
       )}
+      <ClueSettingsControl
+        roomCode={roomCode}
+        initialIntervalSeconds={room.clueIntervalSeconds}
+        initialMax={room.clueMax}
+      />
+      <ResetRoomControl roomCode={roomCode} />
       <CloseRoomButton roomCode={roomCode} />
     </Shell>
   );
